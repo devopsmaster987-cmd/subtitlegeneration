@@ -1,0 +1,252 @@
+You are building a complete, production-ready web app called "VoiceToTextFree" (working name): a free, browser-based subtitle and transcript generator that supports all languages OpenAI Whisper supports (about 99, including English, Urdu, Hindi, Bengali, Tamil, Arabic, Chinese, Spanish, French and others). The app runs entirely in the browser: no backend, no file uploads to any server, no paid APIs.
+
+The site must be built to PASS Google AdSense review and to keep earning safely afterward. That means genuinely useful, original, human-quality content around the tool, a trustworthy and transparent site, policy-compliant ad placement, and excellent performance. Treat AdSense approval as a first-class requirement equal to the tool itself, not an afterthought. Build it end to end, install dependencies, run it, and verify it works before finishing.
+
+## 0A. NORTH STAR (overrides everything else when in doubt)
+The goal is a genuinely useful website: a tool that works, claims that are verified against primary sources, and original content that helps real people make subtitles. Rankings, AI citations and ad revenue follow from that, never the other way round.
+- USEFUL FIRST. Every page must help a person do or decide something. If a page, feature or paragraph does not, cut it. Never add pages to inflate volume, rankings or ad inventory.
+- VERIFIED, NOT ASSUMED. Every technical claim is checked against a primary source before it ships: SRT/VTT formatting against the W3C WebVTT spec and common SRT parsers, the Whisper language list against the transformers.js tokenizer, model sizes and download sizes against the Hugging Face model cards and real measured downloads, platform subtitle rules against each platform's own help pages. Record each check in `/docs/verification-log.md`: claim, source URL, how it was checked, expected vs actual, date. Never state accuracy percentages, WER figures, speed numbers or file limits that were not measured or sourced. Where you measured, say how (device, file, model).
+- ORIGINAL, NOT RECYCLED. Content must add something other sites do not: measured results, an edge case explained, a worked example with real timestamps, a decision path. Never paraphrase another site.
+- HONEST ABOUT LIMITS. If accuracy is weak for a language, a browser lacks WebGPU, or a rule varies by platform, say so and point to the source rather than guessing.
+- If any instruction in this file conflicts with this section, stop and tell me instead of shipping.
+
+## 0. AdSense-first principles (read before anything else)
+Google rejects sites for: low-value or thin content, scaled/templated programmatic pages ("scaled content abuse"), missing or weak policy pages, poor navigation, "under construction" pages, copied content, and ads that interfere with usability. Design every decision around avoiding these.
+1. Every indexable page must offer unique, useful, human-readable value. No near-duplicate pages. No keyword stuffing.
+2. Content must read as written by a knowledgeable human: specific, accurate, example-driven, with real tips. No generic filler, no obvious AI boilerplate, no repeated paragraphs across pages.
+3. The site needs clear authorship, an About page with real context, a working Contact page, a Privacy Policy that names Google and cookies, and a Terms page.
+4. Ads must never sit inside or overlap the tool, never push content around (no layout shift), and never be disguised as content or buttons.
+5. Launch small and strong: publish a limited set of excellent pages and noindex the rest until they are enriched. Quality over page count.
+6. Performance and mobile usability matter: Core Web Vitals must be good with ads disabled AND with ad slots reserved.
+
+## 1. Product goals
+- User uploads a video or audio file (MP4, MOV, WEBM, MP3, WAV, M4A; up to ~500 MB, with a clear warning for large files).
+- User selects the spoken language from a searchable list of all Whisper languages, or auto-detect.
+- The app extracts audio and generates a timestamped transcript using Whisper running locally in the browser.
+- User can review and edit every segment inline (text, start, end), split, merge and delete segments.
+- Exports: SRT, VTT, TXT. Optional secondary feature: burn subtitles into the video and download MP4 (ffmpeg.wasm).
+- Works offline after the first model download; model cached in IndexedDB/Cache API.
+
+## 2. Language support (critical)
+- Create `src/config/languages.ts` as the single source of truth: every Whisper language with `code`, `name` (English), `nativeName`, `rtl`, `slug`, `region`/`script` notes, a `tier` field (1 = full editorial page, 2 = enriched page, 3 = tool-only, noindex) and a `wave` field (1, 2 or 3, ship order from section 9A). Verify the list against the transformers.js Whisper tokenizer language map at build time; add a unit test that fails if they differ.
+- Searchable, keyboard-accessible combobox matching English and native names; "Popular" group (English, Urdu, Hindi, Bengali, Tamil, Arabic, Spanish, French, Chinese, Portuguese, Russian, Indonesian, Turkish) then "All languages" A-Z. Default: auto-detect.
+- `dir="rtl"` on editor and SRT preview for RTL languages.
+- Use transformers.js `language` and `task: "transcribe"`; optional "translate to English" toggle.
+- Show a note for low-resource languages (accuracy varies) and list weak languages in the README.
+
+## 3. Tech stack (explain any deviation)
+- Next.js (latest stable, App Router, TypeScript) with `output: "export"` (fully static). Tool code is client-only. No API routes, no server actions.
+- Content pages MUST be server-rendered to static HTML at build time (all article text, headings, FAQs and JSON-LD present in the HTML without JavaScript) so Google's crawler and the AdSense reviewer see real content, not an empty JS shell. Only the tool widget itself is client-only.
+- Tailwind CSS. Zustand for state. Vitest for unit tests, Playwright for one e2e smoke test.
+- @huggingface/transformers with multilingual Whisper ONNX models: "Fast" (tiny/base) and "Accurate" (small). Prefer WebGPU, fall back to WASM. Warn about download size.
+- @ffmpeg/ffmpeg + @ffmpeg/util for 16 kHz mono extraction and optional burn-in.
+- IMPORTANT, ads vs cross-origin isolation: a site-wide `Cross-Origin-Embedder-Policy: require-corp` header BREAKS AdSense (ad scripts and frames are blocked). Therefore:
+  - Do NOT set COOP/COEP site-wide. Default to the single-thread ffmpeg build and standard transformers.js WASM/WebGPU, which need no isolation.
+  - Optionally provide an ad-free route `/studio` that sets COOP/COEP headers (in `netlify.toml`, `vercel.json` and dev config, scoped to that path only) for faster multi-thread ffmpeg burn-in. No ads and no ad script on `/studio`.
+  - Document this decision in the README.
+- Web Workers for all model and ffmpeg work (`new Worker(new URL("./x.worker.ts", import.meta.url))`).
+
+## 4. Architecture (App Router)
+- `app/layout.tsx`: root layout, default metadata, theme provider, persistent header navigation (Home, Languages, Guides, About, Contact) and a footer linking to every policy and content section. Clear, consistent navigation is an AdSense requirement.
+- `app/page.tsx`: home. Static server-rendered wrapper around client `<Tool />`, plus the long-form content (section 6) and JSON-LD.
+- `app/subtitle-generator/[slug]/page.tsx`: language pages via `generateStaticParams` from `languages.ts`.
+  - Tier 1 (Wave 1 languages from 9A, plus any Wave 2 language that can be written accurately): hand-written editorial content from `src/content/languages/<slug>.ts`, 700+ unique words each: how speakers of that language actually use subtitles, script and punctuation notes, common transcription pitfalls (dialects, code-switching, names, numbers), accuracy tips specific to the language, a language-specific FAQ (4+ questions), and realistic examples. Indexable.
+  - Tier 2: enriched pages with 350+ unique words of genuinely language-specific content from per-language data fields. Indexable only if the content passes a build-time quality check (see below).
+  - Tier 3: tool-only. `robots: { index: false, follow: true }`, excluded from the sitemap. Still usable by visitors who pick the language in the picker.
+  - Build-time quality gate (`scripts/check-content.ts`, run in `npm run build`): fail or auto-downgrade to noindex if a page has under its minimum word count, or if more than 30% of its sentences are shared with any other language page (use shingle/similarity comparison). Print a report.
+  - Per-page unique title, meta description, Open Graph, canonical URL, `hreflang` only where genuinely warranted.
+- Intent landing and tool pages (routes and keywords in 9A): `/video-to-text`, `/video-to-srt`, `/audio-to-srt`, `/speech-to-text`, `/caption-generator`, `/transcript-generator`, `/srt-editor`, `/subtitle-timing-editor`, `/merge-split-srt`, `/convert-srt-to-vtt`, `/subtitle-reading-speed-checker`, `/subtitle-validator`, `/offline-subtitle-generator`, `/private-subtitle-generator`. Each is a working client-side tool (or the main tool preconfigured for that intent) with 700+ words of original, distinct supporting content. Do not publish any that would duplicate another page.
+- `app/guides/`: an index plus the 28 original, in-depth guides mapped in 9A (1,200+ words of body text each, counted excluding navigation, code samples, tables and FAQ; no padding or repetition to reach the count, with headings, steps, screenshots or diagrams where useful, an author byline and a "last updated" date). The 28 required guides, with their primary and supporting keywords, are defined in the guide map in section 9A. Each guide must contain original examples and practical detail, not generic advice. Link guides to the tool and to each other.
+- `app/about/`, `app/contact/`, `app/privacy-policy/`, `app/terms/`, `app/cookie-policy/`, `app/disclaimer/`: all real, complete pages (not placeholders).
+- `app/sitemap.ts`, `app/robots.ts` (allow all crawlers including `Mediapartners-Google`), and `public/ads.txt` (template with a clearly marked placeholder for the publisher ID).
+- `app/not-found.tsx`: helpful 404 with links to the tool and guides.
+- `src/workers/transcribe.worker.ts`, `src/lib/audio.ts` (16 kHz mono, ~30 s chunks with 2 s overlap, de-duplicate overlapped text), `src/lib/subtitles.ts` (SRT/VTT generate + parse), `src/lib/store.ts`.
+- `src/components/`: FileDropzone, LanguageCombobox, ModelSelect, ProgressPanel, SegmentEditor (virtualized above 500 segments), PreviewPlayer (synced; click-to-seek; active highlight), ExportBar, AdSlot, ConsentBanner, Breadcrumbs, Faq, AuthorBox, RelatedGuides.
+- `src/config/site.ts`: site name, URL, contact email, author info, `ADS_ENABLED = false`, `ADSENSE_CLIENT_ID = ""`.
+
+## 5. UX requirements
+- Fast, clean, mobile-friendly single-page tool. Stages with progress: loading model (download %), extracting audio, transcribing (% and ETA), done.
+- Visible privacy message near upload: "Your file never leaves your device."
+- Keyboard shortcuts (space play/pause, ctrl/cmd+S export SRT). Friendly errors for unsupported files, low memory, missing WebGPU.
+- Dark/light mode. RTL rendering where needed.
+- The tool must be complete and functional on first load. No "coming soon" sections, no dead links, no empty states that look unfinished.
+
+## 6. Content standards (the heart of AdSense approval)
+- Home page: 1,000+ words of original supporting content AFTER/around the tool: what it does, a step-by-step walkthrough, how local Whisper transcription works (in plain language), supported languages, accuracy tips, privacy explanation, who it is for (creators, students, journalists, teachers), limits and honest caveats, and a 6+ question FAQ. Include `FAQPage` and `SoftwareApplication` JSON-LD, only where the visible page content actually matches.
+- Writing rules: concrete and specific; vary sentence structure; include real numbers, examples and edge cases; state limitations honestly; no hype, no fake testimonials, no fabricated statistics, no fake reviews or ratings; no claims you cannot back up.
+- Every guide and language page shows an author/maintainer name, "Last updated" date, and breadcrumb navigation.
+- Internal linking: every content page links to the tool, to 2-3 related guides, and to relevant language pages. No orphan pages.
+- Heading hierarchy (one H1, logical H2/H3), descriptive alt text, readable typography (16px+ body, comfortable line length).
+- No copied text, no scraped content, no text spun from other sites. Do not name or imitate trademarked competitors in misleading ways.
+- Provide `CONTENT_GUIDE.md` documenting tone, word-count minimums and the review checklist, so future pages stay at this standard.
+
+## 7. Ads implementation (policy-safe)
+- `<AdSlot />` gated by `ADS_ENABLED`. When false: render nothing and inject NO ad script and no placeholder boxes.
+- When true: load the AdSense script once, lazily after consent and after the page is interactive (so it does not hurt LCP). Reserve fixed `min-height` for each slot to prevent layout shift (CLS).
+- Allowed placements only: below the tool/results area, between sections of long-form content, in a sidebar on desktop for content pages, and at the end of articles. Maximum 3 slots per page, and never more ad area than content.
+- Forbidden: ads inside the editor, upload area, progress panel, export bar or modal dialogs; ads on 404, thank-you, error or near-empty pages; ads on `/studio`; ads directly adjacent to download/export buttons (keep a clear gap and a "Advertisement" label); ads that mimic UI elements; auto-refreshing ads; pop-ups or interstitials that block the tool.
+- Consent: implement a ConsentBanner that supports EEA/UK/Switzerland requirements (Google Consent Mode v2 defaults set to denied until the user chooses; accept, reject and manage options of equal prominence). Use a Google-certified CMP integration point and document how to plug one in. Persist the choice and let users change it from the footer.
+- Respect `ads.txt`, and never click-bait users to click ads or mention "click the ads".
+- Make sure the app does not depend on any content that violates AdSense program policies (no copyrighted-media downloading features, no "download YouTube video" functionality, no adult or circumvention content). Add a short responsible-use notice about transcribing only content the user has rights to.
+
+## 8. Trust and policy pages (required, real content)
+- Privacy Policy: explains local-only processing, that files are never uploaded, what is and is not collected (analytics if any), cookies and local storage use, that Google AdSense and its partners may use cookies for personalized ads, how to opt out (link to Google ad settings and aboutads.info), user rights (GDPR/CCPA summary), children's privacy, contact for requests, and the last-updated date.
+- Cookie Policy and consent description consistent with the banner.
+- Terms of Use: acceptable use, no warranty on accuracy, user responsibility for content rights, limitation of liability.
+- About: who runs the site, why it exists, how it works, honest limitations, and how to reach the maintainer. Use configurable author details from `site.ts`; do not invent fake personal credentials.
+- Contact: working contact email plus a mailto link (no backend form needed), and expected response time.
+- Disclaimer: accuracy of automatic transcription is not guaranteed.
+
+## 9. Technical SEO, AEO, GEO and performance
+
+### 9A. Keyword map (single source of truth)
+- `src/data/keywords.ts` shape: `{ keyword, role: 'primary' | 'secondary' | 'faq' | 'synonym' | 'topic' | 'parked' | 'excluded', page, headingLevel?, note? }`.
+  - primary = the page's H1 (one per page); secondary = an H2/H3 that opens with a one-sentence answer; faq = a visible FAQ question; synonym = natural body/meta use only; topic = broad head term no page targets; parked = needs a feature we do not have, build nothing; excluded = never used (reason in `note`).
+- Each keyword is assigned to exactly ONE page (no cannibalization). Where a tool page and a guide overlap, the guide owns the question and the tool page links to it with natural anchor text.
+- Primary keyword appears in H1, title, meta description, the first 40 words, and the slug. Titles use the template `"{H1} | VoiceToTextFree"`. No keyword repeated more than 4 times in a page's body text. No stuffing; if a keyword forces unnatural copy, drop it from that page.
+- Add two internal-only fields to each entry: `competition: 'head' | 'low' | 'medium' | 'n/a'` and `wave: 1 | 2 | 3` (ship order). Competition labels are MY unverified estimates: never render them, and never claim a keyword is "easy". Search volumes are likewise unverified and never displayed.
+- Seed `keywords.ts` from BOTH lists I supply: the tiered priority list (below) and the long master pool (head/tool, format, editing/timing, language, script/code-switching, platform, privacy/tech, question and guide/topic keywords). Priority-list keywords get the roles assigned below. Every pool keyword not assigned a role becomes `synonym` (natural body/meta use on its owning page), `faq` (if phrased as a question) or `topic` (broad term, no page). A keyword is never forced into copy where it reads unnaturally.
+
+#### Head pages (primary, hard competition; ship after the long-tail pages are strong)
+One primary per page, so each head term gets its own page ONLY if its search intent genuinely differs. Near-synonyms share one page; do not create doorway or near-duplicate pages (AdSense and spam-policy risk).
+- Home `/`: primary "free subtitle generator"; synonyms "subtitle generator", "automatic subtitle generator", "auto subtitle generator", "AI subtitle generator", "online subtitle generator", "free subtitle generator online", "free online subtitle generator", "video subtitle generator", "audio subtitle generator", "generate subtitles", "generate subtitles from video", "generate subtitles from audio", "add subtitles to video".
+- `/video-to-text`: primary "video to text"; synonyms "transcribe video", "video transcription", "transcribe video online". Angle: plain transcript, TXT export, no timestamps needed.
+- `/video-to-srt`: primary "video to srt"; secondary H2s "mp4 to srt", "mov to srt", "webm to srt"; synonyms "generate srt file from video", "video subtitle generator". Angle: timed SRT from video files, format-specific notes and file-size guidance.
+- `/audio-to-srt`: primary "audio to srt"; secondary H2s "mp3 to srt", "wav to srt", "m4a to srt"; synonyms "generate srt file", "generate subtitles from audio". Angle: audio-only input, SRT output, timing accuracy.
+- `/speech-to-text`: primary "speech to text"; synonyms "audio to text", "audio transcription", "on device speech to text", "local speech to text". Angle: dictation-style transcripts, languages, accuracy, privacy.
+- `/caption-generator`: primary "caption generator"; synonyms "auto caption generator", "video caption generator", "add captions to video", "captions for social video", "vertical video captions". Angle: short-form social captions and burn-in.
+- `/transcript-generator`: primary "transcript generator"; synonyms "transcription for journalists", "transcription for students", "subtitles for interviews". Angle: interviews, lectures, meetings; editing and export for reading.
+- If any of these five pages cannot reach its word minimum with genuinely distinct content, merge it into the home page and record the decision in the README instead of publishing it thin.
+
+#### Feature and privacy pages (low competition; must be real working tools, not landing fluff)
+Each is a functional client-side tool plus 700+ words of original supporting content, and reuses `src/lib/subtitles.ts`:
+- `/srt-editor`: primary "free srt editor online"; synonyms "srt editor online", "srt editor in browser", "subtitle editor", "subtitle editor online", "edit srt online". Works on an imported SRT/VTT with no transcription needed.
+- `/subtitle-timing-editor`: primary "subtitle timing editor online"; synonyms "subtitle timing editor", "edit subtitle timings", "adjust subtitle timing", "sync subtitles". Includes global offset and stretch/shift tools.
+- `/merge-split-srt`: primary "merge srt lines online"; secondary "split srt file online"; synonyms "split subtitle line", "merge subtitle lines", "split cue".
+- `/convert-srt-to-vtt`: primary "convert srt to vtt"; secondary "convert vtt to srt"; synonym "srt to txt". Round-trip tested.
+- `/subtitle-reading-speed-checker`: primary "subtitle reading speed checker"; synonyms "reading speed checker", "characters per second subtitles". Flags cues over configurable CPS and line-length limits.
+- `/subtitle-validator`: primary "subtitle validator"; secondary "validate srt file", "validate vtt file"; synonym "fix srt file". A working validator that reports overlapping cues, bad timestamps, missing numbering, encoding problems and over-long lines, with one-click fixes. Links to the `srt-not-working-subtitles-not-showing` guide.
+- `/offline-subtitle-generator`: primary "offline subtitle generator"; synonyms "whisper in browser", "local transcription", "on device speech to text"; faq "does it work offline". Honest scope: works offline only after the model has been downloaded once; say so in the first paragraph.
+- `/private-subtitle-generator`: primary "private subtitle generator"; secondary "subtitle generator without uploading", "transcribe video without uploading"; synonyms "subtitle generator no upload", "browser based subtitle generator", "local transcription in browser", "subtitle generator no signup", "subtitle generator no account", "subtitle generator no credit card". Shows how a reader can verify no upload happens (browser network tab).
+
+#### Language pages (low competition; ship first, in waves)
+Primary for every language page is "{language} subtitle generator". Language pages ship in waves, each wave only after it passes the quality gate and the accuracy-testing rule below:
+- Wave 1 (hand-written, 700+ unique words, Tier 1): urdu, pashto, sindhi, punjabi, hindi, bengali, tamil, telugu, marathi, gujarati, malayalam, kannada, arabic, nepali, sinhala, assamese.
+  - Extra secondary H2/FAQ keywords on specific pages: Urdu page owns "urdu audio to srt", "urdu subtitles for youtube", "urdu captions", "urdu audio to text"; Hindi page owns "hindi video to text", "hindi subtitles"; Arabic page owns "arabic audio to srt".
+- Wave 2 (Tier 1 or 2 depending on what can be written accurately): yoruba, hausa, swahili, amharic, somali, khmer, lao, burmese, tibetan, mongolian, shona, lingala, malagasy, javanese, sundanese, tatar, bashkir, georgian, armenian, azerbaijani, kazakh, uzbek.
+- Wave 3 (Tier 2 or noindex Tier 3): welsh, icelandic, maltese, luxembourgish, faroese, hawaiian, maori, basque, occitan, breton, galician, catalan; plus higher-competition majors (chinese, spanish, french, german, portuguese, russian, italian, dutch, polish, ukrainian, czech, greek, hebrew, japanese, korean, turkish, indonesian, malay, vietnamese, thai, persian, romanian).
+- Any language in my lists that is NOT in the verified Whisper language map is dropped and reported to me, never published.
+- Accuracy-testing rule (North Star): before a language page is indexable, run the real tool on at least one sample clip in that language, record device, model, clip length and how the result was judged in `docs/verification-log.md`, and show an honest accuracy note on the page. Low-resource languages (for example Pashto, Sindhi, Assamese, Lingala, Breton) must say plainly that results can be weak and need manual editing. If no sample could be tested, the page stays noindex.
+- Roman Urdu, Hinglish, Tanglish and similar romanized or mixed-language terms: Whisper normally outputs native script, so do NOT promise romanized output. Either (a) implement and verify an optional client-side transliteration step, then publish `/subtitle-generator/roman-urdu` (primary "roman urdu subtitle generator"; synonyms "roman urdu captions", "roman urdu srt"), or (b) publish an honest guide explaining what the tool does and does not output for code-switched speech. Choose (b) unless (a) is tested and logged. The other romanized terms stay `topic`/`parked` until supported.
+- RTL and script terms ("right to left subtitles", "rtl subtitle support", "urdu nastaliq captions", "non latin script subtitles") are owned by a guide, `/guides/rtl-and-non-latin-subtitles`, with a tested example for Urdu and Arabic.
+
+#### Guide map (28 guides, 1,200+ words each, one primary per guide, evergreen slugs)
+Each guide owns its primary and the listed secondary/faq keywords. Guides own questions; tool pages link to them with natural anchor text. Publish in this order and have at least 10 live before applying to AdSense.
+1. `srt-vs-vtt`: primary "srt vs vtt"; synonym "srt vs vtt difference"; secondary "subtitle file formats", "subtitle format comparison"; faq "which subtitle format should i use".
+2. `what-is-an-srt-file`: primary "what is an srt file"; secondary "srt file format", "utf-8 srt"; faq "how do i export an srt file", "can i export srt".
+3. `what-is-a-vtt-file`: primary "what is a vtt file"; secondary "vtt file format", "webvtt format".
+4. `how-to-open-an-srt-file`: primary "how to open an srt file"; synonym "srt file opener".
+5. `how-to-create-and-edit-an-srt-file`: primary "how to create an srt file"; secondary "how to edit an srt file".
+6. `srt-not-working-subtitles-not-showing`: primary "srt not working"; secondary "subtitles not showing"; links to the `/subtitle-validator` tool.
+7. `how-to-sync-subtitles`: primary "how to sync subtitles"; secondary "how to sync subtitles to video", "fix out of sync subtitles", "subtitles out of sync"; faq "how do i fix out of sync subtitles", "can i edit subtitle timings".
+8. `how-to-add-subtitles-to-youtube-shorts`: primary as named; secondary "upload srt to youtube", "youtube shorts subtitle requirements"; faq "what subtitle format works on youtube", "does youtube accept vtt files", "what is the best subtitle format for youtube".
+9. `how-to-add-captions-to-reels`: primary "how to add captions to reels"; secondary "srt for reels", "instagram reels caption size".
+10. `how-to-add-subtitles-to-tiktok`: primary as named; secondary "tiktok subtitle requirements"; faq "what subtitle format works on tiktok", "does tiktok accept srt files", "what is the best subtitle format for tiktok".
+11. `import-srt-into-video-editors`: primary "srt for premiere pro"; secondary H2s "srt for davinci resolve", "srt for final cut pro", "srt for capcut". Every import step must be checked against the vendor's current documentation and logged, because editor menus change; link the sources.
+12. `how-to-burn-subtitles-into-video`: primary as named; secondary "burned in captions", "hardcoded subtitles".
+13. `how-to-improve-whisper-accuracy`: primary as named; secondary "whisper transcription accuracy", "whisper accuracy"; faq "how accurate is whisper transcription", "how accurate are automatic subtitles", "how accurate is whisper for urdu", "how accurate is whisper for low resource languages".
+14. `whisper-model-sizes-compared`: primary "whisper model sizes compared"; synonym "whisper model sizes", "whisper tiny vs base vs small"; faq "which whisper model should i choose", "which whisper model to use", "how long does transcription take".
+15. `how-does-whisper-work`: primary as named; secondary "whisper subtitle generator", "whisper on webgpu", "does whisper work on mobile"; faq "does whisper support urdu", "does whisper support hindi", "does whisper support low resource languages".
+16. `subtitle-line-length`: primary "subtitle line length"; secondary "maximum subtitle line length", "characters per line subtitles", "42 characters per line subtitles"; faq "how many characters per subtitle line".
+17. `subtitle-reading-speed`: primary "subtitle reading speed"; secondary "characters per second subtitles"; faq "how long should a subtitle stay on screen", "how long should subtitles stay on screen".
+18. `subtitle-best-practices`: primary "subtitle best practices"; secondary "subtitle formatting", "two lines per subtitle".
+19. `subtitle-timing-guidelines`: primary "subtitle timing guidelines"; secondary "subtitle duration", "subtitle cue length".
+20. `netflix-subtitle-guidelines`: primary "netflix subtitle guidelines". Brand exception: a neutral explanation of Netflix's PUBLISHED timed-text style guide, attributed and linked, paraphrased and never reproduced, no implied affiliation. If the current guide cannot be read and verified, drop this guide.
+21. `is-browser-transcription-private`: primary as named; faq "is my video uploaded to a server", "is my file uploaded to a server".
+22. `how-to-translate-subtitles-into-another-language`: primary as named. Be honest that the tool translates to English only (Whisper's translate task); other directions need an external workflow described step by step. Do not build or advertise a "subtitle translator" tool.
+23. `rtl-and-non-latin-subtitles`: primary "right to left subtitles"; secondary "rtl subtitle support", "urdu nastaliq subtitles", "non latin script subtitles"; faq "does whisper work with rtl languages". Include a tested Urdu and Arabic example.
+24. `closed-captions-vs-subtitles`: primary as named; secondary "open vs closed captions".
+25. `subtitles-for-accessibility`: primary "subtitles for accessibility". State only what published accessibility guidance (for example WCAG) actually requires, with links.
+26. `subtitle-and-captioning-workflow`: primary "captioning workflow"; synonym "subtitle workflow"; secondary H2 "subtitles for online courses". A step-by-step workflow from recording to export using the tool, with real timings from a measured run.
+27. `word-aligned-and-styled-captions`: primary "word aligned subtitles"; secondary "styled captions", "animated captions", "caption layer". Honest scope: only claim word-level timing if the tool really exports it (verify the transformers.js word-timestamp option and log it); if styled or animated caption output is not built, say plainly the tool produces plain timed cues and explain the external workflow.
+28. `subtitle-glossary`: primary "subtitle glossary"; secondary "subtitle terminology". 40+ defined terms (cue, timecode, frame rate, CPS, SDH, forced subtitles, burn-in, sidecar file and so on), each defined in original words.
+FAQ-only keywords not owned by a guide are assigned as visible FAQs on the most relevant page, one page each, never duplicated: the home page FAQ gets "what file formats can i upload", "what is the maximum file size" (same question as "is there a file size limit"), "is it free", "do i need an account", "does it work on mobile", "can i edit the generated subtitles", "how to make subtitles for a video", "how to add subtitles to a video"; `/audio-to-srt` gets "can i transcribe audio only"; `/offline-subtitle-generator` gets "does it work offline" and "does the subtitle generator work offline".
+
+#### Parked, topic and excluded
+- Parked (build nothing, mention nowhere as a feature): subtitle translator, speaker diarization, auto dubbing, subtitle editor for mac, youtube video downloader, subtitle burn in app.
+- Topic (broad terms, no page targets them): subtitles and seo, do captions help youtube seo, watch video without sound, silent viewing captions, subtitles for podcasts, webinars and lectures. Cover a few as sections inside existing guides where useful, never as thin pages.
+- Excluded (never on the site): "best subtitle generator" and any "#1 / top / best" superlative; any competitor name or "vs {competitor}"; "subtitle generator alternatives" (a page on it would have to name and compare competitors); "youtube video downloader" and anything implying downloading others' media; brand-plus-government/trademark mash-ups.
+- Misspelled queries ("subtitile generator", "subttitle generator", "subtitle generater") are never used in visible copy, titles, meta or hidden text. Search engines correct them; typo-stuffing hurts trust and AdSense review.
+- Brand-name rule clarified: factual compatibility mentions of platforms and software (YouTube, TikTok, Instagram, Premiere Pro, DaVinci Resolve, Final Cut Pro, CapCut) and the attributed Netflix guide are allowed. Naming, ranking or criticizing competing subtitle or transcription tools is not.
+- "free subtitle generator" is allowed only because it is literally true.
+- Slugs stay evergreen; any year lives only in the H1/title and is resolved from config, never typed into keyword strings.
+
+### 9B. On-page SEO
+- Unique title and meta description (~150 chars, primary keyword plus the benefit) per page, canonical URLs, Open Graph/Twitter cards, correct `lang` per page, one H1 then H2/H3 without skipping levels, descriptive internal-link anchors, every page reachable within 3 clicks, visible "Last updated" plus `dateModified`/`datePublished` in schema.
+- Data and comparison tables (SRT vs VTT, model sizes, platform subtitle specs) are plain HTML `<table>` with `<caption>` and `<th scope>`, never images.
+- Sitemap with `lastmod`, robots rules, HTML sitemap page, clean URLs, no duplicate content. All answer text, tables, FAQs and schema are present in the initial static HTML.
+- White-hat only: no hidden text, cloaking, link seeding, keyword stuffing, or expired-domain tricks. Never serve different content to bots and people.
+
+### 9C. AEO (answer engines, featured snippets, voice)
+- ANSWER CAPSULE directly under every H1 on tool pages and guides: 40-60 words, one self-contained answer containing the primary keyword and the key fact (for example "An SRT file is a plain-text subtitle format that stores numbered cues with start and end times in HH:MM:SS,mmm format...").
+- Every question-style H2 opens with a one-sentence direct answer (under 30 words).
+- Six real, visible FAQs per tool page and guide (2-4 sentence answers); FAQPage JSON-LD must match the visible text exactly. Use `faq` keywords first, then real questions people ask; do not pad.
+- A key-facts table near the top of each guide, numbered steps for processes, short bullets for criteria, and one worked example per page with real timestamps and real output (for example a 6-line SRT and its VTT equivalent).
+
+### 9D. GEO (being cited by AI search and assistants)
+- State key facts as quotable standalone sentences (subject, number, condition, source) and link every factual claim to the primary source (W3C, Hugging Face model cards, OpenAI Whisper paper/repo, platform help pages).
+- Entity consistency: the exact site name, the maintainer name and one site description are defined once in `src/data/entities.ts` and reused everywhere, including schema and the About page.
+- Organization + WebSite JSON-LD sitewide and Person JSON-LD on the author page, with only real fields. `sameAs` only from real profiles I supply; omit when empty.
+- Freshness: visible "Last updated", `dateModified`, a public change log on `/corrections`, and a yearly update checklist.
+- Unique value on every page: a measured result, a worked example, an edge case or a decision path that is not a copy of another page.
+- `robots.txt`: allow Googlebot, Bingbot and AI search/citation crawlers (OAI-SearchBot, ChatGPT-User, PerplexityBot, Claude-SearchBot, Claude-User) and `Mediapartners-Google`. Training-crawler access (GPTBot, ClaudeBot, Google-Extended, Applebot-Extended) is one flag in `site.ts`, default ALLOW; ask me to confirm. Check each vendor's current docs for exact names and list them as VERIFY.
+- Optional `/llms.txt` generated from page data (low priority, unproven; only content that exists on the visible site).
+- Bing Webmaster Tools + IndexNow: key file and a post-deploy ping script (key placeholder until I supply it). Search Console and Bing verification placeholders in `site.ts`; never ship empty tags.
+- `docs/ai-visibility.md`: a monthly checklist where I ask 20 target questions (drawn from `faq` and `secondary` keywords) in ChatGPT, Perplexity, Gemini and Google AI Overviews and record whether the site is cited. Claim no result without data.
+
+### 9E. Schema (only for visible content)
+- BreadcrumbList everywhere; WebApplication on the tool pages; FAQPage where FAQs are visible; Article on guides (headline, dates, author Person, publisher Organization); Organization + WebSite sitewide; Person on the author page. No HowTo, no Review/AggregateRating, no fake ratings or review counts.
+
+### 9F. Performance and mobile
+- Performance targets (Lighthouse mobile): Performance 90+, Accessibility 95+, Best Practices 95+, SEO 100. LCP < 2.5 s, CLS < 0.1, INP < 200 ms. Lazy-load the model, ffmpeg and ads; do not load heavy tool code on non-tool pages unless needed; optimize and size fonts and images; no render-blocking third-party scripts.
+- Fully responsive down to 320 px width; large tap targets; no horizontal scroll.
+- HTTPS-ready (note it in README), no mixed content, no broken links (add a build-time link checker).
+
+## 10. Quality bar
+- Strict TypeScript; ESLint and Prettier configured. `npm run build`, `npm test`, `npm run lint` all pass. The build generates every language page and runs the content-quality gate.
+- Check scripts (all run by `npm run check:all`, and the first four run in `build`):
+  - `verify:keywords`: fails if a page lacks its primary keyword in H1, title, meta description, first 40 words and slug; if any keyword is assigned to more than one page; if a `secondary` keyword is not an H2/H3 or a `faq` keyword is not a visible FAQ question; if a keyword repeats more than 4 times in a page's body; if an `excluded` keyword appears anywhere outside `keywords.ts`; or if a keyword string contains a literal year. `parked` and `topic` keywords are never checked for presence.
+  - `verify:wordcount`: fails if any guide has under 1,200 words of body text, the home page under 1,000, an intent landing or tool page under 700, a Tier 1 language page under 700, or a Tier 2 page under 350; also fails if more than 30% of a guide's sentences are shared with another page.
+  - `verify:aeo`: fails if a tool page or guide lacks a 40-60 word answer capsule, key-facts table, six visible FAQs matching the FAQPage schema, source links, "Last updated" date, a worked example, or valid JSON-LD.
+  - `verify:tokens`: fails if any bracket placeholder, "lorem ipsum", empty required config value, or empty verification tag would ship.
+  - `verify:emails`: fails if any contact email other than the one in `site.ts` appears.
+  - `verify:log`: fails if a formula or factual claim category (SRT/VTT formatting, language list, model sizes) has no matching entry in `/docs/verification-log.md` with source URL, method and date.
+  - `verify:features`: fails if the tool page lacks any of: privacy message, language picker, editor, SRT/VTT/TXT export, accessible progress, error states.
+  - `verify:links`: fails on broken internal links or orphan pages.
+  - `verify:ads`: fails if ad script or ad markup appears while `ADS_ENABLED` is false, or if an ad slot appears inside the tool area, on `/studio`, or on a noindex page.
+- Unit tests: timestamp formatting, SRT/VTT generate+parse, chunk stitching and overlap de-duplication, segment split/merge, language list vs model language map, content-quality gate (word counts, similarity), sitemap excludes noindex pages, AdSlot renders nothing when disabled.
+- No console errors, no hydration warnings. Accessibility: labeled controls, focus states, ARIA on progress, sufficient contrast in both themes.
+
+## 11. Deliverables
+- `README.md`: setup, how the model loads, language support and weak languages, limits, deployment, the COEP/ads decision, and how to enable ads.
+- `ADSENSE_CHECKLIST.md`: a pre-application checklist (see section 12) and a post-approval checklist (ad placement review, consent verification, CLS check, ads.txt live).
+- `docs/verification-log.md`, `docs/ai-visibility.md`, `docs/annual-update.md` (what to re-check each year: model versions and sizes, platform subtitle rules, Whisper language list, policy text), `src/data/keywords.ts`, `src/data/entities.ts`, `public/llms.txt` (optional), IndexNow script.
+- `CONTENT_GUIDE.md`, `CHANGELOG.md`, `.env.example`, `netlify.toml`, `vercel.json` (static output `out`; isolation headers scoped to `/studio` only).
+- Final summary: what was built, what was tested, how to run it, and the top five things to verify manually (real Urdu accuracy on a sample video, a low-resource language such as Yoruba, Lighthouse scores on mobile, the consent banner behavior in an EEA simulation, and a read-through of every Tier 1 page for quality).
+
+## 12. Pre-application checklist to generate in ADSENSE_CHECKLIST.md
+- Own a custom domain (not a free subdomain) with HTTPS; site is live and publicly crawlable for at least a few weeks before applying.
+- At least 10 of the 28 guides live (all 28 by launch completion), each 1,200+ words, plus 15 to 20 substantial, original pages live (home, 10+ guides, Tier 1 language pages, all policy pages), all linked from navigation.
+- Google Search Console verified, sitemap submitted, pages indexed, no manual actions or crawl errors.
+- Privacy Policy, About, Contact, Terms reachable from every page footer.
+- No placeholder or "lorem ipsum" text anywhere; no broken links; no console errors.
+- Real traffic sources beyond the owner (search, social, communities); do not buy traffic or use traffic exchanges.
+- Apply with `ADS_ENABLED` still false, add the AdSense verification snippet only as the application instructs, enable ads after approval.
+- If rejected: read the stated reason, improve content depth and uniqueness (not just add more pages), wait, and reapply.
+
+## 13. Working method
+- Write `PLAN.md` first with the file tree and milestones.
+- Milestones: scaffold and tooling; language config and tests; audio pipeline; transcription worker; editor and preview; exports; layout, navigation and policy pages; Tier 1 language content and guides; keyword map, entities, schema, AEO blocks (answer capsules, FAQs, key-facts tables), GEO files (robots, llms.txt, IndexNow) and verification log; content-quality gate and check scripts; consent and AdSlot; performance pass; tests; deployment config; checklists. After each milestone run build, tests and lint and fix failures before moving on.
+- Write real content for Tier 1 languages, the home page, guides and policy pages yourself; do not leave placeholders in them. If you cannot write a language-specific page accurately (for example, you are unsure of a script or dialect fact), mark that language Tier 3 (noindex) instead of guessing.
+- Ask me only if a decision is truly blocking. Otherwise make reasonable choices and document them in the README.
+- Every listed feature must work. No placeholder TODOs in core features.

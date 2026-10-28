@@ -1,0 +1,14 @@
+node_modules/
+.next/
+out/
+public/ffmpeg/
+public/models/
+.env
+.env.local
+*.log
+playwright-report/
+test-results/
+.DS_Store
+Thumbs.db
+
+*.tsbuildinfo

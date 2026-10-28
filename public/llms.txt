@@ -1,0 +1,158 @@
+# VoiceToTextFree
+
+> VoiceToTextFree turns video and audio into editable SRT, VTT and TXT subtitles or transcripts using Whisper entirely in your browser. No uploads, no account, no paid API.
+
+VoiceToTextFree runs Whisper and ffmpeg in the browser. No media is uploaded. Accuracy varies by language, and language pages remain noindex until a reviewed sample is recorded.
+
+## Tools
+- [Audio to SRT: turn a sound file into timed subtitles](https://voicetotextfree.top/audio-to-srt): Audio to SRT means turning a recording that has no picture into a subtitle file with numbered, timed cues. VoiceToTextFree decodes the sound locally, runs Whisper in the browser, and lets you correct wording and timing before downloading a standard SRT.
+- [Caption generator for social video with readable, timed cues](https://voicetotextfree.top/caption-generator): A caption generator creates short, timed text for a video so viewers can follow it with the sound off. VoiceToTextFree transcribes locally, writes SRT or VTT cues, and gives you controls for safe areas, line length and reading speed before export.
+- [Convert SRT to VTT and back in your browser](https://voicetotextfree.top/convert-srt-to-vtt): Convert SRT to VTT by importing a subtitle file and reviewing the WebVTT preview before you download it. The same editor can convert VTT to SRT or export plain text, with cue text and timings preserved and nothing sent to a server.
+- [Merge SRT lines online and split cues in one browser editor](https://voicetotextfree.top/merge-split-srt): Merge SRT lines online when two cues should read as one, or split a long cue at the cursor. This local browser editor joins adjacent subtitles, distributes split timing by character count, renumbers cues on export, and never uploads your subtitle file.
+- [Offline subtitle generator that runs Whisper in your browser](https://voicetotextfree.top/offline-subtitle-generator): An offline subtitle generator is only fully offline after the Whisper model has been downloaded once. The first visit needs a network connection to load the app and model files, and clearing browser storage removes that cache, so the next run must fetch them again.
+- [Private subtitle generator: keep the recording on your device](https://voicetotextfree.top/private-subtitle-generator): A private subtitle generator should be verifiable, not just advertised. VoiceToTextFree runs Whisper inside the browser, keeps the audio on your device, and lets you confirm the absence of an upload in the developer tools network panel before you export SRT or VTT.
+- [Speech to text: dictation-style transcripts from any recording](https://voicetotextfree.top/speech-to-text): Speech to text here means a written transcript made from a recording, not a live microphone mode. VoiceToTextFree runs Whisper inside the browser, handles long files in chunks, and lets you edit the result before exporting TXT, SRT or VTT.
+- [Free SRT editor online: open, fix and export subtitle cues](https://voicetotextfree.top/srt-editor): A free SRT editor online lets you open a subtitle file, correct cue text and timestamps, and export a clean copy without installing software. This browser editor accepts SRT or VTT, keeps the file on your device, and offers split, merge, delete and three download formats.
+- [Subtitle reading speed checker: find cues that are too fast](https://voicetotextfree.top/subtitle-reading-speed-checker): A subtitle reading speed checker measures characters per second for each cue and flags any line above the limits you choose. Import an SRT or VTT file, adjust the CPS and line-length thresholds, then fix the cues that are slow to read before exporting.
+- [Subtitle timing editor online: shift and stretch every subtitle cue](https://voicetotextfree.top/subtitle-timing-editor): A subtitle timing editor online lets you move or rescale every cue in an SRT or VTT file without re-transcribing it. This browser tool applies a global offset in seconds or a stretch factor, shows each cue in a table, and exports the retimed file locally.
+- [Subtitle validator: check an SRT or VTT file for errors](https://voicetotextfree.top/subtitle-validator): A subtitle validator checks an SRT or VTT file for structural errors before a player has to. It reports cues that end before they start, negative times, overlaps, empty text, extra lines, over-long lines and reading speeds above your limit, then offers one-click safe fixes and a clean SRT, VTT or TXT download.
+- [Transcript generator for interviews, lectures and meetings](https://voicetotextfree.top/transcript-generator): A transcript generator turns recorded speech into an editable document for reading, quoting and review. VoiceToTextFree transcribes the audio locally, keeps timestamps available for finding a passage, and exports a clean TXT file for reading or SRT and VTT for video.
+- [Video to SRT: generate timed subtitles from a video](https://voicetotextfree.top/video-to-srt): Video to SRT means turning a video's spoken audio into a subtitle file with numbered, timed cues. VoiceToTextFree extracts the audio locally, transcribes it with Whisper, and lets you edit and download a standard SRT file without uploading the video.
+- [Video to text: turn a recording into a clean transcript](https://voicetotextfree.top/video-to-text): Video to text converts the speech in a recording into a readable document. VoiceToTextFree extracts the audio locally, runs Whisper in your browser, and lets you correct names and numbers before exporting plain TXT, with timestamps only if you need them.
+
+## Guides
+- [Closed captions vs subtitles: what each term means](https://voicetotextfree.top/guides/closed-captions-vs-subtitles): Closed captions vs subtitles is partly terminology and partly workflow. Captions usually carry dialogue plus speaker IDs and meaningful sounds for viewers who cannot hear the audio. Subtitles often translate dialogue for viewers who can hear but do not understand the language. Open captions are burned in; closed captions can be switched off. Choose by audience, platform and format.
+- [How does Whisper work? The model behind browser subtitles](https://voicetotextfree.top/guides/how-does-whisper-work): How does Whisper work? It turns audio into a log-Mel spectrogram, encodes that representation with a Transformer, and decodes text tokens one at a time. A browser build runs the same encoder and decoder through ONNX and Transformers.js, using WebGPU or WASM, in 30-second windows with timestamps.
+- [How to add captions to Reels: three routes that actually work](https://voicetotextfree.top/guides/how-to-add-captions-to-reels): How to add captions to Reels depends on the route your account exposes. You can generate captions in the Instagram app, burn styled text into the video, or prepare an SRT for an editor. The help centre we checked documents in-app generation and viewing controls, not a sidecar upload, so verify any file option in your account.
+- [How to add subtitles to TikTok: in-app text, auto captions or burn-in](https://voicetotextfree.top/guides/how-to-add-subtitles-to-tiktok): How to add subtitles to TikTok depends on what your app exposes. You can type text in the editor, use automatic captions where they are available, or burn a prepared SRT into the video. TikTok's help pages we checked do not document a sidecar upload for a standard post, so verify the current tools and test on a phone.
+- [How to add subtitles to YouTube Shorts without breaking the vertical frame](https://voicetotextfree.top/guides/how-to-add-subtitles-to-youtube-shorts): How to add subtitles to YouTube Shorts starts with a clean SRT, not with the upload button. Generate timed cues, shorten them for a vertical frame, review names and numbers, then attach the file in YouTube Studio. Keep text clear of the lower interface and right-side controls, and check the result on a phone.
+- [How to burn subtitles into video: a practical burn-in guide](https://voicetotextfree.top/guides/how-to-burn-subtitles-into-video): Learning how to burn subtitles into video means accepting a trade: the words become part of every frame. This guide covers the browser burn-in step, the re-encode cost, MP4 and WebM output, editor alternatives, readability checks and the accessibility problem that a sidecar file solves.
+- [How to create an SRT file: syntax, timing and safe edits](https://voicetotextfree.top/guides/how-to-create-and-edit-an-srt-file): How to create an SRT file means writing cues in plain text: a number, a start and end time with a comma before milliseconds, the subtitle text and a blank line. This guide shows the exact syntax, timestamp math, safe edits, cue splitting and the mistakes that break playback.
+- [How to improve Whisper accuracy for cleaner subtitles](https://voicetotextfree.top/guides/how-to-improve-whisper-accuracy): How to improve Whisper accuracy starts with the recording, not the model. Use a close microphone, avoid music and crosstalk, choose the spoken language instead of relying on auto-detect, size the model to the device, and review names, numbers and punctuation. Better input and a short editing pass matter more than chasing a universal accuracy number.
+- [How to open an SRT file on a computer, phone or video player](https://voicetotextfree.top/guides/how-to-open-an-srt-file): How to open an SRT file depends on what you want to see. Use a text editor to read or fix the cues, a video player to watch them with a video, and an editor or platform to import them. If the file loads as numbered text, the player is not treating it as subtitles.
+- [How to sync subtitles](https://voicetotextfree.top/guides/how-to-sync-subtitles): Learning how to sync subtitles starts with one question: is every cue late by the same amount, or does the gap grow across the file? A constant offset needs one shift. Growing drift needs a stretch factor measured from two cues. Fix timing first, then recheck the first, middle and last line.
+- [How to translate subtitles into another language: an honest workflow](https://voicetotextfree.top/guides/how-to-translate-subtitles-into-another-language): How to translate subtitles into another language depends on direction. Whisper can translate speech to English, but this browser tool is not a general translator. For French, Spanish, Urdu or any other target, transcribe the source, export the SRT, translate cue by cue with review, keep the timestamps and test the result before publishing.
+- [SRT for Premiere Pro: import SRT into video editors without drift](https://voicetotextfree.top/guides/import-srt-into-video-editors): SRT for Premiere Pro is one import among four. To import SRT into video editors, start with a UTF-8 file, check the frame rate, and use each editor's caption or subtitle track. Premiere Pro accepts an SRT as media; Resolve, Final Cut Pro and CapCut have their own import paths. Verify the menu on your version.
+- [Is browser transcription private? What stays on your device](https://voicetotextfree.top/guides/is-browser-transcription-private): Is browser transcription private? In this tool, audio is decoded and transcribed inside the tab, so the media file is not uploaded. A static site can still receive ordinary hosting logs, and the first run downloads model files from Hugging Face. Privacy therefore depends on the device and browser context, not only on the lack of an upload button.
+- [Netflix subtitle guidelines: what the published timed-text guide says](https://voicetotextfree.top/guides/netflix-subtitle-guidelines): The Netflix subtitle guidelines are delivery requirements published on Netflix's Partner Help Center for timed text made for its catalogue. They cover duration, reading speed, line length, positioning, shot changes, speaker identifiers and sound description. This page paraphrases the published rules and explains how to apply them without treating them as universal standards.
+- [Right to left subtitles and non-Latin scripts: a practical guide](https://voicetotextfree.top/guides/rtl-and-non-latin-subtitles): Right to left subtitles are plain Unicode text, but they fail in specific ways: punctuation lands on the wrong side, numbers reorder, fonts substitute, and a left-to-right preview hides the problem. This guide covers UTF-8, bidi, Urdu Nastaliq and Arabic Naskh, SRT and VTT behavior, editor direction and the player tests that catch real errors.
+- [SRT not working? Why your subtitles are not showing](https://voicetotextfree.top/guides/srt-not-working-subtitles-not-showing): SRT not working usually means the player never loaded the file, not that the words are wrong. Check the extension, the filename match, the encoding, the timestamp commas and the blank lines between cues. A validator finds most of these faults in seconds, before you blame the video or the platform.
+- [SRT vs VTT: which subtitle format should you use?](https://voicetotextfree.top/guides/srt-vs-vtt): When comparing SRT vs VTT, both are plain-text subtitle formats. SRT stores numbered cues and timestamps with commas; WebVTT adds a WEBVTT header and uses dots. SRT is the safest choice for editing software and uploads, while VTT is the standard for web video and supports styling and positioning.
+- [Captioning workflow: from recording to delivery](https://voicetotextfree.top/guides/subtitle-and-captioning-workflow): A repeatable captioning workflow turns raw recordings into captions that survive real playback. Plan the file, clean the audio, transcribe locally, correct names and numbers, segment by meaning, check reading speed and line length, validate the export, test it in the target player, and archive the source. The steps scale from one interview to a full course.
+- [Subtitle best practices: a practical guide to cleaner captions](https://voicetotextfree.top/guides/subtitle-best-practices): Good subtitle best practices start with the viewer: one clear idea per cue, breaks at clause boundaries, no more than two lines, and enough time to read without rushing. This guide covers segmentation, punctuation, speaker labels, sound descriptions, numbers, italics, gaps and the review pass that catches the mistakes automation leaves behind.
+- [Subtitle glossary: 46 terms for captions, timing and delivery](https://voicetotextfree.top/guides/subtitle-glossary): A subtitle glossary is a working reference for the words captioners use every day: cue, timecode, CPS, SDH, sidecar, burn-in and more. This guide defines more than forty terms in original language, groups them by format, timing, accessibility and workflow, and shows how the vocabulary maps to real files you will open in an editor or player.
+- [Subtitle line length](https://voicetotextfree.top/guides/subtitle-line-length): Subtitle line length is a readability control, not a decoration. Many broadcast and streaming style guides cap a cue at two lines and around 42 characters per line, counting spaces. That figure is a convention, not a law: the right limit depends on the platform, the language and how fast the audience can read.
+- [Subtitle reading speed](https://voicetotextfree.top/guides/subtitle-reading-speed): Subtitle reading speed is characters divided by seconds on screen. A common working ceiling is 15 to 20 characters per second for adult English, with shorter limits for children and dense text. Duration matters too: very short cues flash, and very long cues linger. Measure CPS per cue, then shorten, extend or split.
+- [Subtitle timing guidelines: duration, gaps and cue length](https://voicetotextfree.top/guides/subtitle-timing-guidelines): Subtitle timing guidelines are ranges, not universal laws: keep most cues between roughly one and seven seconds, leave a small gap between events, and check duration against reading speed. Platform, broadcaster and language conventions differ. This guide covers minimums, maximums, gap rules, shot changes, frame-rate rounding, sync, lead-in and lead-out with a scenario table.
+- [Subtitles for accessibility: what WCAG requires and how to deliver it](https://voicetotextfree.top/guides/subtitles-for-accessibility): Subtitles for accessibility are not a transcript with timestamps. WCAG 2.2 Success Criterion 1.2.2 requires captions for prerecorded audio, and 1.2.4 covers live audio. Good captions identify speakers, describe meaningful sounds, stay synchronized and remain readable. Audio description is a separate success criterion. This guide explains the requirements and the practical checks that follow.
+- [What is a VTT file? The WebVTT subtitle format explained](https://voicetotextfree.top/guides/what-is-a-vtt-file): What is a VTT file? It is a WebVTT subtitle file: a plain-text format that starts with the WEBVTT header, uses a dot before milliseconds and can carry cue settings for browser video. HTML5 players load it through the track element, and the MIME type is text/vtt.
+- [What is an SRT file? Inside the plain-text subtitle format](https://voicetotextfree.top/guides/what-is-an-srt-file): What is an SRT file? It is a plain-text subtitle format that pairs numbered cues with start and end timestamps, then the words to display. Each cue is separated by a blank line, timestamps use HH:MM:SS,mmm with a comma, and files are normally saved as UTF-8.
+- [Whisper model sizes compared: tiny, base and small in a browser](https://voicetotextfree.top/guides/whisper-model-sizes-compared): Whisper model sizes compared here are the three browser builds this site offers: tiny, base and small. Measured downloads range from 41 MB to 485 MB depending on runtime. Tiny is fastest and least accurate, base balances the two, and small handles noisy or non-English audio better but needs more memory and patience.
+- [Word aligned subtitles and styled captions: what is possible](https://voicetotextfree.top/guides/word-aligned-and-styled-captions): Word aligned subtitles give every word its own start and end time, which enables karaoke highlights, word-by-word reveals and precise caption animation. This browser tool exports segment-level cues, not word timings. This guide explains the difference, how styled and animated caption layers work in editors and web players, and when to use an external workflow.
+
+## Languages
+- [English subtitle generator](https://voicetotextfree.top/subtitle-generator/english): English — noindex until tested
+- [Chinese subtitle generator](https://voicetotextfree.top/subtitle-generator/chinese): Chinese — noindex until tested
+- [German subtitle generator](https://voicetotextfree.top/subtitle-generator/german): German — noindex until tested
+- [Spanish subtitle generator](https://voicetotextfree.top/subtitle-generator/spanish): Spanish — noindex until tested
+- [Russian subtitle generator](https://voicetotextfree.top/subtitle-generator/russian): Russian — noindex until tested
+- [Korean subtitle generator](https://voicetotextfree.top/subtitle-generator/korean): Korean — noindex until tested
+- [French subtitle generator](https://voicetotextfree.top/subtitle-generator/french): French — noindex until tested
+- [Japanese subtitle generator](https://voicetotextfree.top/subtitle-generator/japanese): Japanese — noindex until tested
+- [Portuguese subtitle generator](https://voicetotextfree.top/subtitle-generator/portuguese): Portuguese — noindex until tested
+- [Turkish subtitle generator](https://voicetotextfree.top/subtitle-generator/turkish): Turkish — noindex until tested
+- [Polish subtitle generator](https://voicetotextfree.top/subtitle-generator/polish): Polish — noindex until tested
+- [Catalan subtitle generator](https://voicetotextfree.top/subtitle-generator/catalan): Catalan — noindex until tested
+- [Dutch subtitle generator](https://voicetotextfree.top/subtitle-generator/dutch): Dutch — noindex until tested
+- [Arabic subtitle generator: audio to SRT with local Whisper](https://voicetotextfree.top/subtitle-generator/arabic): Arabic — noindex until tested
+- [Swedish subtitle generator](https://voicetotextfree.top/subtitle-generator/swedish): Swedish — noindex until tested
+- [Italian subtitle generator](https://voicetotextfree.top/subtitle-generator/italian): Italian — noindex until tested
+- [Indonesian subtitle generator](https://voicetotextfree.top/subtitle-generator/indonesian): Indonesian — noindex until tested
+- [Hindi subtitle generator: video to text and SRT in the browser](https://voicetotextfree.top/subtitle-generator/hindi): Hindi — noindex until tested
+- [Finnish subtitle generator](https://voicetotextfree.top/subtitle-generator/finnish): Finnish — noindex until tested
+- [Vietnamese subtitle generator](https://voicetotextfree.top/subtitle-generator/vietnamese): Vietnamese — noindex until tested
+- [Hebrew subtitle generator](https://voicetotextfree.top/subtitle-generator/hebrew): Hebrew — noindex until tested
+- [Ukrainian subtitle generator](https://voicetotextfree.top/subtitle-generator/ukrainian): Ukrainian — noindex until tested
+- [Greek subtitle generator](https://voicetotextfree.top/subtitle-generator/greek): Greek — noindex until tested
+- [Malay subtitle generator](https://voicetotextfree.top/subtitle-generator/malay): Malay — noindex until tested
+- [Czech subtitle generator](https://voicetotextfree.top/subtitle-generator/czech): Czech — noindex until tested
+- [Romanian subtitle generator](https://voicetotextfree.top/subtitle-generator/romanian): Romanian — noindex until tested
+- [Danish subtitle generator](https://voicetotextfree.top/subtitle-generator/danish): Danish — noindex until tested
+- [Hungarian subtitle generator](https://voicetotextfree.top/subtitle-generator/hungarian): Hungarian — noindex until tested
+- [Tamil subtitle generator](https://voicetotextfree.top/subtitle-generator/tamil): Tamil — noindex until tested
+- [Norwegian subtitle generator](https://voicetotextfree.top/subtitle-generator/norwegian): Norwegian — noindex until tested
+- [Thai subtitle generator](https://voicetotextfree.top/subtitle-generator/thai): Thai — noindex until tested
+- [Urdu subtitle generator: audio to SRT with local Whisper](https://voicetotextfree.top/subtitle-generator/urdu): Urdu — noindex until tested
+- [Croatian subtitle generator](https://voicetotextfree.top/subtitle-generator/croatian): Croatian — noindex until tested
+- [Bulgarian subtitle generator](https://voicetotextfree.top/subtitle-generator/bulgarian): Bulgarian — noindex until tested
+- [Lithuanian subtitle generator](https://voicetotextfree.top/subtitle-generator/lithuanian): Lithuanian — noindex until tested
+- [Latin subtitle generator](https://voicetotextfree.top/subtitle-generator/latin): Latin — noindex until tested
+- [Maori subtitle generator](https://voicetotextfree.top/subtitle-generator/maori): Maori — noindex until tested
+- [Malayalam subtitle generator](https://voicetotextfree.top/subtitle-generator/malayalam): Malayalam — noindex until tested
+- [Welsh subtitle generator](https://voicetotextfree.top/subtitle-generator/welsh): Welsh — noindex until tested
+- [Slovak subtitle generator](https://voicetotextfree.top/subtitle-generator/slovak): Slovak — noindex until tested
+- [Telugu subtitle generator](https://voicetotextfree.top/subtitle-generator/telugu): Telugu — noindex until tested
+- [Persian subtitle generator](https://voicetotextfree.top/subtitle-generator/persian): Persian — noindex until tested
+- [Latvian subtitle generator](https://voicetotextfree.top/subtitle-generator/latvian): Latvian — noindex until tested
+- [Bengali subtitle generator: audio to SRT in the browser](https://voicetotextfree.top/subtitle-generator/bengali): Bengali — noindex until tested
+- [Serbian subtitle generator](https://voicetotextfree.top/subtitle-generator/serbian): Serbian — noindex until tested
+- [Azerbaijani subtitle generator](https://voicetotextfree.top/subtitle-generator/azerbaijani): Azerbaijani — noindex until tested
+- [Slovenian subtitle generator](https://voicetotextfree.top/subtitle-generator/slovenian): Slovenian — noindex until tested
+- [Kannada subtitle generator](https://voicetotextfree.top/subtitle-generator/kannada): Kannada — noindex until tested
+- [Estonian subtitle generator](https://voicetotextfree.top/subtitle-generator/estonian): Estonian — noindex until tested
+- [Macedonian subtitle generator](https://voicetotextfree.top/subtitle-generator/macedonian): Macedonian — noindex until tested
+- [Breton subtitle generator](https://voicetotextfree.top/subtitle-generator/breton): Breton — noindex until tested
+- [Basque subtitle generator](https://voicetotextfree.top/subtitle-generator/basque): Basque — noindex until tested
+- [Icelandic subtitle generator](https://voicetotextfree.top/subtitle-generator/icelandic): Icelandic — noindex until tested
+- [Armenian subtitle generator](https://voicetotextfree.top/subtitle-generator/armenian): Armenian — noindex until tested
+- [Nepali subtitle generator](https://voicetotextfree.top/subtitle-generator/nepali): Nepali — noindex until tested
+- [Mongolian subtitle generator](https://voicetotextfree.top/subtitle-generator/mongolian): Mongolian — noindex until tested
+- [Bosnian subtitle generator](https://voicetotextfree.top/subtitle-generator/bosnian): Bosnian — noindex until tested
+- [Kazakh subtitle generator](https://voicetotextfree.top/subtitle-generator/kazakh): Kazakh — noindex until tested
+- [Albanian subtitle generator](https://voicetotextfree.top/subtitle-generator/albanian): Albanian — noindex until tested
+- [Swahili subtitle generator](https://voicetotextfree.top/subtitle-generator/swahili): Swahili — noindex until tested
+- [Galician subtitle generator](https://voicetotextfree.top/subtitle-generator/galician): Galician — noindex until tested
+- [Marathi subtitle generator](https://voicetotextfree.top/subtitle-generator/marathi): Marathi — noindex until tested
+- [Punjabi subtitle generator](https://voicetotextfree.top/subtitle-generator/punjabi): Punjabi — noindex until tested
+- [Sinhala subtitle generator](https://voicetotextfree.top/subtitle-generator/sinhala): Sinhala — noindex until tested
+- [Khmer subtitle generator](https://voicetotextfree.top/subtitle-generator/khmer): Khmer — noindex until tested
+- [Shona subtitle generator](https://voicetotextfree.top/subtitle-generator/shona): Shona — noindex until tested
+- [Yoruba subtitle generator](https://voicetotextfree.top/subtitle-generator/yoruba): Yoruba — noindex until tested
+- [Somali subtitle generator](https://voicetotextfree.top/subtitle-generator/somali): Somali — noindex until tested
+- [Afrikaans subtitle generator](https://voicetotextfree.top/subtitle-generator/afrikaans): Afrikaans — noindex until tested
+- [Occitan subtitle generator](https://voicetotextfree.top/subtitle-generator/occitan): Occitan — noindex until tested
+- [Georgian subtitle generator](https://voicetotextfree.top/subtitle-generator/georgian): Georgian — noindex until tested
+- [Belarusian subtitle generator](https://voicetotextfree.top/subtitle-generator/belarusian): Belarusian — noindex until tested
+- [Tajik subtitle generator](https://voicetotextfree.top/subtitle-generator/tajik): Tajik — noindex until tested
+- [Sindhi subtitle generator](https://voicetotextfree.top/subtitle-generator/sindhi): Sindhi — noindex until tested
+- [Gujarati subtitle generator](https://voicetotextfree.top/subtitle-generator/gujarati): Gujarati — noindex until tested
+- [Amharic subtitle generator](https://voicetotextfree.top/subtitle-generator/amharic): Amharic — noindex until tested
+- [Yiddish subtitle generator](https://voicetotextfree.top/subtitle-generator/yiddish): Yiddish — noindex until tested
+- [Lao subtitle generator](https://voicetotextfree.top/subtitle-generator/lao): Lao — noindex until tested
+- [Uzbek subtitle generator](https://voicetotextfree.top/subtitle-generator/uzbek): Uzbek — noindex until tested
+- [Faroese subtitle generator](https://voicetotextfree.top/subtitle-generator/faroese): Faroese — noindex until tested
+- [Haitian Creole subtitle generator](https://voicetotextfree.top/subtitle-generator/haitian-creole): Haitian Creole — noindex until tested
+- [Pashto subtitle generator](https://voicetotextfree.top/subtitle-generator/pashto): Pashto — noindex until tested
+- [Turkmen subtitle generator](https://voicetotextfree.top/subtitle-generator/turkmen): Turkmen — noindex until tested
+- [Norwegian Nynorsk subtitle generator](https://voicetotextfree.top/subtitle-generator/norwegian-nynorsk): Norwegian Nynorsk — noindex until tested
+- [Maltese subtitle generator](https://voicetotextfree.top/subtitle-generator/maltese): Maltese — noindex until tested
+- [Sanskrit subtitle generator](https://voicetotextfree.top/subtitle-generator/sanskrit): Sanskrit — noindex until tested
+- [Luxembourgish subtitle generator](https://voicetotextfree.top/subtitle-generator/luxembourgish): Luxembourgish — noindex until tested
+- [Burmese subtitle generator](https://voicetotextfree.top/subtitle-generator/burmese): Burmese — noindex until tested
+- [Tibetan subtitle generator](https://voicetotextfree.top/subtitle-generator/tibetan): Tibetan — noindex until tested
+- [Tagalog subtitle generator](https://voicetotextfree.top/subtitle-generator/tagalog): Tagalog — noindex until tested
+- [Malagasy subtitle generator](https://voicetotextfree.top/subtitle-generator/malagasy): Malagasy — noindex until tested
+- [Assamese subtitle generator](https://voicetotextfree.top/subtitle-generator/assamese): Assamese — noindex until tested
+- [Tatar subtitle generator](https://voicetotextfree.top/subtitle-generator/tatar): Tatar — noindex until tested
+- [Hawaiian subtitle generator](https://voicetotextfree.top/subtitle-generator/hawaiian): Hawaiian — noindex until tested
+- [Lingala subtitle generator](https://voicetotextfree.top/subtitle-generator/lingala): Lingala — noindex until tested
+- [Hausa subtitle generator](https://voicetotextfree.top/subtitle-generator/hausa): Hausa — noindex until tested
+- [Bashkir subtitle generator](https://voicetotextfree.top/subtitle-generator/bashkir): Bashkir — noindex until tested
+- [Javanese subtitle generator](https://voicetotextfree.top/subtitle-generator/javanese): Javanese — noindex until tested
+- [Sundanese subtitle generator](https://voicetotextfree.top/subtitle-generator/sundanese): Sundanese — noindex until tested
+
+## Policies
+- [About](https://voicetotextfree.top/about)
+- [Contact](https://voicetotextfree.top/contact)
+- [Privacy](https://voicetotextfree.top/privacy-policy)
+- [Terms](https://voicetotextfree.top/terms)

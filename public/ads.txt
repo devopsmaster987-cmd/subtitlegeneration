@@ -1,0 +1,4 @@
+# VoiceToTextFree ads.txt
+# PLACEHOLDER: replace pub-0000000000000000 with your real AdSense publisher ID
+# before enabling ads. Keep the line format exactly as shown.
+google.com, pub-0000000000000000, DIRECT, f08c47fec0942fa0
