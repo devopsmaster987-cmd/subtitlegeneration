@@ -1,4 +1,4 @@
-const CACHE = "voicetotextfree-v1";
+const CACHE = "voicetotextfree-v2";
 const OFFLINE_FALLBACK = "/";
 
 self.addEventListener("install", (event) => {
@@ -7,7 +7,14 @@ self.addEventListener("install", (event) => {
 });
 
 self.addEventListener("activate", (event) => {
-  event.waitUntil(self.clients.claim());
+  event.waitUntil(
+    caches
+      .keys()
+      .then((keys) =>
+        Promise.all(keys.filter((key) => key !== CACHE).map((key) => caches.delete(key)))
+      )
+      .then(() => self.clients.claim())
+  );
 });
 
 self.addEventListener("fetch", (event) => {
@@ -17,22 +24,30 @@ self.addEventListener("fetch", (event) => {
   if (url.origin !== self.location.origin) return;
 
   if (request.mode === "navigate") {
+    const cachePromise = caches.open(CACHE);
+    const cachedPromise = cachePromise.then((cache) => cache.match(request));
+    const networkPromise = fetch(request)
+      .then(async (response) => {
+        if (response.ok) {
+          const cache = await cachePromise;
+          await cache.put(request, response.clone());
+        }
+        return response;
+      })
+      .catch(() => null);
+    event.waitUntil(networkPromise.then(() => undefined).catch(() => undefined));
     event.respondWith(
-      fetch(request)
-        .then((response) => {
-          if (response.ok) {
-            const copy = response.clone();
-            caches.open(CACHE).then((cache) => cache.put(request, copy));
-          }
-          return response;
-        })
-        .catch(async () => {
-          return (
-            (await caches.match(request)) ||
-            (await caches.match(OFFLINE_FALLBACK)) ||
-            new Response("Offline", { status: 503, headers: { "Content-Type": "text/plain" } })
-          );
-        })
+      (async () => {
+        const cached = await cachedPromise;
+        if (cached) return cached;
+        const fresh = await networkPromise;
+        if (fresh) return fresh;
+        const cache = await cachePromise;
+        return (
+          (await cache.match(OFFLINE_FALLBACK)) ||
+          new Response("Offline", { status: 503, headers: { "Content-Type": "text/plain" } })
+        );
+      })()
     );
     return;
   }
@@ -43,7 +58,10 @@ self.addEventListener("fetch", (event) => {
       return fetch(request).then((response) => {
         if (response.ok) {
           const copy = response.clone();
-          caches.open(CACHE).then((cache) => cache.put(request, copy));
+          caches
+            .open(CACHE)
+            .then((cache) => cache.put(request, copy))
+            .catch(() => undefined);
         }
         return response;
       });

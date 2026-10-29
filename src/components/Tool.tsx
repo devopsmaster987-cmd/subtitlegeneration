@@ -62,6 +62,9 @@ export function Tool({ preset = "main", initialLanguage = null }: ToolProps) {
   const sourceFileRef = useRef<File | null>(null);
   const mediaWorkerRef = useRef<Worker | null>(null);
   const transcribeWorkerRef = useRef<Worker | null>(null);
+  const transcriberKeyRef = useRef("");
+  const transcriberReadyRef = useRef<Promise<void> | null>(null);
+  const warmupTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const pendingRef = useRef(new Map<number, PendingResult>());
   const readyRef = useRef<{ resolve: () => void; reject: (error: Error) => void } | null>(null);
   const cancelRef = useRef(false);
@@ -77,9 +80,31 @@ export function Tool({ preset = "main", initialLanguage = null }: ToolProps) {
     setWebgpu(Boolean((navigator as Navigator & { gpu?: unknown }).gpu));
     return () => {
       mediaWorkerRef.current?.terminate();
-      transcribeWorkerRef.current?.terminate();
+      resetTranscriber();
     };
-  }, [setModel]);
+  }, []);
+
+  useEffect(() => {
+    if (!file || busy) return;
+    if (typeof navigator === "undefined" || navigator.onLine === false) return;
+    const connection = (
+      navigator as Navigator & {
+        connection?: { saveData?: boolean; effectiveType?: string };
+      }
+    ).connection;
+    if (connection?.saveData || /(^|-)2g$/.test(connection?.effectiveType ?? "")) return;
+    if (warmupTimerRef.current) clearTimeout(warmupTimerRef.current);
+    warmupTimerRef.current = setTimeout(() => {
+      warmupTimerRef.current = null;
+      ensureTranscriber(resolveDevice()).catch(() => undefined);
+    }, 500);
+    return () => {
+      if (warmupTimerRef.current) {
+        clearTimeout(warmupTimerRef.current);
+        warmupTimerRef.current = null;
+      }
+    };
+  }, [file, model, device, webgpu, language, task]);
 
   useEffect(() => {
     function onKeyDown(event: KeyboardEvent) {
@@ -99,6 +124,27 @@ export function Tool({ preset = "main", initialLanguage = null }: ToolProps) {
     pendingRef.current.clear();
     readyRef.current?.reject(new Error(message));
     readyRef.current = null;
+  }
+
+  function resolveDevice(): "webgpu" | "wasm" {
+    return device === "auto" ? (webgpu ? "webgpu" : "wasm") : device;
+  }
+
+  function resetTranscriber() {
+    transcribeWorkerRef.current?.terminate();
+    transcribeWorkerRef.current = null;
+    transcriberKeyRef.current = "";
+    transcriberReadyRef.current = null;
+    readyRef.current = null;
+  }
+
+  function handleTranscriberFailure(message: string) {
+    const state = useToolStore.getState();
+    const wasBusy =
+      state.stage === "extracting" || state.stage === "loading" || state.stage === "transcribing";
+    rejectEverything(message);
+    resetTranscriber();
+    if (wasBusy) setError(message);
   }
 
   function runMediaWorker(request: MediaRequest, transfer: Transferable[]): Promise<ArrayBuffer> {
@@ -126,7 +172,24 @@ export function Tool({ preset = "main", initialLanguage = null }: ToolProps) {
     });
   }
 
-  function startTranscriber(): Promise<void> {
+  function ensureTranscriber(resolvedDevice: "webgpu" | "wasm"): Promise<void> {
+    const key = `${model}|${resolvedDevice}`;
+    const existing = transcribeWorkerRef.current;
+    if (existing && transcriberKeyRef.current === key && transcriberReadyRef.current) {
+      const request: TranscribeRequest = {
+        type: "init",
+        model: modelRepos[model],
+        language,
+        task,
+        device: resolvedDevice
+      };
+      existing.postMessage(request);
+      return transcriberReadyRef.current;
+    }
+
+    resetTranscriber();
+    transcriberKeyRef.current = key;
+
     const worker = new Worker(new URL("../workers/transcribe.worker.ts", import.meta.url), {
       type: "module"
     });
@@ -134,7 +197,12 @@ export function Tool({ preset = "main", initialLanguage = null }: ToolProps) {
     worker.onmessage = (event: MessageEvent<TranscribeResponse>) => {
       const message = event.data;
       if (message.type === "status") {
-        if (message.status === "fallback" && useToolStore.getState().stage !== "extracting") {
+        const currentStage = useToolStore.getState().stage;
+        const active =
+          currentStage === "extracting" ||
+          currentStage === "loading" ||
+          currentStage === "transcribing";
+        if (message.status === "fallback" && active && currentStage !== "extracting") {
           setStage("loading", message.message);
         }
       } else if (message.type === "model-progress") {
@@ -148,27 +216,26 @@ export function Tool({ preset = "main", initialLanguage = null }: ToolProps) {
         pendingRef.current.delete(message.index);
         pending?.resolve(message);
       } else if (message.type === "error") {
-        setError(message.message);
-        rejectEverything(message.message);
+        handleTranscriberFailure(message.message);
       }
     };
     worker.onerror = (event) => {
-      const message = event.message || "The transcription worker crashed.";
-      setError(message);
-      rejectEverything(message);
+      handleTranscriberFailure(event.message || "The transcription worker crashed.");
     };
 
-    return new Promise<void>((resolve, reject) => {
+    const promise = new Promise<void>((resolve, reject) => {
       readyRef.current = { resolve, reject };
       const request: TranscribeRequest = {
         type: "init",
         model: modelRepos[model],
         language,
         task,
-        device: device === "auto" ? (webgpu ? "webgpu" : "wasm") : device
+        device: resolvedDevice
       };
       worker.postMessage(request);
     });
+    transcriberReadyRef.current = promise;
+    return promise;
   }
 
   function transcribeChunk(
@@ -193,6 +260,10 @@ export function Tool({ preset = "main", initialLanguage = null }: ToolProps) {
       return;
     }
     cancelRef.current = false;
+    if (warmupTimerRef.current) {
+      clearTimeout(warmupTimerRef.current);
+      warmupTimerRef.current = null;
+    }
     setError(null);
     setSegments([]);
     pendingRef.current.clear();
@@ -200,7 +271,7 @@ export function Tool({ preset = "main", initialLanguage = null }: ToolProps) {
 
     try {
       setStage("extracting", "Extracting audio while the model loads in parallel.");
-      const modelPromise = startTranscriber();
+      const modelPromise = ensureTranscriber(resolveDevice());
       void modelPromise.catch(() => undefined);
       const buffer = await source.arrayBuffer();
       const wav = await runMediaWorker(
@@ -266,19 +337,20 @@ export function Tool({ preset = "main", initialLanguage = null }: ToolProps) {
     } finally {
       mediaWorkerRef.current?.terminate();
       mediaWorkerRef.current = null;
-      transcribeWorkerRef.current?.terminate();
-      transcribeWorkerRef.current = null;
       pendingRef.current.clear();
     }
   }
 
   function cancel() {
     cancelRef.current = true;
+    if (warmupTimerRef.current) {
+      clearTimeout(warmupTimerRef.current);
+      warmupTimerRef.current = null;
+    }
     rejectEverything("Cancelled");
     mediaWorkerRef.current?.terminate();
     mediaWorkerRef.current = null;
-    transcribeWorkerRef.current?.terminate();
-    transcribeWorkerRef.current = null;
+    resetTranscriber();
     setProgress({ extraction: 0, model: 0, transcription: 0, etaSeconds: 0 });
     setStage("ready", "Cancelled. Your file is still loaded.");
   }

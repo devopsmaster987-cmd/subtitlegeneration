@@ -56,6 +56,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         {consentScript ? <script dangerouslySetInnerHTML={{ __html: consentScript }} /> : null}
         <meta name="theme-color" content="#4f46e5" />
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+        <link rel="preconnect" href="https://huggingface.co" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://cdn-lfs.huggingface.co" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://cdn.jsdelivr.net" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://cdn-lfs-us-1.hf.co" />
       </head>
       <body>
         <a href="#main-content" className="skip-link">

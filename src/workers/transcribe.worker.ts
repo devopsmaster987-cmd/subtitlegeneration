@@ -30,6 +30,7 @@ let currentKey = "";
 let currentLanguage: string | null = null;
 let currentTask: "transcribe" | "translate" = "transcribe";
 let cancelled = false;
+let initInFlight: Promise<void> | null = null;
 
 function post(message: TranscribeResponse, transfer?: Transferable[]) {
   scope.postMessage(message, transfer ?? []);
@@ -140,7 +141,15 @@ scope.onmessage = async (event: MessageEvent<TranscribeRequest>) => {
   try {
     if (request.type === "init") {
       cancelled = false;
-      await init(request);
+      const run = (initInFlight ?? Promise.resolve())
+        .catch(() => undefined)
+        .then(() => init(request));
+      initInFlight = run;
+      try {
+        await run;
+      } finally {
+        if (initInFlight === run) initInFlight = null;
+      }
     } else if (request.type === "transcribe") {
       await transcribe(request);
     } else if (request.type === "dispose") {
