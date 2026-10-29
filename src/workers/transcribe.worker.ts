@@ -52,6 +52,21 @@ async function init(request: Extract<TranscribeRequest, { type: "init" }>) {
   env.allowLocalModels = false;
   env.useBrowserCache = true;
 
+  if (process.env.NEXT_PUBLIC_USE_CDN === "1") {
+    const onnx = env.backends.onnx as unknown as {
+      versions?: { common?: string; web?: string };
+      wasm?: { wasmPaths?: unknown };
+    };
+    const version = onnx.versions?.web ?? onnx.versions?.common;
+    if (version && onnx.wasm) {
+      const base = `https://cdn.jsdelivr.net/npm/onnxruntime-web@${version}/dist/`;
+      onnx.wasm.wasmPaths = {
+        mjs: `${base}ort-wasm-simd-threaded.asyncify.mjs`,
+        wasm: `${base}ort-wasm-simd-threaded.asyncify.wasm`
+      };
+    }
+  }
+
   const options: Record<string, unknown> = {
     device: request.device,
     dtype: request.device === "webgpu" ? "fp16" : "q8",

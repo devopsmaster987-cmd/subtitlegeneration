@@ -44,7 +44,7 @@ async function getFfmpeg() {
   });
   post({ type: "status", status: "loading", message: "Loading the audio engine" });
   const coreRoot =
-    process.env.NEXT_PUBLIC_FFMPEG_CDN === "1"
+    process.env.NEXT_PUBLIC_USE_CDN === "1"
       ? "https://cdn.jsdelivr.net/npm/@ffmpeg/core@0.12.10/dist/umd/"
       : new URL("/ffmpeg/", self.location.href).href;
   await ffmpeg.load({
