@@ -46,7 +46,7 @@ export function ConsentBanner() {
   const [analytics, setAnalytics] = useState(false);
 
   useEffect(() => {
-    if (!site.ads.enabled) return;
+    if (!site.ads.enabled && !site.analytics.ga4Id) return;
     if (!readConsent()) setOpen(true);
     const reopen = () => {
       setManage(true);
@@ -56,7 +56,7 @@ export function ConsentBanner() {
     return () => window.removeEventListener("voicetotextfree:open-consent", reopen);
   }, []);
 
-  if (!site.ads.enabled || !open) return null;
+  if (!(site.ads.enabled || site.analytics.ga4Id) || !open) return null;
 
   function acceptAll() {
     save("granted", true, true);
@@ -87,7 +87,8 @@ export function ConsentBanner() {
         </h2>
         <p id="consent-description" className="mt-1 text-sm text-[var(--muted)]">
           VoiceToTextFree needs no cookies for the tool itself. If advertising is enabled, Google
-          AdSense and its partners may use cookies for personalised ads. In the EEA, UK and
+          AdSense and its partners may use cookies for personalised ads. If analytics is enabled,
+          Google Analytics 4 is loaded only after you allow analytics here. In the EEA, UK and
           Switzerland we ask before setting those cookies and default Consent Mode v2 to denied.
           Read our{" "}
           <Link href="/privacy-policy" className="underline">

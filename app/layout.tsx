@@ -3,6 +3,7 @@ import "./globals.css";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { ConsentBanner } from "@/components/ConsentBanner";
+import { Analytics } from "@/components/Analytics";
 import { ServiceWorkerRegistration } from "@/components/ServiceWorker";
 import { JsonLd } from "@/components/JsonLd";
 import { organizationEntity, websiteEntity } from "@/data/entities";
@@ -44,9 +45,10 @@ export const metadata: Metadata = {
 
 const themeScript = `(function(){try{var t=localStorage.getItem('voicetotextfree-theme');if(!t){t=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}if(t==='dark'){document.documentElement.classList.add('dark');document.documentElement.style.colorScheme='dark';}}catch(e){}})();`;
 
-const consentScript = site.ads.enabled
-  ? `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}window.gtag=gtag;gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',wait_for_update:500});`
-  : "";
+const consentScript =
+  site.ads.enabled || site.analytics.ga4Id
+    ? `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}window.gtag=gtag;gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',wait_for_update:500});`
+    : "";
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -69,6 +71,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <main id="main-content">{children}</main>
         <SiteFooter />
         <ConsentBanner />
+        <Analytics />
         <ServiceWorkerRegistration />
         <JsonLd data={[organizationEntity, websiteEntity]} />
       </body>

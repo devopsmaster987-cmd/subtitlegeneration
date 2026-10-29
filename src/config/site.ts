@@ -13,6 +13,7 @@ const env = {
     "Abdul Samad is the creator and maintainer of VoiceToTextFree and is responsible for the site's browser-based tool, subtitle guides and corrections.",
   adsenseClientId: process.env.NEXT_PUBLIC_ADSENSE_CLIENT_ID?.trim() || "",
   adsEnabledEnv: process.env.NEXT_PUBLIC_ADS_ENABLED?.trim().toLowerCase() === "true",
+  ga4Id: process.env.NEXT_PUBLIC_GA4_ID?.trim() || "",
   slots: {
     belowTool: process.env.NEXT_PUBLIC_ADSENSE_SLOT_BELOW_TOOL?.trim() || "",
     inContent: process.env.NEXT_PUBLIC_ADSENSE_SLOT_IN_CONTENT?.trim() || "",
@@ -53,6 +54,12 @@ export const site = {
     clientId: env.adsenseClientId,
     consentMode: true,
     slots: env.slots
+  },
+  analytics: {
+    // PENDING OWNER INPUT: set NEXT_PUBLIC_GA4_ID (G-XXXXXXXXXX) to activate
+    // consent-gated GA4. With no measurement ID this component ships inert and
+    // no analytics script is ever loaded.
+    ga4Id: env.ga4Id
   },
   verification: {
     googleSearchConsole: process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION?.trim() || "",
