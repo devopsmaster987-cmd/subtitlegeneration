@@ -1,11 +1,11 @@
 import type { NextConfig } from "next";
 
-const cloudflareBuild = process.env.NEXT_PRIVATE_STANDALONE === "true";
+const useFfmpegCdn = process.env.WORKERS_CI === "1" || process.env.NEXT_PUBLIC_FFMPEG_CDN === "1";
 
 const nextConfig: NextConfig = {
-  output: cloudflareBuild ? "standalone" : "export",
+  output: "export",
   env: {
-    NEXT_PUBLIC_FFMPEG_CDN: process.env.NEXT_PUBLIC_FFMPEG_CDN ?? ""
+    NEXT_PUBLIC_FFMPEG_CDN: useFfmpegCdn ? "1" : ""
   },
   trailingSlash: true,
   images: { unoptimized: true },

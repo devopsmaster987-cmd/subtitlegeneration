@@ -10,7 +10,6 @@ export default tseslint.config(
   {
     ignores: [
       ".next/**",
-      ".open-next/**",
       ".wrangler/**",
       "out/**",
       "node_modules/**",
