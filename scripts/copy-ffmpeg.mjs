@@ -1,9 +1,11 @@
 #!/usr/bin/env node
 /**
- * Copies the single-thread UMD ffmpeg.wasm core into public/ffmpeg so the tool
- * works without a CDN and without Cross-Origin Isolation (which breaks AdSense).
+ * Copies the single-thread UMD ffmpeg.wasm core into public/ffmpeg and gzips
+ * the wasm so every host, including Cloudflare Workers (25 MiB per-file limit),
+ * can serve it locally. The worker decompresses it at runtime.
  */
-import { cpSync, existsSync, mkdirSync } from "node:fs";
+import { cpSync, existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
+import { gzipSync } from "node:zlib";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -17,12 +19,25 @@ if (!existsSync(source)) {
 }
 
 mkdirSync(target, { recursive: true });
-for (const file of ["ffmpeg-core.js", "ffmpeg-core.wasm"]) {
-  const from = join(source, file);
-  if (!existsSync(from)) {
-    console.warn(`[copy-ffmpeg] missing ${from}`);
-    continue;
-  }
-  cpSync(from, join(target, file));
+
+const jsFrom = join(source, "ffmpeg-core.js");
+if (existsSync(jsFrom)) {
+  cpSync(jsFrom, join(target, "ffmpeg-core.js"));
+} else {
+  console.warn(`[copy-ffmpeg] missing ${jsFrom}`);
 }
-console.log("[copy-ffmpeg] copied ffmpeg core to public/ffmpeg");
+
+const wasmFrom = join(source, "ffmpeg-core.wasm");
+if (existsSync(wasmFrom)) {
+  writeFileSync(
+    join(target, "ffmpeg-core.wasm.gz"),
+    gzipSync(readFileSync(wasmFrom), { level: 9 })
+  );
+} else {
+  console.warn(`[copy-ffmpeg] missing ${wasmFrom}`);
+}
+
+const raw = join(target, "ffmpeg-core.wasm");
+if (existsSync(raw)) rmSync(raw, { force: true });
+
+console.log("[copy-ffmpeg] wrote ffmpeg core to public/ffmpeg");

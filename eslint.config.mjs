@@ -14,6 +14,7 @@ export default tseslint.config(
       "out/**",
       "node_modules/**",
       "public/ffmpeg/**",
+      "public/ort/**",
       "next-env.d.ts",
       "playwright-report/**",
       "test-results/**"

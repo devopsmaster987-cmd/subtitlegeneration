@@ -1,5 +1,5 @@
 # Cloudflare Workers static assets have a 25 MiB per-file limit.
-# The Cloudflare build loads ffmpeg from jsDelivr instead of this local copy.
+# These raw wasm files are unused: the workers load the gzipped copies in
+# public/ffmpeg and public/ort instead, which fit the limit and work on every host.
 ffmpeg/ffmpeg-core.wasm
-# The Cloudflare build loads onnxruntime from jsDelivr instead of this local copy.
 _next/static/media/ort-wasm-simd-threaded.asyncify.*.wasm

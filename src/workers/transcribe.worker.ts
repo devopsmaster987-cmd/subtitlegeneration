@@ -1,5 +1,7 @@
 /// <reference lib="webworker" />
 
+import { fetchGzipped, wasmBlobUrl } from "./wasm";
+
 export type TranscribeRequest =
   | {
       type: "init";
@@ -31,9 +33,29 @@ let currentLanguage: string | null = null;
 let currentTask: "transcribe" | "translate" = "transcribe";
 let cancelled = false;
 let initInFlight: Promise<void> | null = null;
+let wasmPathsPromise: Promise<{ mjs: string; wasm: string } | null> | null = null;
+let wasmObjectUrl: string | null = null;
 
 function post(message: TranscribeResponse, transfer?: Transferable[]) {
   scope.postMessage(message, transfer ?? []);
+}
+
+async function localWasmPaths() {
+  if (!wasmPathsPromise) {
+    wasmPathsPromise = (async () => {
+      try {
+        const buffer = await fetchGzipped("/ort/ort-wasm-simd-threaded.asyncify.wasm.gz");
+        if (!buffer) return null;
+        if (wasmObjectUrl) URL.revokeObjectURL(wasmObjectUrl);
+        const url = wasmBlobUrl(buffer);
+        wasmObjectUrl = url;
+        return { mjs: "/ort/ort-wasm-simd-threaded.asyncify.mjs", wasm: url };
+      } catch {
+        return null;
+      }
+    })();
+  }
+  return wasmPathsPromise;
 }
 
 async function init(request: Extract<TranscribeRequest, { type: "init" }>) {
@@ -52,13 +74,16 @@ async function init(request: Extract<TranscribeRequest, { type: "init" }>) {
   env.allowLocalModels = false;
   env.useBrowserCache = true;
 
-  if (process.env.NEXT_PUBLIC_USE_CDN === "1") {
-    const onnx = env.backends.onnx as unknown as {
-      versions?: { common?: string; web?: string };
-      wasm?: { wasmPaths?: unknown };
-    };
+  const onnx = env.backends.onnx as unknown as {
+    versions?: { common?: string; web?: string };
+    wasm?: { wasmPaths?: unknown };
+  };
+  const localWasm = await localWasmPaths();
+  if (localWasm && onnx.wasm) {
+    onnx.wasm.wasmPaths = localWasm;
+  } else if (onnx.wasm) {
     const version = onnx.versions?.web ?? onnx.versions?.common;
-    if (version && onnx.wasm) {
+    if (version) {
       const base = `https://cdn.jsdelivr.net/npm/onnxruntime-web@${version}/dist/`;
       onnx.wasm.wasmPaths = {
         mjs: `${base}ort-wasm-simd-threaded.asyncify.mjs`,
@@ -171,6 +196,11 @@ scope.onmessage = async (event: MessageEvent<TranscribeRequest>) => {
       cancelled = true;
       transcriber = null;
       currentKey = "";
+      if (wasmObjectUrl) {
+        URL.revokeObjectURL(wasmObjectUrl);
+        wasmObjectUrl = null;
+      }
+      wasmPathsPromise = null;
       post({ type: "done" });
     }
   } catch (error) {

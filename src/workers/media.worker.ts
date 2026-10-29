@@ -1,5 +1,7 @@
 /// <reference lib="webworker" />
 
+import { fetchGzipped, wasmBlobUrl } from "./wasm";
+
 export type MediaRequest =
   | { type: "extract"; buffer: ArrayBuffer; extension: string }
   | {
@@ -25,6 +27,7 @@ function post(message: MediaResponse, transfer: Transferable[] = []) {
 }
 
 let ffmpegInstance: any = null;
+let ffmpegWasmUrl: string | null = null;
 
 async function getFfmpeg() {
   if (ffmpegInstance) return ffmpegInstance;
@@ -43,14 +46,24 @@ async function getFfmpeg() {
     });
   });
   post({ type: "status", status: "loading", message: "Loading the audio engine" });
-  const coreRoot =
-    process.env.NEXT_PUBLIC_USE_CDN === "1"
-      ? "https://cdn.jsdelivr.net/npm/@ffmpeg/core@0.12.10/dist/umd/"
-      : new URL("/ffmpeg/", self.location.href).href;
-  await ffmpeg.load({
-    coreURL: `${coreRoot}ffmpeg-core.js`,
-    wasmURL: `${coreRoot}ffmpeg-core.wasm`
-  });
+  const localRoot = new URL("/ffmpeg/", self.location.href).href;
+  const cdnRoot = "https://cdn.jsdelivr.net/npm/@ffmpeg/core@0.12.10/dist/umd/";
+  let coreURL = `${localRoot}ffmpeg-core.js`;
+  let wasmURL = `${cdnRoot}ffmpeg-core.wasm`;
+  try {
+    const buffer = await fetchGzipped(`${localRoot}ffmpeg-core.wasm.gz`);
+    if (buffer) {
+      if (ffmpegWasmUrl) URL.revokeObjectURL(ffmpegWasmUrl);
+      const url = wasmBlobUrl(buffer);
+      ffmpegWasmUrl = url;
+      wasmURL = url;
+    } else {
+      coreURL = `${cdnRoot}ffmpeg-core.js`;
+    }
+  } catch {
+    coreURL = `${cdnRoot}ffmpeg-core.js`;
+  }
+  await ffmpeg.load({ coreURL, wasmURL });
   ffmpegInstance = ffmpeg;
   return ffmpeg as any;
 }

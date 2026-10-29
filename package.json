@@ -5,7 +5,8 @@
   "description": "VoiceToTextFree - free, private, browser-based subtitle and transcript generator powered by Whisper.",
   "scripts": {
     "dev": "next dev --webpack",
-    "build": "npm run check:content && npm run verify:keywords && npm run verify:wordcount && npm run verify:aeo && npm run verify:tokens && next build --webpack && node scripts/flatten-rsc.mjs && npm run verify:output",
+    "prebuild": "node scripts/copy-ffmpeg.mjs && node scripts/copy-onnx.mjs",
+    "build": "npm run check:content && npm run verify:keywords && npm run verify:wordcount && npm run verify:aeo && npm run verify:tokens && next build --webpack && node scripts/flatten-rsc.mjs && node scripts/prune-ort-wasm.mjs && npm run verify:output",
     "deploy": "wrangler deploy",
     "start": "node scripts/serve.mjs",
     "typecheck": "tsc --noEmit",
@@ -28,8 +29,9 @@
     "verify:output": "tsx scripts/verify-output.ts",
     "check:all": "npm run check:content && npm run verify:keywords && npm run verify:wordcount && npm run verify:aeo && npm run verify:tokens && npm run verify:emails && npm run verify:log && npm run verify:features && npm run verify:links && npm run verify:ads && npm run format:check && npm run typecheck && npm run lint && npm test",
     "copy:ffmpeg": "node scripts/copy-ffmpeg.mjs",
+    "copy:onnx": "node scripts/copy-onnx.mjs",
     "indexnow": "node scripts/indexnow.mjs",
-    "postinstall": "node scripts/copy-ffmpeg.mjs",
+    "postinstall": "node scripts/copy-ffmpeg.mjs && node scripts/copy-onnx.mjs",
     "llms": "tsx scripts/generate-llms.ts"
   },
   "dependencies": {
