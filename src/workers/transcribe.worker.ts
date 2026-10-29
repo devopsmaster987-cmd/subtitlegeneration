@@ -27,6 +27,19 @@ export type TranscribeResponse =
   | { type: "done" };
 
 const scope = self as unknown as DedicatedWorkerGlobalScope;
+let lastFailedUrl = "";
+const nativeFetch = self.fetch.bind(self);
+try {
+  self.fetch = ((input: RequestInfo | URL, init?: RequestInit) =>
+    nativeFetch(input, init).catch((error) => {
+      lastFailedUrl =
+        typeof input === "string" ? input : input instanceof URL ? input.href : input.url;
+      throw error;
+    })) as typeof fetch;
+} catch {
+  // Some browsers expose fetch as read-only; the error still surfaces without the URL.
+}
+
 let transcriber: any = null;
 let currentKey = "";
 let currentLanguage: string | null = null;
@@ -78,18 +91,24 @@ async function init(request: Extract<TranscribeRequest, { type: "init" }>) {
     versions?: { common?: string; web?: string };
     wasm?: { wasmPaths?: unknown };
   };
-  const localWasm = await localWasmPaths();
-  if (localWasm && onnx.wasm) {
-    onnx.wasm.wasmPaths = localWasm;
-  } else if (onnx.wasm) {
+  const useCdnWasm = () => {
+    if (!onnx.wasm) return false;
     const version = onnx.versions?.web ?? onnx.versions?.common;
-    if (version) {
-      const base = `https://cdn.jsdelivr.net/npm/onnxruntime-web@${version}/dist/`;
-      onnx.wasm.wasmPaths = {
-        mjs: `${base}ort-wasm-simd-threaded.asyncify.mjs`,
-        wasm: `${base}ort-wasm-simd-threaded.asyncify.wasm`
-      };
-    }
+    if (!version) return false;
+    const base = `https://cdn.jsdelivr.net/npm/onnxruntime-web@${version}/dist/`;
+    onnx.wasm.wasmPaths = {
+      mjs: `${base}ort-wasm-simd-threaded.asyncify.mjs`,
+      wasm: `${base}ort-wasm-simd-threaded.asyncify.wasm`
+    };
+    return true;
+  };
+
+  const localWasm = await localWasmPaths();
+  let usingLocal = Boolean(localWasm && onnx.wasm);
+  if (usingLocal && localWasm && onnx.wasm) {
+    onnx.wasm.wasmPaths = localWasm;
+  } else {
+    useCdnWasm();
   }
 
   const options: Record<string, unknown> = {
@@ -114,21 +133,32 @@ async function init(request: Extract<TranscribeRequest, { type: "init" }>) {
     }
   };
 
+  const runPipeline = (device: "webgpu" | "wasm") =>
+    pipeline("automatic-speech-recognition", request.model, { ...options, device });
+
   try {
-    transcriber = await pipeline("automatic-speech-recognition", request.model, options);
+    transcriber = await runPipeline(request.device);
   } catch (error) {
-    if (request.device === "webgpu") {
+    let failure = error;
+    const message = error instanceof Error ? error.message : String(error);
+    if (usingLocal && /failed to fetch|networkerror|load failed/i.test(message) && useCdnWasm()) {
+      usingLocal = false;
+      try {
+        transcriber = await runPipeline(request.device);
+        failure = null;
+      } catch (retryError) {
+        failure = retryError;
+      }
+    }
+    if (!transcriber && request.device === "webgpu") {
       post({
         type: "status",
         status: "fallback",
         message: "WebGPU was unavailable for this model; falling back to WASM."
       });
-      transcriber = await pipeline("automatic-speech-recognition", request.model, {
-        ...options,
-        device: "wasm"
-      });
-    } else {
-      throw error;
+      transcriber = await runPipeline("wasm");
+    } else if (!transcriber) {
+      throw failure;
     }
   }
 
@@ -205,7 +235,11 @@ scope.onmessage = async (event: MessageEvent<TranscribeRequest>) => {
     }
   } catch (error) {
     const message = error instanceof Error ? error.message : String(error);
-    post({ type: "error", message, recoverable: true });
+    const detail = lastFailedUrl ? ` Failed URL: ${lastFailedUrl.slice(0, 240)}` : "";
+    const hint = /failed to fetch|networkerror|load failed/i.test(message)
+      ? " The browser could not download the model or WebAssembly runtime. Reload the page to update the offline cache, then try again."
+      : "";
+    post({ type: "error", message: `${message}${detail}${hint}`, recoverable: true });
   }
 };
 

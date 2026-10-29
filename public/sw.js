@@ -1,4 +1,4 @@
-const CACHE = "voicetotextfree-v3";
+const CACHE = "voicetotextfree-v4";
 const OFFLINE_FALLBACK = "/";
 
 self.addEventListener("install", (event) => {
