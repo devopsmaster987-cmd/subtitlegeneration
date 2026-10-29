@@ -68,6 +68,8 @@ export function Tool({ preset = "main", initialLanguage = null }: ToolProps) {
   const pendingRef = useRef(new Map<number, PendingResult>());
   const readyRef = useRef<{ resolve: () => void; reject: (error: Error) => void } | null>(null);
   const cancelRef = useRef(false);
+  const samplesRef = useRef<Float32Array | null>(null);
+  const errorKindRef = useRef("");
 
   const rtl = language ? (languageByCode.get(language)?.rtl ?? false) : false;
   const busy = stage === "extracting" || stage === "loading" || stage === "transcribing";
@@ -138,13 +140,16 @@ export function Tool({ preset = "main", initialLanguage = null }: ToolProps) {
     readyRef.current = null;
   }
 
-  function handleTranscriberFailure(message: string) {
+  function handleTranscriberFailure(message: string, errorKind?: string) {
     const state = useToolStore.getState();
     const wasBusy =
       state.stage === "extracting" || state.stage === "loading" || state.stage === "transcribing";
     rejectEverything(message);
     resetTranscriber();
-    if (wasBusy) setError(message);
+    if (wasBusy) {
+      errorKindRef.current = errorKind ?? "";
+      setError(message);
+    }
   }
 
   function runMediaWorker(request: MediaRequest, transfer: Transferable[]): Promise<ArrayBuffer> {
@@ -216,7 +221,7 @@ export function Tool({ preset = "main", initialLanguage = null }: ToolProps) {
         pendingRef.current.delete(message.index);
         pending?.resolve(message);
       } else if (message.type === "error") {
-        handleTranscriberFailure(message.message);
+        handleTranscriberFailure(message.message, message.errorKind);
       }
     };
     worker.onerror = (event) => {
@@ -267,6 +272,8 @@ export function Tool({ preset = "main", initialLanguage = null }: ToolProps) {
     setError(null);
     setSegments([]);
     pendingRef.current.clear();
+    errorKindRef.current = "";
+    samplesRef.current = null;
     setProgress({ extraction: 0, model: 0, modelFile: "", transcription: 0, etaSeconds: 0 });
 
     try {
@@ -282,49 +289,13 @@ export function Tool({ preset = "main", initialLanguage = null }: ToolProps) {
       setProgress({ extraction: 100 });
       const { samples } = decodeWav(wav);
       if (samples.length === 0) throw new Error("No audio was found in that file.");
-      const chunks = chunkAudio(samples);
-      if (chunks.length === 0) throw new Error("No audio was found in that file.");
+      samplesRef.current = samples;
 
       setStage("loading", "Finishing model setup. The audio is already extracted.");
       await modelPromise;
       if (cancelRef.current) return;
 
-      setStage("transcribing", "Transcribing locally in your browser.");
-      let accumulated: Segment[] = [];
-      const started = performance.now();
-      for (let index = 0; index < chunks.length; index += 1) {
-        if (cancelRef.current) return;
-        const chunk = chunks[index];
-        if (!chunk) continue;
-        const result = await transcribeChunk(chunk.samples, chunk.offset, index);
-        if (cancelRef.current) return;
-        const shifted = shiftChunkSegments(
-          result.segments.map((segment, position) => ({
-            id: `seg-${index}-${position + 1}`,
-            start: segment.start,
-            end: segment.end,
-            text: segment.text
-          })),
-          result.offset
-        );
-        accumulated = mergeChunkResults(accumulated, shifted);
-        setSegments(accumulated);
-        const done = index + 1;
-        const elapsed = (performance.now() - started) / 1000;
-        setProgress({
-          transcription: (done / chunks.length) * 100,
-          etaSeconds: estimateRemainingSeconds(done, chunks.length, elapsed)
-        });
-      }
-
-      if (!cancelRef.current) {
-        setStage(
-          "done",
-          accumulated.length > 0
-            ? "Finished. Review the cues, fix names, then export SRT, VTT or TXT."
-            : "The model returned no speech. Try a larger model or check that the file has audible speech."
-        );
-      }
+      await runTranscriptionLoop(samples);
     } catch (caught) {
       if (cancelRef.current) return;
       const message = caught instanceof Error ? caught.message : String(caught);
@@ -337,6 +308,79 @@ export function Tool({ preset = "main", initialLanguage = null }: ToolProps) {
     } finally {
       mediaWorkerRef.current?.terminate();
       mediaWorkerRef.current = null;
+      pendingRef.current.clear();
+    }
+  }
+
+  async function runTranscriptionLoop(samples: Float32Array) {
+    const chunks = chunkAudio(samples);
+    if (chunks.length === 0) throw new Error("No audio was found in that file.");
+
+    setSegments([]);
+    pendingRef.current.clear();
+    setStage("transcribing", "Transcribing locally in your browser.");
+    let accumulated: Segment[] = [];
+    const started = performance.now();
+    for (let index = 0; index < chunks.length; index += 1) {
+      if (cancelRef.current) return;
+      const chunk = chunks[index];
+      if (!chunk) continue;
+      const result = await transcribeChunk(chunk.samples, chunk.offset, index);
+      if (cancelRef.current) return;
+      const shifted = shiftChunkSegments(
+        result.segments.map((segment, position) => ({
+          id: `seg-${index}-${position + 1}`,
+          start: segment.start,
+          end: segment.end,
+          text: segment.text
+        })),
+        result.offset
+      );
+      accumulated = mergeChunkResults(accumulated, shifted);
+      setSegments(accumulated);
+      const done = index + 1;
+      const elapsed = (performance.now() - started) / 1000;
+      setProgress({
+        transcription: (done / chunks.length) * 100,
+        etaSeconds: estimateRemainingSeconds(done, chunks.length, elapsed)
+      });
+    }
+
+    if (!cancelRef.current) {
+      errorKindRef.current = "";
+      setStage(
+        "done",
+        accumulated.length > 0
+          ? "Finished. Review the cues, fix names, then export SRT, VTT or TXT."
+          : "The model returned no speech. Try a larger model or check that the file has audible speech."
+      );
+    }
+  }
+
+  async function retryModelLoad() {
+    if (busy || !sourceFileRef.current) return;
+    setError(null);
+    cancelRef.current = false;
+    errorKindRef.current = "";
+    pendingRef.current.clear();
+    setProgress({ model: 0, modelFile: "", transcription: 0, etaSeconds: 0 });
+
+    try {
+      const samples = samplesRef.current;
+      if (!samples) {
+        await generate();
+        return;
+      }
+      setStage("loading", "Retrying model download…");
+      await ensureTranscriber(resolveDevice());
+      if (cancelRef.current) return;
+      await runTranscriptionLoop(samples);
+    } catch (caught) {
+      if (cancelRef.current) return;
+      const message = caught instanceof Error ? caught.message : String(caught);
+      errorKindRef.current = "network";
+      setError(message);
+    } finally {
       pendingRef.current.clear();
     }
   }
@@ -357,12 +401,16 @@ export function Tool({ preset = "main", initialLanguage = null }: ToolProps) {
 
   function handleFile(next: File) {
     sourceFileRef.current = next;
+    samplesRef.current = null;
+    errorKindRef.current = "";
     const url = URL.createObjectURL(next);
     setFile(describeFile(next), url, 0);
   }
 
   function handleClear() {
     sourceFileRef.current = null;
+    samplesRef.current = null;
+    errorKindRef.current = "";
     clearFile();
   }
 
@@ -495,6 +543,13 @@ export function Tool({ preset = "main", initialLanguage = null }: ToolProps) {
             transcription={progress.transcription}
             etaSeconds={progress.etaSeconds}
             onCancel={cancel}
+            onRetry={
+              !busy &&
+              file &&
+              (errorKindRef.current === "network" || errorKindRef.current === "runtime")
+                ? retryModelLoad
+                : undefined
+            }
           />
         </div>
       </div>

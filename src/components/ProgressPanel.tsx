@@ -12,6 +12,7 @@ interface Props {
   transcription: number;
   etaSeconds: number;
   onCancel: () => void;
+  onRetry?: () => void;
 }
 
 const stageLabels: Record<ToolStage, string> = {
@@ -57,7 +58,8 @@ export function ProgressPanel({
   extraction,
   transcription,
   etaSeconds,
-  onCancel
+  onCancel,
+  onRetry
 }: Props) {
   if (stage === "idle" || stage === "ready") return null;
   const busy = stage === "extracting" || stage === "loading" || stage === "transcribing";
@@ -112,9 +114,18 @@ export function ProgressPanel({
         ) : null}
       </div>
       {stage === "error" ? (
-        <p className="mt-3 rounded-md bg-red-50 p-3 text-sm text-red-900 dark:bg-red-950 dark:text-red-100">
-          {message}
-        </p>
+        <div className="mt-3 rounded-md bg-red-50 p-3 dark:bg-red-950">
+          <p className="text-sm text-red-900 dark:text-red-100">{message}</p>
+          {onRetry ? (
+            <button
+              type="button"
+              onClick={onRetry}
+              className="mt-2 rounded-md bg-red-600 px-4 py-1.5 text-sm font-semibold text-white hover:bg-red-700"
+            >
+              Retry download
+            </button>
+          ) : null}
+        </div>
       ) : null}
     </section>
   );

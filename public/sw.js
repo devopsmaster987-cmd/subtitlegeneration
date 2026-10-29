@@ -1,4 +1,4 @@
-const CACHE = "voicetotextfree-v4";
+const CACHE = "voicetotextfree-v5";
 const OFFLINE_FALLBACK = "/";
 
 self.addEventListener("install", (event) => {
@@ -17,11 +17,34 @@ self.addEventListener("activate", (event) => {
   );
 });
 
+/**
+ * Listen for cache-clear messages from the main thread.
+ * Usage: navigator.serviceWorker.controller.postMessage({ type: "clear-model-cache" })
+ */
+self.addEventListener("message", (event) => {
+  if (event.data && event.data.type === "clear-model-cache") {
+    event.waitUntil(
+      caches.open(CACHE).then(async (cache) => {
+        const keys = await cache.keys();
+        const modelKeys = keys.filter((req) => new URL(req.url).pathname.startsWith("/models/"));
+        await Promise.all(modelKeys.map((key) => cache.delete(key)));
+      })
+    );
+  }
+});
+
 self.addEventListener("fetch", (event) => {
   const request = event.request;
   if (request.method !== "GET") return;
   const url = new URL(request.url);
   if (url.origin !== self.location.origin) return;
+
+  // /models/* — pass through to Worker proxy, do NOT intercept with SW cache.
+  // The Worker + Cloudflare edge cache handle caching for model files.
+  // Range requests and large binary files do not play well with SW caching.
+  if (url.pathname.startsWith("/models/")) {
+    return;
+  }
 
   if (request.mode === "navigate") {
     event.respondWith(
