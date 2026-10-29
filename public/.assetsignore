@@ -1,0 +1,5 @@
+# Cloudflare Workers static assets have a 25 MiB per-file limit.
+# The Cloudflare build loads ffmpeg from jsDelivr instead of this local copy.
+ffmpeg/ffmpeg-core.wasm
+# transformers.js loads onnxruntime from jsDelivr by default in dedicated workers.
+_next/static/media/ort-wasm-simd-threaded.asyncify.*.wasm
