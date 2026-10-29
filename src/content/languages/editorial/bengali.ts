@@ -14,7 +14,7 @@ export const languagePage: LanguagePageContent = {
   capsule:
     "This Bengali subtitle generator runs Whisper locally in your browser, so Bengali audio stays on your device while you build an SRT or VTT file. It drafts Bengali script, not a promised romanized version, and every cue still needs a careful human review before publishing.",
   published: "2026-02-01",
-  updated: "2026-10-28",
+  updated: "2026-10-29",
   author: "Abdul Samad",
   accuracyNote:
     "No reviewed Bengali sample has been recorded yet, so this page is excluded from search while the editorial content is still being checked. The tool itself still works: you can select Bengali, transcribe locally and export SRT or VTT. We do not claim tested accuracy for Bengali.",
@@ -110,7 +110,7 @@ export const languagePage: LanguagePageContent = {
         "Yes. Export SRT or VTT, then upload it as a caption track on a private copy of the video first. YouTube uses its own font stack and may reflow the text, so check the Bengali shaping and line breaks on desktop and on a phone before publishing."
     },
     {
-      question: "Should I use the danda or a full stop?",
+      question: "Which sentence mark should a Bengali transcript use?",
       answer:
         "Either can work if you are consistent. Traditional Bengali uses the danda (।), while modern web and broadcast text often uses the Western full stop. Pick the convention that matches the video and the audience, then apply it throughout the file."
     },

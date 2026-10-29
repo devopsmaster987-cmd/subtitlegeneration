@@ -13,6 +13,12 @@ export const metadata: Metadata = pageMetadata({
 
 const entries = [
   {
+    date: "2026-10-29",
+    title: "Duplicate tool pages merged",
+    detail:
+      "Six tool pages that opened the same generator with different titles (video to text, caption generator, transcript generator, speech to text, offline and private subtitle generator) were consolidated into /video-to-srt, /audio-to-srt and the home generator. Old addresses return a 308 redirect and the static pages carry a fallback redirect. The homepage also lost a repeated file-size FAQ; one answer now covers both phrasings."
+  },
+  {
     date: "2026-10-28",
     title: "Model download sizes re-measured",
     detail:

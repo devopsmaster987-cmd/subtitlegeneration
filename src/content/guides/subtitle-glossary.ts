@@ -11,7 +11,7 @@ export const guide: GuideContent = {
   capsule:
     "A subtitle glossary is a working reference for the words captioners use every day: cue, timecode, CPS, SDH, sidecar, burn-in and more. This guide defines more than forty terms in original language, groups them by format, timing, accessibility and workflow, and shows how the vocabulary maps to real files you will open in an editor or player.",
   published: "2026-02-04",
-  updated: "2026-10-28",
+  updated: "2026-10-29",
   author: "Abdul Samad",
   readingMinutes: 9,
   keyFacts: [
@@ -304,7 +304,7 @@ export const guide: GuideContent = {
         "CPS stands for characters per second. It is calculated by dividing the number of characters in a cue by its duration in seconds and is used as a reading-speed check. A high CPS value means the viewer has less time per character, even if the cue stays on screen for several seconds."
     },
     {
-      question: "Is VTT the same as WebVTT?",
+      question: "Why do people say VTT instead of WebVTT?",
       answer:
         "VTT is commonly used as shorthand for WebVTT and for the .vtt file extension. WebVTT is the formal name of the W3C format, which has a WEBVTT header, dot-separated timestamps and optional cue settings. Calling a file VTT is usually understood, but the precise term is WebVTT."
     },

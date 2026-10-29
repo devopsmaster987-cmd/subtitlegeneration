@@ -7,9 +7,9 @@ import { contentProblems, keywordProblems } from "../scripts/lib/audit";
 import sitemap from "../app/sitemap";
 
 describe("content registry", () => {
-  it("has 28 guides, 14 tools and 99 language pages", () => {
+  it("has 28 guides, 8 tools and 99 language pages", () => {
     expect(guides).toHaveLength(28);
-    expect(toolPages).toHaveLength(14);
+    expect(toolPages).toHaveLength(8);
     expect(languagePages).toHaveLength(99);
   });
 

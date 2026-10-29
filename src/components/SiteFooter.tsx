@@ -8,11 +8,7 @@ const columns = [
     links: [
       { href: "/", label: "Subtitle generator" },
       { href: "/video-to-srt", label: "Video to SRT" },
-      { href: "/audio-to-srt", label: "Audio to SRT" },
-      { href: "/video-to-text", label: "Video to text" },
-      { href: "/speech-to-text", label: "Speech to text" },
-      { href: "/caption-generator", label: "Caption generator" },
-      { href: "/transcript-generator", label: "Transcript generator" }
+      { href: "/audio-to-srt", label: "Audio to SRT" }
     ]
   },
   {
@@ -23,9 +19,7 @@ const columns = [
       { href: "/merge-split-srt", label: "Merge or split SRT" },
       { href: "/convert-srt-to-vtt", label: "Convert SRT to VTT" },
       { href: "/subtitle-reading-speed-checker", label: "Reading speed checker" },
-      { href: "/subtitle-validator", label: "Subtitle validator" },
-      { href: "/offline-subtitle-generator", label: "Offline generator" },
-      { href: "/private-subtitle-generator", label: "Private generator" }
+      { href: "/subtitle-validator", label: "Subtitle validator" }
     ]
   },
   {

@@ -13,7 +13,7 @@ export const metadata: Metadata = pageMetadata({
 
 export default function CookiePolicyPage() {
   return (
-    <LegalPage title="Cookie policy" updated="2026-10-28">
+    <LegalPage title="Cookie policy" updated="2026-10-29">
       <p>
         This policy describes the storage used by {site.name}, operated by {site.author.name}. It
         matches the choices in the consent banner: strictly necessary storage is always on, while
@@ -60,6 +60,17 @@ export default function CookiePolicyPage() {
           </tbody>
         </table>
       </div>
+
+      <h2>Browser cache and the service worker</h2>
+      <p>
+        The site registers a service worker that caches the app shell (pages, scripts and the
+        ffmpeg/onnx runtime files) so the tool can reload offline. Whisper model files downloaded
+        from the model host are stored in the browser&apos;s Cache API by the library that runs the
+        model, not by this site&apos;s cookies. Both are covered by your browser&apos;s standard
+        &quot;clear browsing data&quot; controls; clearing them removes cached weights, so the next
+        transcription run downloads the model again. This caching does not record or transmit your
+        transcripts.
+      </p>
 
       <h2>Advertising cookies</h2>
       <p>

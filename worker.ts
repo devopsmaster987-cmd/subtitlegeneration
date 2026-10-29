@@ -16,6 +16,19 @@ const ALLOWED_REPOS = new Set([
 
 const UPSTREAM = "https://huggingface.co";
 
+/**
+ * 308 redirects for tool pages merged in October 2026. Kept in sync with
+ * vercel.json and the static meta-refresh fallback pages in app/.
+ */
+const REDIRECTS: Record<string, string> = {
+  "/video-to-text": "/video-to-srt",
+  "/caption-generator": "/video-to-srt",
+  "/transcript-generator": "/video-to-srt",
+  "/speech-to-text": "/audio-to-srt",
+  "/offline-subtitle-generator": "/",
+  "/private-subtitle-generator": "/"
+};
+
 interface ExecutionContext {
   waitUntil(promise: Promise<unknown>): void;
 }
@@ -40,6 +53,13 @@ function corsResponse(status: number, body: string): Response {
 export default {
   async fetch(request: Request, _env: unknown, ctx: ExecutionContext): Promise<Response> {
     const url = new URL(request.url);
+
+    // Redirect merged tool pages before anything else
+    const redirectPath = url.pathname.replace(/\/$/, "") || "/";
+    const redirectTarget = REDIRECTS[redirectPath];
+    if (redirectTarget) {
+      return Response.redirect(new URL(redirectTarget, request.url), 308);
+    }
 
     // Only handle /models/* paths
     if (!url.pathname.startsWith("/models/")) {

@@ -11,7 +11,7 @@ export const guide: GuideContent = {
   capsule:
     "What is an SRT file? It is a plain-text subtitle format that pairs numbered cues with start and end timestamps, then the words to display. Each cue is separated by a blank line, timestamps use HH:MM:SS,mmm with a comma, and files are normally saved as UTF-8.",
   published: "2026-01-25",
-  updated: "2026-10-28",
+  updated: "2026-10-29",
   author: "Abdul Samad",
   readingMinutes: 8,
   keyFacts: [
@@ -146,7 +146,7 @@ The mixer feeds four cameras.`
         "UTF-8 is the safest choice because it covers Latin, Arabic, Indic, CJK and other scripts in one file. Save without a BOM if the first cue misbehaves. If a tool forces ANSI, expect missing or garbled characters outside its code page."
     },
     {
-      question: "Can I open an SRT file in a browser?",
+      question: "How do I inspect what is inside an SRT file?",
       answer:
         "You can open one in a text editor or in VoiceToTextFree's browser-based editor without installing anything. A browser video player needs the subtitle file loaded through its own track support; plain SRT is not rendered automatically by every player."
     }

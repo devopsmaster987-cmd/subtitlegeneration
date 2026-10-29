@@ -55,20 +55,7 @@ export function ToolPageView({ page }: { page: ToolPageContent }) {
             }
           />
         ) : (
-          <Tool
-            preset={
-              page.preset as
-                | "main"
-                | "video-to-text"
-                | "video-to-srt"
-                | "audio-to-srt"
-                | "speech-to-text"
-                | "caption-generator"
-                | "transcript-generator"
-                | "offline-subtitle-generator"
-                | "private-subtitle-generator"
-            }
-          />
+          <Tool preset={page.preset as "video-to-srt" | "audio-to-srt"} />
         )}
       </div>
 

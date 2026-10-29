@@ -75,7 +75,7 @@ async function localWasmPaths() {
 
 /** Classify an error for the UI. */
 function classifyError(message: string): { friendly: string; kind: string } {
-  if (/failed to fetch|networkerror|load failed|net::/i.test(message)) {
+  if (/could not locate file|failed to fetch|networkerror|load failed|net::/i.test(message)) {
     return {
       kind: "network",
       friendly:
@@ -190,6 +190,13 @@ async function loadPipelineWithFallback(request: Extract<TranscribeRequest, { ty
         env.remoteHost = "https://hf-mirror.com";
         env.remotePathTemplate = "{model}/resolve/{revision}/";
       }
+    },
+    {
+      name: "huggingface.co",
+      setup: () => {
+        env.remoteHost = "https://huggingface.co";
+        env.remotePathTemplate = "{model}/resolve/{revision}/";
+      }
     }
   ];
 
@@ -219,8 +226,10 @@ async function loadPipelineWithFallback(request: Extract<TranscribeRequest, { ty
         lastError = error;
         const msg = error instanceof Error ? error.message : String(error);
 
-        // Don't retry non-network errors
-        if (!/failed to fetch|networkerror|load failed|net::/i.test(msg)) {
+        // Don't retry non-network errors. transformers.js wraps missing 404
+        // responses as "Could not locate file ...", which is still a network
+        // problem here (the host or path does not serve model files).
+        if (!/could not locate file|failed to fetch|networkerror|load failed|net::/i.test(msg)) {
           throw error;
         }
 
@@ -244,10 +253,8 @@ async function loadPipelineWithFallback(request: Extract<TranscribeRequest, { ty
       status: "fallback",
       message: "WebGPU download failed; trying WASM with quantized weights."
     });
-    // Reset to same-origin proxy for the WASM attempt
-    const { env: env2 } = await import("@huggingface/transformers");
-    env2.remoteHost = self.location.origin;
-    env2.remotePathTemplate = "/models/{model}/resolve/{revision}/";
+    // Keep whichever remote host the loop last configured; it is the best
+    // candidate because the proxy list already ended with the plain default.
     try {
       return await pipeline("automatic-speech-recognition", request.model, {
         ...options,

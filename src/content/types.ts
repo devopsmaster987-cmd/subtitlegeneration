@@ -81,20 +81,14 @@ export interface GuideContent extends BasePageContent {
 
 export type ToolPreset =
   | "main"
-  | "video-to-text"
   | "video-to-srt"
   | "audio-to-srt"
-  | "speech-to-text"
-  | "caption-generator"
-  | "transcript-generator"
   | "srt-editor"
   | "subtitle-timing-editor"
   | "merge-split-srt"
   | "convert-srt-to-vtt"
   | "subtitle-reading-speed-checker"
-  | "subtitle-validator"
-  | "offline-subtitle-generator"
-  | "private-subtitle-generator";
+  | "subtitle-validator";
 
 export interface ToolPageContent extends BasePageContent {
   kind: "tool";

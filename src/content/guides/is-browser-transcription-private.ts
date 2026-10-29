@@ -11,7 +11,7 @@ export const guide: GuideContent = {
   capsule:
     "Is browser transcription private? In this tool, audio is decoded and transcribed inside the tab, so the media file is not uploaded. A static site can still receive ordinary hosting logs, and the first run downloads model files from Hugging Face. Privacy therefore depends on the device and browser context, not only on the lack of an upload button.",
   published: "2026-01-28",
-  updated: "2026-10-28",
+  updated: "2026-10-29",
   author: "Abdul Samad",
   readingMinutes: 9,
   keyFacts: [
@@ -48,7 +48,7 @@ export const guide: GuideContent = {
       heading: "The short answer: the audio stays in the tab",
       paragraphs: [
         "When you choose a file, the browser reads it locally. FFmpeg, compiled to WebAssembly, extracts a mono 16 kHz audio track inside a worker. That audio is passed to another worker that runs Whisper. There is no API endpoint in this application that accepts your video, and no account is needed to start a transcription. The text appears in the page, and the download buttons create a file on your own machine.",
-        "That is the core of the privacy claim, and it is narrower than a promise that nothing leaves the device. The page itself came from a server, the model comes from a model host, and the browser may keep logs or storage. A useful answer separates the file content from the surrounding metadata. The [private subtitle generator](/private-subtitle-generator) page describes the intended workflow; this guide examines the boundary."
+        "That is the core of the privacy claim, and it is narrower than a promise that nothing leaves the device. The page itself came from a server, the model comes from a model host, and the browser may keep logs or storage. A useful answer separates the file content from the surrounding metadata. The [main generator](/) describes the intended workflow; this guide examines the boundary."
       ]
     },
     {
@@ -104,7 +104,7 @@ export const guide: GuideContent = {
       heading: "Threat model: shared device, extensions and screen recording",
       paragraphs: [
         "Local processing does not protect you from the device itself. A browser extension with permission to read page content can read the transcript as it appears. A person using the same unlocked computer can open the page or watch the screen. Screen-recording software, remote-support tools and a compromised operating system sit below the browser and can capture what the tab displays. The tool cannot defend against a hostile environment it does not control.",
-        "There is also the question of who owns the recording. Transcribing a conversation does not by itself give you the right to record or publish it. Consent, workplace policy and local law still apply. If the material is sensitive, use a device you control, close unnecessary extensions, lock the screen when you step away and download the subtitle file to a location with appropriate access controls. [Offline use](/offline-subtitle-generator) reduces the network dependency but not the human ones."
+        "There is also the question of who owns the recording. Transcribing a conversation does not by itself give you the right to record or publish it. Consent, workplace policy and local law still apply. If the material is sensitive, use a device you control, close unnecessary extensions, lock the screen when you step away and download the subtitle file to a location with appropriate access controls. Working offline through a cached model reduces the network dependency but not the human ones."
       ]
     },
     {

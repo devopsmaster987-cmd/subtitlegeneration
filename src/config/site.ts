@@ -40,6 +40,15 @@ export const site = {
     urlPath: "/"
   },
   ads: {
+    // ADS is OFF until the owner completes the AdSense application steps:
+    // 1. Set NEXT_PUBLIC_ADSENSE_CLIENT_ID to the real publisher ID (ca-pub-...)
+    //    and update public/ads.txt with the same publisher ID.
+    // 2. Set NEXT_PUBLIC_ADS_ENABLED=true only after each slot ID below is set.
+    // 3. PENDING OWNER INPUT: for personalised ads in the EEA, UK and
+    //    Switzerland, a Google-certified CMP must serve the consent decision.
+    //    The built-in ConsentBanner is a stop-gap that hard-denies consent by
+    //    default; until a certified CMP Integration is configured, no ads are
+    //    personalised and ads only load after explicit consent.
     enabled: env.adsEnabledEnv,
     clientId: env.adsenseClientId,
     consentMode: true,
@@ -55,7 +64,7 @@ export const site = {
   /** Training crawlers are allowed by default; ask the owner before changing. */
   allowTrainingCrawlers: true,
   launchDate: "2026-01-15",
-  contentUpdated: "2026-10-28"
+  contentUpdated: "2026-10-29"
 } as const;
 
 export const buildEnv = env;

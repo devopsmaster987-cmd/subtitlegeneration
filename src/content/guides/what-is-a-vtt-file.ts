@@ -11,7 +11,7 @@ export const guide: GuideContent = {
   capsule:
     "What is a VTT file? It is a WebVTT subtitle file: a plain-text format that starts with the WEBVTT header, uses a dot before milliseconds and can carry cue settings for browser video. HTML5 players load it through the track element, and the MIME type is text/vtt.",
   published: "2026-01-25",
-  updated: "2026-10-28",
+  updated: "2026-10-29",
   author: "Abdul Samad",
   readingMinutes: 9,
   keyFacts: [
@@ -140,9 +140,9 @@ The comma breaks strict parsing.`
         "Not safely without editing it. A VTT file needs the WEBVTT header and a dot before milliseconds. Some players accept a renamed file, but a strict browser may reject it. Convert the syntax and test the result."
     },
     {
-      question: "Does YouTube accept VTT files?",
+      question: "Which platforms accept VTT uploads?",
       answer:
-        "YouTube Studio accepts subtitle uploads in several formats, and VTT is commonly listed. The exact menu and limits can change, so check YouTube's current help page before a large delivery. Keep a copy of the original file either way."
+        "YouTube Studio accepts subtitle uploads in several formats, and VTT is commonly listed. The exact menu and limits can change, so check each platform's current help page before a large delivery. Keep a copy of the original file either way."
     },
     {
       question: "Why is my VTT file not loading in the browser?",
@@ -150,7 +150,7 @@ The comma breaks strict parsing.`
         "Check the track element's src and srclang attributes, then confirm the response uses text/vtt. A missing WEBVTT header, a BOM or a CORS block can also stop the track. The browser console usually names the failing request."
     },
     {
-      question: "Is VTT the same as WebVTT?",
+      question: "Does the file extension determine whether VTT works?",
       answer:
         "The .vtt extension is used for WebVTT files, and the two names are often used interchangeably. The formal format is WebVTT, defined by the W3C. A file with a .vtt extension that lacks the WebVTT syntax is not a valid WebVTT file."
     },
@@ -217,7 +217,7 @@ Then add the onions in one layer.`,
     { keyword: "what does a vtt file do", role: "faq" },
     { keyword: "can i rename an srt file to vtt", role: "faq" },
     { keyword: "why is my vtt file not loading in the browser", role: "faq" },
-    { keyword: "is vtt the same as webvtt", role: "faq" },
+    { keyword: "does the file extension determine whether vtt works", role: "faq" },
     { keyword: "what mime type should a vtt file use", role: "faq" }
   ]
 };

@@ -12,7 +12,7 @@ export const tool: ToolPageContent = {
   capsule:
     "Audio to SRT means turning a recording that has no picture into a subtitle file with numbered, timed cues. VoiceToTextFree decodes the sound locally, runs Whisper in the browser, and lets you correct wording and timing before downloading a standard SRT.",
   published: "2026-02-05",
-  updated: "2026-10-28",
+  updated: "2026-10-29",
   author: "Abdul Samad",
   keyFacts: [
     { label: "Input", value: "MP3, WAV, M4A, AAC, FLAC, OGG and similar audio files" },
@@ -69,7 +69,7 @@ export const tool: ToolPageContent = {
       heading: "Review, export and reuse the cue list",
       paragraphs: [
         "Read the transcript while listening to the first minute, then skim the rest for names and numbers. Fixing a wrong proper noun is quick; re-running the whole file for one bad word is not. If a sentence is split across two cues and reads awkwardly, merge them, then split at a natural clause boundary. Keep lines under about 42 characters and aim below 20 characters per second for on-screen use.",
-        "Export SRT for players and editors, VTT for the web, or TXT for a readable transcript. The same cues feed all three files, so a correction made once appears in every download. Before publishing, run the file through the [subtitle validator](/subtitle-validator) to catch overlaps, empty cues and reading-speed warnings. The [video to SRT](/video-to-srt) page covers the same workflow when the source has pictures, and the [VoiceToTextFree](/) homepage lists the rest of the local tools, including the [offline subtitle generator](/offline-subtitle-generator) and the [private subtitle generator](/private-subtitle-generator). Bookmark [this audio workflow](/audio-to-srt) if you expect to repeat the job."
+        "Export SRT for players and editors, VTT for the web, or TXT for a readable transcript. The same cues feed all three files, so a correction made once appears in every download. Before publishing, run the file through the [subtitle validator](/subtitle-validator) to catch overlaps, empty cues and reading-speed warnings. The [video to SRT](/video-to-srt) page covers the same workflow when the source has pictures, and the [VoiceToTextFree](/) homepage explains the privacy model, the offline cache behaviour and the rest of the local tools. Bookmark [this audio workflow](/audio-to-srt) if you expect to repeat the job."
       ]
     }
   ],
@@ -90,7 +90,7 @@ export const tool: ToolPageContent = {
         "Cue times come from the audio clock, so there is no frame-rate drift to correct. Boundaries still land where the model hears a pause, which may be mid-sentence. Check a few cues against the recording and adjust the ones that clip the first word."
     },
     {
-      question: "Is there a file size limit?",
+      question: "What is the largest audio file the tool can handle?",
       answer:
         "The limit is 500 MB per file. This is a memory guard, not a duration rule, so a compressed podcast may fit while an uncompressed master of the same length does not. For long files, the Fast model leaves more memory for the audio."
     },
@@ -145,7 +145,7 @@ The room sound was the real problem, not the voices.`,
     { keyword: "Can I transcribe audio only?", role: "faq" },
     { keyword: "Which audio formats and codecs work?", role: "faq" },
     { keyword: "How accurate is the timing?", role: "faq" },
-    { keyword: "Is there a file size limit?", role: "faq" },
+    { keyword: "What is the largest audio file the tool can handle?", role: "faq" },
     { keyword: "Do I need to upload the audio file?", role: "faq" },
     { keyword: "What is the difference between SRT and a plain transcript?", role: "faq" }
   ]

@@ -11,7 +11,7 @@ export const srtVsVtt: GuideContent = {
   capsule:
     "When comparing SRT vs VTT, both are plain-text subtitle formats. SRT stores numbered cues and timestamps with commas; WebVTT adds a WEBVTT header and uses dots. SRT is the safest choice for editing software and uploads, while VTT is the standard for web video and supports styling and positioning.",
   published: "2026-01-20",
-  updated: "2026-10-28",
+  updated: "2026-10-29",
   author: "Abdul Samad",
   readingMinutes: 9,
   keyFacts: [
@@ -146,7 +146,7 @@ Bring the blue folder.`
         "Neither is universally better. VTT has a formal specification, cue settings and a web-native player, but it is less consistently supported by older editing software. SRT is simpler and more widely imported. Choose by destination rather than by age."
     },
     {
-      question: "Does YouTube accept VTT files?",
+      question: "For YouTube, is SRT or VTT the better upload?",
       answer:
         "YouTube Studio accepts subtitle files including SRT and VTT, but the upload menu and supported formats can change. Check YouTube's current help page before a large delivery, and keep an SRT master because YouTube's caption editor uses SRT for downloads."
     },

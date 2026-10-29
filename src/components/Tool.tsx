@@ -24,16 +24,7 @@ interface PendingResult {
 
 export interface ToolProps {
   initialLanguage?: string | null;
-  preset?:
-    | "main"
-    | "video-to-text"
-    | "video-to-srt"
-    | "audio-to-srt"
-    | "speech-to-text"
-    | "caption-generator"
-    | "transcript-generator"
-    | "offline-subtitle-generator"
-    | "private-subtitle-generator";
+  preset?: "main" | "video-to-srt" | "audio-to-srt";
 }
 
 export function Tool({ preset = "main", initialLanguage = null }: ToolProps) {
@@ -415,19 +406,11 @@ export function Tool({ preset = "main", initialLanguage = null }: ToolProps) {
   }
 
   const heading =
-    preset === "video-to-text"
-      ? "Turn video into text"
-      : preset === "audio-to-srt"
-        ? "Turn audio into SRT"
-        : preset === "video-to-srt"
-          ? "Turn video into SRT"
-          : preset === "speech-to-text"
-            ? "Speech to text, locally"
-            : preset === "caption-generator"
-              ? "Generate captions"
-              : preset === "transcript-generator"
-                ? "Generate a transcript"
-                : "Generate subtitles";
+    preset === "audio-to-srt"
+      ? "Turn audio into SRT"
+      : preset === "video-to-srt"
+        ? "Turn video into SRT"
+        : "Generate subtitles";
 
   return (
     <section id="tool" aria-labelledby="tool-heading" className="scroll-mt-20">

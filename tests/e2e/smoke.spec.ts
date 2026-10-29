@@ -114,7 +114,7 @@ function silentWav(seconds = 1) {
 }
 
 test("ffmpeg extracts a local audio track", async ({ page }) => {
-  test.setTimeout(60_000);
+  test.setTimeout(120_000);
   await page.goto("/");
   await page.locator('input[type="file"]').setInputFiles({
     name: "silence.wav",
@@ -124,7 +124,7 @@ test("ffmpeg extracts a local audio track", async ({ page }) => {
   await expect(page.locator(".output-frame")).toBeVisible();
   await page.getByRole("button", { name: /Generate subtitles/ }).click();
   await expect(page.locator("#progress-heading")).toHaveText(/Loading the model|Transcribing/, {
-    timeout: 45_000
+    timeout: 90_000
   });
   await page.getByRole("button", { name: "Cancel" }).click();
   await expect(page.getByText("silence.wav")).toBeVisible();

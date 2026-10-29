@@ -15,7 +15,7 @@ export const homeContent: HomeContent = {
   capsule:
     "VoiceToTextFree is a free subtitle generator and voice to text tool that runs OpenAI Whisper inside your browser. Choose a video or audio file, pick one of 99 languages or auto-detect, then edit the timed transcript and export SRT, VTT or TXT. Your media is never uploaded.",
   published: "2026-01-15",
-  updated: "2026-10-28",
+  updated: "2026-10-29",
   author: "Abdul Samad",
   keyFacts: [
     { label: "Price", value: "Free, no account, no credit card" },
@@ -106,12 +106,7 @@ export const homeContent: HomeContent = {
     {
       question: "What is the maximum file size?",
       answer:
-        "The limit is 500 MB per file. Files over 100 MB may be slow or unstable on phones because the audio is held in memory. For long recordings, trim the clip or split it into parts; there is no server-side queue to resume a failed job."
-    },
-    {
-      question: "Is there a file size limit?",
-      answer:
-        "Yes. The limit is 500 MB per file, set by browser memory rather than a server quota. If a recording is larger, trim it or split it into parts before transcribing; there is no server-side queue to resume a failed job."
+        "The limit is 500 MB per file, set by browser memory rather than a server quota. Files over 100 MB may be slow or unstable on phones because the audio is held in memory. For long recordings, trim the clip or split it into parts; there is no server-side queue to resume a failed job."
     },
     {
       question: "Is it free?",
@@ -202,11 +197,6 @@ So we moved the microphone closer.`,
     { keyword: "add subtitles to video", role: "synonym" },
     { keyword: "what file formats can i upload", role: "faq" },
     { keyword: "what is the maximum file size", role: "faq" },
-    {
-      keyword: "is there a file size limit",
-      role: "faq",
-      note: "Answered by the same visible FAQ as the maximum size question."
-    },
     { keyword: "is it free", role: "faq" },
     { keyword: "do i need an account", role: "faq" },
     { keyword: "does it work on mobile", role: "faq" },

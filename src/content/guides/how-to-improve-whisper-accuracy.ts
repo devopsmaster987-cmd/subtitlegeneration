@@ -11,7 +11,7 @@ export const guide: GuideContent = {
   capsule:
     "How to improve Whisper accuracy starts with the recording, not the model. Use a close microphone, avoid music and crosstalk, choose the spoken language instead of relying on auto-detect, size the model to the device, and review names, numbers and punctuation. Better input and a short editing pass matter more than chasing a universal accuracy number.",
   published: "2026-01-28",
-  updated: "2026-10-28",
+  updated: "2026-10-29",
   author: "Abdul Samad",
   readingMinutes: 9,
   keyFacts: [
@@ -117,7 +117,7 @@ export const guide: GuideContent = {
       heading: "Measure your own results",
       paragraphs: [
         "A useful test set is five to ten short clips that represent your real material: one clean speaker, one noisy room, one accented speaker, one clip with music, and one with the names and numbers you care about. Count the errors you actually have to fix, or time the review pass. That gives you a comparison between models or microphone setups without pretending there is a universal accuracy figure.",
-        "Keep the winning settings with the project. If a client sends a new recording from the same room and the same speaker, start from the settings that worked and spend the saved time on review. The browser tool runs locally, so you can test a private sample through the [offline subtitle generator](/offline-subtitle-generator) and read more about the [privacy model](/guides/is-browser-transcription-private) before uploading anything to a different service."
+        "Keep the winning settings with the project. If a client sends a new recording from the same room and the same speaker, start from the settings that worked and spend the saved time on review. The browser tool runs locally, so you can test a private sample in safety and read more about the [privacy model](/guides/is-browser-transcription-private) before uploading anything to a different service."
       ]
     }
   ],

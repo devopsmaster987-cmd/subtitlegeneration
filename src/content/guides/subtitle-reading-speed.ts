@@ -11,7 +11,7 @@ export const guide: GuideContent = {
   capsule:
     "Subtitle reading speed is characters divided by seconds on screen. A common working ceiling is 15 to 20 characters per second for adult English, with shorter limits for children and dense text. Duration matters too: very short cues flash, and very long cues linger. Measure CPS per cue, then shorten, extend or split.",
   published: "2026-01-26",
-  updated: "2026-10-28",
+  updated: "2026-10-29",
   author: "Abdul Samad",
   readingMinutes: 8,
   keyFacts: [
@@ -125,12 +125,12 @@ export const guide: GuideContent = {
         "Long enough to read the text at a comfortable speed, usually between about one and seven seconds. Very short cues are easy to miss, and very long cues can linger over the next line. Let the character count and the speech determine the exact duration."
     },
     {
-      question: "How long should subtitles stay on screen?",
+      question: "Is there an upper limit for how long a cue stays on screen?",
       answer:
         "There is no single number. A short cue of a few words may need only a second; a full sentence may need three to five. Netflix's general requirements use a minimum of five-sixths of a second and a maximum of seven seconds, which is a useful outside bracket."
     },
     {
-      question: "What is a good reading speed for subtitles?",
+      question: "Which CPS target should general-audience subtitles use?",
       answer:
         "For adult English, about 12 to 15 CPS is comfortable and up to 20 CPS is a common ceiling. Children's content is usually held to a lower limit. Dense names, numbers and technical terms may need to be slower than the raw count suggests."
     },
@@ -187,8 +187,8 @@ Take the side entrance and keep your ticket ready.`,
     { keyword: "subtitle reading speed", role: "primary" },
     { keyword: "characters per second subtitles", role: "secondary", headingLevel: 2 },
     { keyword: "how long should a subtitle stay on screen", role: "faq" },
-    { keyword: "how long should subtitles stay on screen", role: "faq" },
-    { keyword: "what is a good reading speed for subtitles", role: "faq" },
+    { keyword: "is there an upper limit for how long a cue stays on screen", role: "faq" },
+    { keyword: "which cps target should general-audience subtitles use", role: "faq" },
     { keyword: "how do i calculate characters per second", role: "faq" }
   ]
 };

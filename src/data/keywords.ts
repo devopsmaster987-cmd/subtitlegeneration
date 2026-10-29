@@ -20,15 +20,7 @@ export interface KeywordEntry {
   note?: string;
 }
 
-const headPages = new Set([
-  "/",
-  "/video-to-text",
-  "/video-to-srt",
-  "/audio-to-srt",
-  "/speech-to-text",
-  "/caption-generator",
-  "/transcript-generator"
-]);
+const headPages = new Set(["/", "/video-to-srt", "/audio-to-srt"]);
 
 function competitionFor(page: BasePageContent): KeywordCompetition {
   if (headPages.has(page.path)) return "head";

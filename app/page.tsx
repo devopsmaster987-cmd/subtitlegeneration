@@ -4,7 +4,7 @@ import { Tool } from "@/components/Tool";
 import { ContentSections } from "@/components/ContentSections";
 import { FaqList } from "@/components/FaqList";
 import { KeyFacts, Sources, WorkedExample } from "@/components/PageBlocks";
-import { AuthorBox } from "@/components/AuthorBox";
+import { AuthorBox, formatDate } from "@/components/AuthorBox";
 import { AdSlot } from "@/components/AdSlot";
 import { JsonLd } from "@/components/JsonLd";
 import { homeContent } from "@/content/home";
@@ -42,7 +42,7 @@ export default function HomePage() {
         <p className="mt-3 text-lg text-[var(--ink)]">{page.capsule}</p>
         <p className="mt-2 text-sm text-[var(--muted)]">
           Works with 99 languages. Nothing is uploaded. Updated{" "}
-          <time dateTime={page.updated}>28 October 2026</time>.
+          <time dateTime={page.updated}>{formatDate(page.updated)}</time>.
         </p>
       </header>
 
@@ -76,8 +76,13 @@ export default function HomePage() {
                 </Link>
               </li>
               <li>
-                <Link className="underline" href="/video-to-text">
-                  Video to text
+                <Link className="underline" href="/convert-srt-to-vtt">
+                  Convert SRT to VTT
+                </Link>
+              </li>
+              <li>
+                <Link className="underline" href="/subtitle-timing-editor">
+                  Timing editor
                 </Link>
               </li>
               <li>
@@ -91,8 +96,8 @@ export default function HomePage() {
                 </Link>
               </li>
               <li>
-                <Link className="underline" href="/offline-subtitle-generator">
-                  Offline generator
+                <Link className="underline" href="/merge-split-srt">
+                  Merge or split SRT
                 </Link>
               </li>
             </ul>
