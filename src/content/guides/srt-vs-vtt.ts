@@ -39,7 +39,7 @@ export const srtVsVtt: GuideContent = {
     {
       heading: "The short answer: subtitle format comparison",
       paragraphs: [
-        "If you only need one line: choose SRT when a person or a desktop editor will open the file next, and choose WebVTT when a browser will play the video. Both formats carry the same basic information — a start time, an end time and the words to display — but they grew up in different places. SRT came from the DivX and DVD-ripping world, where permissive parsers tolerated small mistakes. WebVTT was designed at the W3C for HTML5 video, with a formal syntax and features that a browser can style and position.",
+        "SRT vs VTT comes down to where the file goes next: choose SRT when a person or a desktop editor will open the file next, and choose WebVTT when a browser will play the video. Both formats carry the same basic information — a start time, an end time and the words to display — but they grew up in different places. SRT came from the DivX and DVD-ripping world, where permissive parsers tolerated small mistakes. WebVTT was designed at the W3C for HTML5 video, with a formal syntax and features that a browser can style and position.",
         "That history explains the practical differences you will notice. An SRT file is usually just numbers, timestamps and text. A VTT file starts with a WEBVTT signature and may contain comments, regions, styling blocks and cue settings. Most video tools read SRT; most browsers read VTT natively. Many tools read both, which is why the question keeps coming up."
       ],
       table: {

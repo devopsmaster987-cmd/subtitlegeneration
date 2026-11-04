@@ -4,7 +4,7 @@ export const guide: GuideContent = {
   kind: "guide",
   path: "/guides/whisper-model-sizes-compared",
   h1: "Whisper model sizes compared: tiny, base and small in a browser",
-  title: "Whisper model sizes compared: tiny, base and small in a browser",
+  title: "Whisper model sizes compared: tiny, base and small",
   metaDescription:
     "Whisper model sizes compared using measured browser downloads: tiny, base and small, their parameters, memory tradeoffs and a practical way to choose.",
   primaryKeyword: "whisper model sizes compared",
@@ -44,7 +44,7 @@ export const guide: GuideContent = {
     {
       heading: "Parameters and download size are different numbers",
       paragraphs: [
-        "A parameter is a learned weight inside the model. A download is a file you wait for. The two are related, but they are not the same measurement, and mixing them up makes a model decision look simpler than it is. The OpenAI repository lists tiny at 39 million parameters, base at 74 million and small at 244 million. The browser downloads in the table below are larger or smaller than a naive conversion would suggest because they include an encoder and a decoder, and because the runtime changes the numeric format.",
+        "The phrase Whisper model sizes compared covers two different measurements, so start by separating them: a parameter is a learned weight inside the model, and a download is a file you wait for. The two are related but not identical, and mixing them up makes a model decision look simpler than it is. The OpenAI repository lists tiny at 39 million parameters, base at 74 million and small at 244 million. The browser downloads in the table below are larger or smaller than a naive conversion would suggest because they include an encoder and a decoder, and because the runtime changes the numeric format.",
         "This site serves an ONNX build through Transformers.js. On WASM it uses q8 weights, an 8-bit quantized format that reduces the download. On WebGPU it uses fp16, which is larger but suits the GPU path. Those are the two numbers a visitor actually experiences: the network transfer and the memory needed while the model is open. Neither number is an accuracy rating."
       ]
     },

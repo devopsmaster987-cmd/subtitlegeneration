@@ -29,7 +29,7 @@ export const guide: GuideContent = {
     {
       heading: "The SRT file format, line by line",
       paragraphs: [
-        "An SRT file stores subtitles as plain text. Each cue has three parts: a sequence number, a timestamp line and the text that appears on screen. A blank line separates one cue from the next. That is the whole structure. There are no required fonts, colours, positioning values or metadata blocks. Because the format is so small, you can open a subtitle file in Notepad, VS Code or any text editor and understand it without special software.",
+        "What is an SRT file, exactly? It stores subtitles as plain text. Each cue has three parts: a sequence number, a timestamp line and the text that appears on screen. A blank line separates one cue from the next. That is the whole structure. There are no required fonts, colours, positioning values or metadata blocks. Because the format is so small, you can open a subtitle file in Notepad, VS Code or any text editor and understand it without special software.",
         "The number above each cue is a counter, not an identifier that you reference elsewhere. Players sort cues by their timestamps, so cue 7 can sit above cue 6 in the file and still play in the right order. Editors and validators, however, expect the numbers to run in sequence, and a missing number can confuse older parsers. When you edit by hand, renumbering from 1 is the safest habit."
       ],
       bullets: [

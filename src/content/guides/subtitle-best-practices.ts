@@ -4,7 +4,7 @@ export const guide: GuideContent = {
   kind: "guide",
   path: "/guides/subtitle-best-practices",
   h1: "Subtitle best practices: a practical guide to cleaner captions",
-  title: "Subtitle best practices: a practical guide to cleaner captions",
+  title: "Subtitle best practices: a guide to cleaner captions",
   metaDescription:
     "Subtitle best practices for real playback: clause-level segmentation, two-line limits, reading speed, punctuation, speaker IDs, SDH and a clean review pass.",
   primaryKeyword: "subtitle best practices",
@@ -32,7 +32,7 @@ export const guide: GuideContent = {
     {
       heading: "Start with the viewer, then open the subtitle file",
       paragraphs: [
-        "A subtitle file is a reading experience that happens while the viewer is also watching faces, motion and on-screen text. That split attention is the reason so many rules exist. If a cue arrives late, asks the eye to jump between three lines, or disappears before the sentence is finished, the viewer misses both the words and the picture. Start by watching the clip once without captions, then decide what the text must carry. The file is a tool for that job, not a transcript with timestamps attached.",
+        "Most subtitle best practices follow from a single fact: a subtitle file is a reading experience that happens while the viewer is also watching faces, motion and on-screen text. That split attention is the reason so many rules exist. If a cue arrives late, asks the eye to jump between three lines, or disappears before the sentence is finished, the viewer misses both the words and the picture. Start by watching the clip once without captions, then decide what the text must carry. The file is a tool for that job, not a transcript with timestamps attached.",
         "It also helps to separate three layers: what is said, how it is timed, and how it is presented. A clean transcript can still produce poor captions if the segmentation ignores grammar. Accurate timing can still feel rushed if each cue contains too many words. Correct wording can still be hard to read if a line break splits a name or a number. Treat each layer as its own pass, then review the combined result at normal speed."
       ]
     },

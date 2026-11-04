@@ -42,7 +42,7 @@ export const guide: GuideContent = {
     {
       heading: "What word level timing actually requires",
       paragraphs: [
-        "Word level timing means each word has its own start and end point inside a cue. The cue still has an overall start and end, but the renderer knows when train becomes active, when leaves appears and when the line finishes. That data makes karaoke highlights and word-by-word reveals possible.",
+        "Word aligned subtitles are built on word-level timing: each word has its own start and end point inside a cue. The cue still has an overall start and end, but the renderer knows when train becomes active, when leaves appears and when the line finishes. That data makes karaoke highlights and word-by-word reveals possible.",
         "A normal subtitle file does not contain it. It has one start, one end and a block of text. The player can show the cue but cannot know which word is spoken at 2.4 seconds unless the file carries inner timestamps or the player runs its own alignment. A fade on the cue is not word alignment.",
         "Word alignment needs a source of truth. Speech recognition can estimate word times, forced alignment can match a transcript to audio, and a human can hand-time a short clip. Each method has error, especially with music, overlapping speech and accents. Review the timings as carefully as the text."
       ]

@@ -5,9 +5,9 @@ export const tool: ToolPageContent = {
   path: "/audio-to-srt",
   preset: "audio-to-srt",
   h1: "Audio to SRT: turn a sound file into timed subtitles",
-  title: "Audio to SRT — build a timed subtitle file from MP3, WAV or M4A",
+  title: "Audio to SRT — timed subtitles from MP3, WAV or M4A",
   metaDescription:
-    "Convert audio to SRT in your browser. An MP3, WAV or M4A file is decoded locally, transcribed with Whisper, and exported as a timed subtitle file without an upload.",
+    "Convert audio to SRT in your browser. An MP3, WAV or M4A file is decoded locally, transcribed with Whisper and exported as timed subtitles, with no upload.",
   primaryKeyword: "audio to srt",
   capsule:
     "Audio to SRT means turning a recording that has no picture into a subtitle file with numbered, timed cues. VoiceToTextFree decodes the sound locally, runs Whisper in the browser, and lets you correct wording and timing before downloading a standard SRT.",
@@ -26,7 +26,7 @@ export const tool: ToolPageContent = {
     {
       heading: "What an audio-only subtitle file is for",
       paragraphs: [
-        "Sometimes the picture is not the point. A podcast, a phone interview or a recorded lecture may have no video at all, yet still need captions for a video cut, a social clip or an accessible web player. This page accepts the sound file directly, so you do not have to attach a still image or run the audio through a video editor first.",
+        "Convert audio to SRT when the picture is not the point: a podcast, a phone interview or a recorded lecture may have no video at all, yet still need captions for a video cut, a social clip or an accessible web player. This page accepts the sound file directly, so you do not have to attach a still image or run the audio through a video editor first.",
         "The output is an ordinary SRT file. It contains numbered cues, start and end times, and the spoken text. Because there are no frames to inspect, timing comes entirely from the audio clock. That makes the result predictable, but it also means you should listen to the first and last cue after importing the SRT into an editor, especially if the source was recorded on a device that pauses and resumes."
       ]
     },

@@ -29,7 +29,7 @@ export const videoToSrt: ToolPageContent = {
     {
       heading: "What this tool does with your video",
       paragraphs: [
-        "The page is a working video-to-SRT converter, not a landing page for one. Choose a video file, select the spoken language, and press Generate. The browser extracts an audio track with ffmpeg.wasm, splits it into roughly 30-second chunks with a two-second overlap, and transcribes each chunk with Whisper. The cues are stitched back together, duplicate words at the overlap are removed, and the result appears in the editor with start and end times.",
+        "This page converts video to SRT in your browser; it is a working converter, not a landing page for one. Choose a video file, select the spoken language, and press Generate. The browser extracts an audio track with ffmpeg.wasm, splits it into roughly 30-second chunks with a two-second overlap, and transcribes each chunk with Whisper. The cues are stitched back together, duplicate words at the overlap are removed, and the result appears in the editor with start and end times.",
         "Nothing about the video is sent to a server. That matters for client work and for interviews, but it also means the speed depends on your machine. A five-minute MP4 on a modern laptop with WebGPU can be much faster than the same file on an older phone using WASM. The progress panel separates model download, audio extraction and transcription so a slow first run does not look like a failed conversion."
       ]
     },

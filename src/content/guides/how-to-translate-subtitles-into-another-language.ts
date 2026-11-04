@@ -4,7 +4,7 @@ export const guide: GuideContent = {
   kind: "guide",
   path: "/guides/how-to-translate-subtitles-into-another-language",
   h1: "How to translate subtitles into another language: an honest workflow",
-  title: "How to translate subtitles into another language: an honest workflow",
+  title: "How to translate subtitles into another language",
   metaDescription:
     "How to translate subtitles into another language when Whisper only translates to English: export SRT, edit cue by cue, protect timing and review idioms.",
   primaryKeyword: "how to translate subtitles into another language",
@@ -33,7 +33,7 @@ export const guide: GuideContent = {
     {
       heading: "The honest limit: Whisper translation to English",
       paragraphs: [
-        "Whisper is a multilingual speech model, but its translation task is not a general translation engine. The OpenAI model card describes the translate task as translating speech into English. The project README is explicit: use a multilingual model with --task translate to translate non-English speech into English, and do not expect the turbo model to translate at all.",
+        "How to translate subtitles into another language starts with the limit Whisper itself imposes: its translation task is not a general translation engine. The OpenAI model card describes the translate task as translating speech into English. The project README is explicit: use a multilingual model with --task translate to translate non-English speech into English, and do not expect the turbo model to translate at all.",
         "This browser tool exposes the same task. When you choose the translate option in the [VoiceToTextFree transcriber](/), the model receives the audio plus a translate instruction and returns English text, not French, Spanish, Arabic or Urdu. That is a model capability limit, not a hidden menu.",
         "The consequence is simple. English is the one target the model can produce directly. Every other direction needs a second stage outside the model: a human translator, a translation service, or a language model with a reviewed prompt. The rest of this guide treats that second stage as part of the work."
       ]

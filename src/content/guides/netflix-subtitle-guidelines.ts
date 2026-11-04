@@ -4,7 +4,7 @@ export const guide: GuideContent = {
   kind: "guide",
   path: "/guides/netflix-subtitle-guidelines",
   h1: "Netflix subtitle guidelines: what the published timed-text guide says",
-  title: "Netflix subtitle guidelines: what the published timed-text guide says",
+  title: "Netflix subtitle guidelines: what the timed-text guide says",
   metaDescription:
     "A neutral walkthrough of Netflix subtitle guidelines: published timing, reading speed, line length, shot changes, speaker IDs, music and SDH, with attribution.",
   primaryKeyword: "netflix subtitle guidelines",
@@ -38,7 +38,7 @@ export const guide: GuideContent = {
     {
       heading: "What the Netflix timed text style guide covers",
       paragraphs: [
-        "Netflix publishes timed-text requirements on its [Partner Help Center](https://partnerhelp.netflixstudios.com/hc/en-us/articles/215758617-Timed-Text-Style-Guide-General-Requirements). The set includes a general requirements article, a subtitle timing guide, language-specific style guides and file-type guidance. The general article covers duration, line treatment, positioning, consistency and technical aspects. The language guides add character limits, reading speed, punctuation, speaker identifiers and sound description. A vendor may need several of those documents, not the general page alone.",
+        "The Netflix subtitle guidelines are published as timed-text requirements on the [Partner Help Center](https://partnerhelp.netflixstudios.com/hc/en-us/articles/215758617-Timed-Text-Style-Guide-General-Requirements). The set includes a general requirements article, a subtitle timing guide, language-specific style guides and file-type guidance. The general article covers duration, line treatment, positioning, consistency and technical aspects. The language guides add character limits, reading speed, punctuation, speaker identifiers and sound description. A vendor may need several of those documents, not the general page alone.",
         "Two cautions matter before applying any of it. The pages are written for vendors delivering timed text to Netflix, not for every video on the web. The values also change: the pages carry change logs, and the general requirements point readers to the current delivery specification. Treat this page as a map of what the published material covers, then open the live article for the figure that applies to your project. VoiceToTextFree is independent and not affiliated with Netflix.",
         "The published material is useful even if you never deliver to Netflix, because it shows how a large buyer turns readability goals into checkable requirements. It also shows where the requirements are intentionally narrow: a rule about shot changes or bracketed labels exists to serve a particular pipeline, not to settle every editorial question."
       ]

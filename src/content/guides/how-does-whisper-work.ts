@@ -44,7 +44,7 @@ export const guide: GuideContent = {
     {
       heading: "The short version: an encoder and a decoder",
       paragraphs: [
-        "Whisper is a sequence-to-sequence model. The encoder reads a fixed representation of the audio and builds a context-rich internal state. The decoder then writes text one token at a time, using that state and the tokens it has already produced. The same model can transcribe speech, translate speech into English, identify the spoken language and mark voice activity because those jobs are expressed as special tokens rather than as separate models.",
+        "How does Whisper work? It is a sequence-to-sequence model. The encoder reads a fixed representation of the audio and builds a context-rich internal state. The decoder then writes text one token at a time, using that state and the tokens it has already produced. The same model can transcribe speech, translate speech into English, identify the spoken language and mark voice activity because those jobs are expressed as special tokens rather than as separate models.",
         "The OpenAI paper describes a fairly conventional Transformer design: an encoder and a decoder of equal width and depth, with pre-activation residual blocks and a final layer normalisation on the encoder side. Tiny uses four layers, base uses six and small uses twelve, with widths of 384, 512 and 768 respectively. That is why a larger model downloads more and runs more slowly: there is more computation between the spectrogram and each predicted word."
       ]
     },

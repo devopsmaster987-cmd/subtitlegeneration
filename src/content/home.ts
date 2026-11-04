@@ -8,7 +8,7 @@ export const homeContent: HomeContent = {
   kind: "home",
   path: "/",
   h1: "Free subtitle generator and voice to text tool",
-  title: "Free subtitle generator and voice to text tool | VoiceToTextFree",
+  title: "Free subtitle generator and voice to text | VoiceToTextFree",
   metaDescription:
     "Free subtitle generator and voice to text tool: transcribe video or audio locally, edit cues and export SRT, VTT or TXT. Nothing is uploaded.",
   primaryKeyword: "free subtitle generator",
@@ -29,7 +29,7 @@ export const homeContent: HomeContent = {
     {
       heading: "What VoiceToTextFree does",
       paragraphs: [
-        "VoiceToTextFree turns a recording into a timed transcript you can edit and publish. Drop in an interview, a lecture, a screen recording or a phone video; the app extracts a mono 16 kHz audio track, slices it into overlapping chunks and sends those chunks to a Whisper model that is running on your device. The output appears as numbered cues with start and end times. You can correct a name, fix a sentence, split a cue that stayed on screen too long, merge two short cues, or shift every timing by a fixed offset before exporting.",
+        "This free subtitle generator turns a recording into a timed transcript you can edit and publish. Drop in an interview, a lecture, a screen recording or a phone video; the app extracts a mono 16 kHz audio track, slices it into overlapping chunks and sends those chunks to a Whisper model that is running on your device. The output appears as numbered cues with start and end times. You can correct a name, fix a sentence, split a cue that stayed on screen too long, merge two short cues, or shift every timing by a fixed offset before exporting.",
         "The result is a normal subtitle file, not a proprietary project. SRT works in Premiere Pro, DaVinci Resolve, Final Cut Pro, CapCut and most upload forms. WebVTT is the format HTML5 video players expect. Plain TXT is useful when you need a readable transcript for a report, an article or a searchable archive. The tool does not add a watermark, ask for an email address or send your audio to a paid API."
       ]
     },

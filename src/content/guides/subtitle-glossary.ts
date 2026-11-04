@@ -4,7 +4,7 @@ export const guide: GuideContent = {
   kind: "guide",
   path: "/guides/subtitle-glossary",
   h1: "Subtitle glossary: 46 terms for captions, timing and delivery",
-  title: "Subtitle glossary: 46 terms for captions, timing and delivery",
+  title: "Subtitle glossary: 46 caption and timing terms",
   metaDescription:
     "A subtitle glossary of 46 captioning terms: cue, timecode, CPS, CPL, SDH, sidecar, burn-in, SRT, WebVTT, TTML and more, defined in plain language.",
   primaryKeyword: "subtitle glossary",
@@ -44,7 +44,7 @@ export const guide: GuideContent = {
     {
       heading: "Subtitle terminology: how the terms fit together",
       paragraphs: [
-        "Subtitle vocabulary mixes file-format names, broadcast conventions, accessibility practice and informal shorthand. The same word can mean different things in different rooms: a producer may say caption when they mean a same-language track, while a translator may say subtitle for a translated track. A useful reference does not pretend those usages are identical. It gives each term a clear working definition and notes where context changes the meaning.",
+        "This subtitle glossary defines the vocabulary that mixes file-format names, broadcast conventions, accessibility practice and informal shorthand. The same word can mean different things in different rooms: a producer may say caption when they mean a same-language track, while a translator may say subtitle for a translated track. A useful reference does not pretend those usages are identical. It gives each term a clear working definition and notes where context changes the meaning.",
         "The terms also arrive in layers. At the bottom are the container and file formats: SRT, WebVTT, TTML and ASS/SSA. Above them sit timing concepts such as cue, timecode, frame rate and reading speed. Accessibility adds SDH, closed captions, open captions and audio description. Production adds transcription, diarization, sidecar delivery, burn-in and archiving. Learning the layers separately makes a technical conversation much easier to follow.",
         "Use the definitions as a shared vocabulary, not as a substitute for the specification you are delivering against. When a client says a file must be 'broadcast compliant' or 'SDH ready', ask which document and which language guide they mean. The words are a starting point for that question."
       ]

@@ -27,6 +27,9 @@ import { guide as subtitlesForAccessibility } from "./subtitles-for-accessibilit
 import { guide as subtitleAndCaptioningWorkflow } from "./subtitle-and-captioning-workflow";
 import { guide as wordAlignedAndStyledCaptions } from "./word-aligned-and-styled-captions";
 import { guide as subtitleGlossary } from "./subtitle-glossary";
+import { guide as howToTranscribeAZoomRecording } from "./how-to-transcribe-a-zoom-recording";
+import { guide as howToTranscribeATeamsRecording } from "./how-to-transcribe-a-teams-recording";
+import { guide as howToTranscribeALecture } from "./how-to-transcribe-a-lecture";
 
 const guideList: GuideContent[] = [
   srtVsVtt,
@@ -56,7 +59,10 @@ const guideList: GuideContent[] = [
   subtitlesForAccessibility,
   subtitleAndCaptioningWorkflow,
   wordAlignedAndStyledCaptions,
-  subtitleGlossary
+  subtitleGlossary,
+  howToTranscribeAZoomRecording,
+  howToTranscribeATeamsRecording,
+  howToTranscribeALecture
 ];
 
 export const guides = [...guideList].sort((a, b) => a.path.localeCompare(b.path));

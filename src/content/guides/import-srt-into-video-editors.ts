@@ -4,7 +4,7 @@ export const guide: GuideContent = {
   kind: "guide",
   path: "/guides/import-srt-into-video-editors",
   h1: "SRT for Premiere Pro: import SRT into video editors without drift",
-  title: "SRT for Premiere Pro: import SRT into video editors (verified steps)",
+  title: "SRT for Premiere Pro: import SRT into video editors",
   metaDescription:
     "SRT for Premiere Pro: import SRT into video editors with verified steps for Premiere Pro, DaVinci Resolve, Final Cut Pro and CapCut.",
   primaryKeyword: "srt for premiere pro",
@@ -36,7 +36,7 @@ export const guide: GuideContent = {
     {
       heading: "What a clean import requires",
       paragraphs: [
-        "An SRT is an interchange file, not a finished caption design. It carries cue numbers, start and end times, and text. It does not carry a reliable font, position or animation, even when a tool writes unofficial markup into the file. Every editor below reads the timing and the words, then creates its own caption or subtitle object. That object is what you style, move and export.",
+        "Working with SRT for Premiere Pro or any other editor starts with one idea: an SRT is an interchange file, not a finished caption design. It carries cue numbers, start and end times, and text. It does not carry a reliable font, position or animation, even when a tool writes unofficial markup into the file. Every editor below reads the timing and the words, then creates its own caption or subtitle object. That object is what you style, move and export.",
         "The practical consequence is that a clean import depends on the file being boring. Valid timestamps, sequential numbers, UTF-8 text, and no tags that the editor will print literally. If the import produces one long cue, a blank timeline, or text that includes the numbers, the problem is usually in the file rather than in the editor."
       ]
     },

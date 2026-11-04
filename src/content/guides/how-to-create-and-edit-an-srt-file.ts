@@ -26,7 +26,7 @@ export const guide: GuideContent = {
     {
       heading: "What you need before you type a cue",
       paragraphs: [
-        "You do not need a video editor to start. A plain text editor, a video player for checking the result and a little patience with timestamps are enough. The file is small, and every line has a visible job. That transparency is both the strength and the risk: a missing blank line is easy to create and hard to notice until playback.",
+        "How to create an SRT file, and edit it, with tools you already have: a plain text editor, a video player for checking the result and a little patience with timestamps are enough. The file is small, and every line has a visible job. That transparency is both the strength and the risk: a missing blank line is easy to create and hard to notice until playback.",
         "Before typing, decide the cue length you want. A comfortable target is one or two short lines per cue, with enough time on screen to read them. If you already have a transcript, you can cut it into cues; if you are working from audio, listen in short passes and mark the start and end of each phrase.",
         "Work from a copy if the file already exists. Keep a version with a date or a short note, and change one thing at a time. If a bulk find-and-replace goes wrong, the copy is the difference between a two-minute fix and a full retime."
       ]

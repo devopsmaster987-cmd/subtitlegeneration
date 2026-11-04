@@ -32,7 +32,7 @@ export const guide: GuideContent = {
     {
       heading: "Decide what a subtitle means inside TikTok",
       paragraphs: [
-        "TikTok's editor is built for speed, and its text tools reflect that. You can add a text layer, style it, and time it on the timeline; some app versions also offer automatic captions. A text layer is not the same as a subtitle track. It is a design object placed over the video, usually burned into the exported file, and it does not give the viewer a separate caption control. That distinction matters when a client asks for subtitles and expects something a viewer can switch off.",
+        "Working out how to add subtitles to TikTok starts with what the app means by text. TikTok's editor is built for speed, and its text tools reflect that. You can add a text layer, style it, and time it on the timeline; some app versions also offer automatic captions. A text layer is not the same as a subtitle track. It is a design object placed over the video, usually burned into the exported file, and it does not give the viewer a separate caption control. That distinction matters when a client asks for subtitles and expects something a viewer can switch off.",
         "For most TikTok posts, the practical choice is between an in-app text layer and a burn-in from an external editor. A sidecar SRT is useful upstream: it carries the timing and wording into the editor, and it can be translated or reviewed. It is not a delivery format that TikTok documents for an ordinary post. Build the SRT as the master, then choose how the words reach the viewer."
       ]
     },

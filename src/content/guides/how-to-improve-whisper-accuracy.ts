@@ -6,7 +6,7 @@ export const guide: GuideContent = {
   h1: "How to improve Whisper accuracy for cleaner subtitles",
   title: "How to improve Whisper accuracy for cleaner subtitles",
   metaDescription:
-    "How to improve Whisper accuracy with better audio capture, explicit language selection, measured model sizes, overlap handling and a practical human review workflow.",
+    "How to improve Whisper accuracy with better audio capture, explicit language selection, measured model sizes, overlap handling and a human review pass.",
   primaryKeyword: "how to improve whisper accuracy",
   capsule:
     "How to improve Whisper accuracy starts with the recording, not the model. Use a close microphone, avoid music and crosstalk, choose the spoken language instead of relying on auto-detect, size the model to the device, and review names, numbers and punctuation. Better input and a short editing pass matter more than chasing a universal accuracy number.",
@@ -45,7 +45,7 @@ export const guide: GuideContent = {
     {
       heading: "Start with the recording, not the model",
       paragraphs: [
-        "The largest gains usually come before the file reaches Whisper. Put the microphone close to the speaker, aim it away from a fan or a keyboard, and record a short level check. A phone on a table picks up room reflections and every hand movement; a lapel microphone or a headset sounds noticeably clearer. If the source is a video call, record the clean local microphone rather than the speaker output, because the speaker path adds compression and echo.",
+        "How to improve Whisper accuracy starts before the file ever reaches the model. Put the microphone close to the speaker, aim it away from a fan or a keyboard, and record a short level check. A phone on a table picks up room reflections and every hand movement; a lapel microphone or a headset sounds noticeably clearer. If the source is a video call, record the clean local microphone rather than the speaker output, because the speaker path adds compression and echo.",
         "Use a mono track for speech. Stereo can be fine, but this tool mixes channels to mono before resampling to 16 kHz, so a track with one silent channel or a phase problem loses useful signal. Avoid heavy noise reduction before transcription unless you can compare both versions: aggressive cleanup can remove consonants and make names harder to recognise. A modest high-pass filter and a consistent level are safer than a dramatic repair."
       ]
     },
@@ -192,7 +192,8 @@ Please confirm the invoice number by Friday.`,
     "whisper-model-sizes-compared",
     "is-browser-transcription-private",
     "how-to-sync-subtitles",
-    "subtitle-best-practices"
+    "subtitle-best-practices",
+    "how-to-transcribe-a-lecture"
   ],
   keywords: [
     { keyword: "how to improve whisper accuracy", role: "primary" },

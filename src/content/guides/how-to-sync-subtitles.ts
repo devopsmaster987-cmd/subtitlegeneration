@@ -29,7 +29,7 @@ export const guide: GuideContent = {
     {
       heading: "How to sync subtitles to video: constant offset or progressive drift",
       paragraphs: [
-        "There are two different timing problems, and they need different fixes. With a constant offset, every cue is early or late by roughly the same amount. The subtitles feel uniformly ahead of the dialogue, or uniformly behind it, and the gap does not grow. With progressive drift, the first cue is close, a cue in the middle is noticeably off, and the last cue is further off still. The gap grows because the subtitle clock and the video clock are running at slightly different rates.",
+        "Knowing how to sync subtitles starts with telling the two timing problems apart, because they need different fixes. With a constant offset, every cue is early or late by roughly the same amount. The subtitles feel uniformly ahead of the dialogue, or uniformly behind it, and the gap does not grow. With progressive drift, the first cue is close, a cue in the middle is noticeably off, and the last cue is further off still. The gap grows because the subtitle clock and the video clock are running at slightly different rates.",
         "Diagnose the type before touching a timestamp. Watch the first spoken line, one line near the midpoint, and one near the end. If the error at all three points is the same, use an offset. If the error changes steadily, use a stretch factor. If the error jumps at one point and is stable before and after, you likely have a missing or duplicated section, not a clock problem. That last case needs a different repair, such as re-timing one block or re-transcribing the affected scene."
       ],
       table: {

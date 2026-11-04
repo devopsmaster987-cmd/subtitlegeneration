@@ -4,7 +4,7 @@ export const guide: GuideContent = {
   kind: "guide",
   path: "/guides/subtitle-line-length",
   h1: "Subtitle line length",
-  title: "Subtitle line length: the 42-character convention and how to apply it",
+  title: "Subtitle line length: the 42-character convention",
   metaDescription:
     "Subtitle line length explained: the 42-character convention, two-line limits, counting spaces, line balancing and scripts such as CJK, Arabic and Urdu.",
   primaryKeyword: "subtitle line length",
@@ -26,7 +26,7 @@ export const guide: GuideContent = {
     {
       heading: "Maximum subtitle line length by delivery target",
       paragraphs: [
-        "A line limit exists because the eye can only take in so much text in one glance while also following the picture. The familiar number in English-language subtitling is 42 characters per line, with a maximum of two lines. That pairing appears in many broadcast and streaming style guides, including the Netflix timed text guides, and it has survived because it fits a comfortable reading span on a television screen without crowding the frame.",
+        "The 42-character subtitle line length exists because the eye can only take in so much text in one glance while also following the picture. The familiar number in English-language subtitling is 42 characters per line, with a maximum of two lines. That pairing appears in many broadcast and streaming style guides, including the Netflix timed text guides, and it has survived because it fits a comfortable reading span on a television screen without crowding the frame.",
         "Treat the number as a working target rather than a universal constant. A cinema screen, a phone held vertically and a browser player embedded in an article have different safe areas and different viewing distances. A documentary with long questions may need shorter lines than a drama with clipped dialogue. The table below separates the convention from the destination-specific advice you still have to check."
       ],
       table: {

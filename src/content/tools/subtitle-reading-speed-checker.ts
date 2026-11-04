@@ -7,7 +7,7 @@ export const tool: ToolPageContent = {
   h1: "Subtitle reading speed checker: find cues that are too fast",
   title: "Subtitle reading speed checker — CPS and line length limits",
   metaDescription:
-    "Use this subtitle reading speed checker to find cues above your CPS or line-length limit. Set the limits, review every warning, edit the cue, then export SRT or VTT.",
+    "Use this subtitle reading speed checker to find cues above your CPS or line-length limit. Set limits, review warnings, edit the cue, then export SRT or VTT.",
   primaryKeyword: "subtitle reading speed checker",
   capsule:
     "A subtitle reading speed checker measures characters per second for each cue and flags any line above the limits you choose. Import an SRT or VTT file, adjust the CPS and line-length thresholds, then fix the cues that are slow to read before exporting.",
@@ -26,7 +26,7 @@ export const tool: ToolPageContent = {
     {
       heading: "Characters per second subtitles: how CPS is calculated",
       paragraphs: [
-        "The checker calculates reading speed for each cue by counting characters in the cue text and dividing by the cue's duration in seconds. Tags are stripped from the count, runs of whitespace become a single space, and the text is trimmed. A cue that lasts two seconds and contains forty counted characters reads at twenty characters per second.",
+        "This subtitle reading speed checker counts characters in the cue text and divides them by the cue's duration in seconds. Tags are stripped from the count, runs of whitespace become a single space, and the text is trimmed. A cue that lasts two seconds and contains forty counted characters reads at twenty characters per second.",
         "The count includes spaces between words, because a reader's eye still travels across them. It does not include the timestamp line, the cue number or HTML-like markup. Duration is measured from start to end, so a long gap between two spoken phrases inside one cue is treated as reading time even if the screen is momentarily empty. That makes CPS a useful screening number rather than a perfect model of reading."
       ]
     },

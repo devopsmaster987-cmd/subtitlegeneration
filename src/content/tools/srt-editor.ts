@@ -26,7 +26,7 @@ export const tool: ToolPageContent = {
     {
       heading: "Opening a subtitle file in the browser",
       paragraphs: [
-        "Choose an SRT or VTT file from the import control, or paste subtitle text into the second box and press Use pasted text. The file is read with the browser's text reader and parsed in the page, so the subtitle never leaves the device. A small sample is included if you want to see how the table behaves before using your own file.",
+        "This free SRT editor online opens a cue list in the browser: choose an SRT or VTT file from the import control, or paste subtitle text into the second box and press Use pasted text. The file is read with the browser's text reader and parsed in the page, so the subtitle never leaves the device. A small sample is included if you want to see how the table behaves before using your own file.",
         "The parser is tolerant on purpose. It strips a byte-order mark, accepts Windows or Unix line endings, and reads cues even when the sequence number is missing. It skips WEBVTT headers and NOTE, STYLE or REGION blocks, which means a VTT file with comments can still be edited. Cues are sorted by start time as soon as they load. If the file contains no line with an arrow between two timestamps, nothing appears and an error explains that no cues were found."
       ]
     },

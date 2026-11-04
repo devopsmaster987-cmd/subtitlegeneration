@@ -4,7 +4,7 @@ export const guide: GuideContent = {
   kind: "guide",
   path: "/guides/subtitle-reading-speed",
   h1: "Subtitle reading speed",
-  title: "Subtitle reading speed: CPS, duration and how to fix fast cues",
+  title: "Subtitle reading speed: CPS, duration and fixes",
   metaDescription:
     "Subtitle reading speed explained: the CPS formula, 15-20 CPS guidelines, minimum duration, the 1-7 second range and how to fix cues that are too fast.",
   primaryKeyword: "subtitle reading speed",
@@ -26,7 +26,7 @@ export const guide: GuideContent = {
     {
       heading: "Characters per second subtitles: the CPS formula",
       paragraphs: [
-        "CPS means characters per second. It is the number of characters a viewer has to read for every second a cue is visible. The formula is simple: count the characters in the cue, including spaces and punctuation, then divide by the cue duration in seconds. A cue with 84 characters on screen for 6 seconds runs at 14 CPS. The same 84 characters on screen for 4 seconds runs at 21 CPS. The words did not change; only the time did.",
+        "Subtitle reading speed is measured in characters per second, or CPS. It is the number of characters a viewer has to read for every second a cue is visible. The formula is simple: count the characters in the cue, including spaces and punctuation, then divide by the cue duration in seconds. A cue with 84 characters on screen for 6 seconds runs at 14 CPS. The same 84 characters on screen for 4 seconds runs at 21 CPS. The words did not change; only the time did.",
         "Be consistent about what you count. Some tools ignore spaces and some include them, which can shift the result noticeably on ordinary prose. Pick one convention and use it across the file. This guide counts spaces because the eye has to cross them. Whatever convention you choose, compare cues within the same file using the same rule, and do not compare a number from one tool with a number from another without checking the method."
       ]
     },

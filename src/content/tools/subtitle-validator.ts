@@ -30,7 +30,7 @@ export const tool: ToolPageContent = {
     {
       heading: "What this validation pass actually checks",
       paragraphs: [
-        "The page runs a structural validation pass inside the browser tab. When you import a file or paste text, the parser splits the input into blocks, reads each timing line and stores start and end times in milliseconds. The issue list is recalculated on every edit and whenever you change a limit, so you are never looking at a stale report. Nothing is sent to a server, and nothing is saved after you close the tab.",
+        "This subtitle validator runs a structural validation pass inside the browser tab. When you import a file or paste text, the parser splits the input into blocks, reads each timing line and stores start and end times in milliseconds. The issue list is recalculated on every edit and whenever you change a limit, so you are never looking at a stale report. Nothing is sent to a server, and nothing is saved after you close the tab.",
         "The report covers seven practical faults: a cue that ends before it starts, a negative timestamp, an overlap with the previous cue, empty text, more than two lines in one cue, a line longer than your limit, and reading speed above your limit. The line-count rule is fixed at two. The line-length and reading-speed limits are editable. The list separates errors from warnings: reversed timings and negative times are errors, while the other findings are warnings that still deserve attention."
       ]
     },

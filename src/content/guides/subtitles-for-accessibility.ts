@@ -4,7 +4,7 @@ export const guide: GuideContent = {
   kind: "guide",
   path: "/guides/subtitles-for-accessibility",
   h1: "Subtitles for accessibility: what WCAG requires and how to deliver it",
-  title: "Subtitles for accessibility: what WCAG requires and how to deliver it",
+  title: "Subtitles for accessibility: what WCAG requires",
   metaDescription:
     "Subtitles for accessibility explained with WCAG 2.2: captions for prerecorded and live audio, speaker IDs, sound descriptions, timing and WebVTT delivery.",
   primaryKeyword: "subtitles for accessibility",
@@ -33,7 +33,7 @@ export const guide: GuideContent = {
     {
       heading: "WCAG success criteria for captions at a glance",
       paragraphs: [
-        "Accessibility guidance starts with a simple question: can a viewer who cannot hear the audio follow the content? WCAG 2.2 answers that with success criteria rather than a single checklist for fonts or colours. The two caption criteria sit in the time-based media guideline. One covers prerecorded audio, the other covers live audio, and both apply to synchronized media rather than to text on a static page.",
+        "Subtitles for accessibility exist to answer one question: can a viewer who cannot hear the audio follow the content? WCAG 2.2 answers that with success criteria rather than a single checklist for fonts or colours. The two caption criteria sit in the time-based media guideline. One covers prerecorded audio, the other covers live audio, and both apply to synchronized media rather than to text on a static page.",
         "WCAG is a technical standard with conformance levels. Success Criterion 1.2.2 is Level A, the base level, and Success Criterion 1.2.4 is Level AA. A project can meet those criteria without meeting every accessibility guideline, and meeting them says nothing by itself about local law. Treat the standard as the published baseline, then check the obligations that apply to your organization."
       ]
     },

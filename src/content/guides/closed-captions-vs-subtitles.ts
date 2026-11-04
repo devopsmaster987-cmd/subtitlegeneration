@@ -6,7 +6,7 @@ export const guide: GuideContent = {
   h1: "Closed captions vs subtitles: what each term means",
   title: "Closed captions vs subtitles: what each term means",
   metaDescription:
-    "Closed captions vs subtitles explained: definitions, SDH, translation, open and closed captions, burned-in versus sidecar files, platform behavior and WCAG context.",
+    "Closed captions vs subtitles explained: definitions, SDH, translation, open and closed captions, burned-in versus sidecar files and WCAG context.",
   primaryKeyword: "closed captions vs subtitles",
   capsule:
     "Closed captions vs subtitles is partly terminology and partly workflow. Captions usually carry dialogue plus speaker IDs and meaningful sounds for viewers who cannot hear the audio. Subtitles often translate dialogue for viewers who can hear but do not understand the language. Open captions are burned in; closed captions can be switched off. Choose by audience, platform and format.",
@@ -32,7 +32,7 @@ export const guide: GuideContent = {
     {
       heading: "The short answer: related files, different jobs",
       paragraphs: [
-        "The two terms overlap in everyday use, which is why the question keeps returning. In a broad sense, both put synchronized text on a screen. In a stricter sense, captions are built for viewers who cannot hear the audio, while subtitles are built for viewers who can hear it but need another language. That difference changes what goes into the file, not just what you call it.",
+        "Closed captions vs subtitles is a question of audience, yet the two terms overlap in everyday use, which is why the question keeps returning. In a broad sense, both put synchronized text on a screen. In a stricter sense, captions are built for viewers who cannot hear the audio, while subtitles are built for viewers who can hear it but need another language. That difference changes what goes into the file, not just what you call it.",
         "A practical way to decide is to ask who needs the text and why. If the answer is a Deaf or hard-of-hearing viewer who needs the dialogue, speaker changes and important sounds, you are captioning. If the answer is a viewer who can hear the scene but does not speak the language, you are subtitling. Many projects need both, and the same WebVTT or SRT container can hold either version.",
         "Terminology also changes across markets. In the United States, the word captions usually means the accessibility track, while in parts of Europe subtitles for the deaf and hard of hearing is the common phrase. A client may ask for subtitles and mean either version. Confirm the audience, the required content and the file format in writing before the work begins; that short exchange prevents a delivery that technically opens but misses the brief."
       ]
@@ -48,7 +48,7 @@ export const guide: GuideContent = {
       heading: "Open vs closed captions: who controls visibility",
       paragraphs: [
         "Open captions are part of the picture. They are rendered into the video frames, so they cannot be turned off or restyled by the viewer. That makes them reliable on platforms that do not support caption tracks, and it is why social videos often use burned-in text. The trade-off is control: viewers who do not want captions cannot hide them, and the text cannot be edited without re-exporting the video.",
-        "Closed captions live in a separate track that the player can show or hide. The viewer can usually change the size, colour or position, and the file remains searchable and editable. Closed captions are the better default for a website, a streaming service or any player with a caption menu. Open captions are a fallback for distribution channels that ignore sidecar files, not a replacement for a proper track when one is supported.",
+        "Closed captions live in a separate track that the player can show or hide. The viewer can usually change the size, colour or position, and the file remains searchable and editable. This track is the better default for a website, a streaming service or any player with a caption menu. Open captions are a fallback for distribution channels that ignore sidecar files, not a replacement for a proper track when one is supported.",
         "Player support is the deciding factor for this track. HTML5 video uses the track element and WebVTT, and the browser exposes a caption menu when the track is present. Some social players do not offer a visible toggle at all, which is why creators fall back to open captions. Test the actual embed rather than assuming that a file upload will produce a menu."
       ]
     },

@@ -7,7 +7,7 @@ export const tool: ToolPageContent = {
   h1: "Subtitle timing editor online: shift and stretch every subtitle cue",
   title: "Subtitle timing editor online — shift and stretch SRT cues",
   metaDescription:
-    "Use this subtitle timing editor online to shift every cue by seconds or stretch timestamps for frame-rate drift. Edit SRT or VTT locally and export a retimed file.",
+    "Use this subtitle timing editor online to shift every cue by seconds or stretch timestamps for drift. Edit SRT or VTT locally and export a retimed file.",
   primaryKeyword: "subtitle timing editor online",
   capsule:
     "A subtitle timing editor online lets you move or rescale every cue in an SRT or VTT file without re-transcribing it. This browser tool applies a global offset in seconds or a stretch factor, shows each cue in a table, and exports the retimed file locally.",
@@ -27,7 +27,7 @@ export const tool: ToolPageContent = {
     {
       heading: "What this timing editor changes",
       paragraphs: [
-        "This page works on a subtitle file that already has timestamps. You import an SRT or VTT file, or paste subtitle text, and the cues appear in a table with an editable start time, end time and text area. The timing controls sit above that table: an offset in seconds, a stretch factor, and a reset button. Every change is applied to the cue list in the browser, and the corrected file is downloaded from the same page.",
+        "A subtitle timing editor online like this one works on a file that already has timestamps. You import an SRT or VTT file, or paste subtitle text, and the cues appear in a table with an editable start time, end time and text area. The timing controls sit above that table: an offset in seconds, a stretch factor, and a reset button. Every change is applied to the cue list in the browser, and the corrected file is downloaded from the same page.",
         "That scope is deliberately narrow. The tool does not transcribe audio, does not read a video track and does not decide where a line should appear. It cannot listen to a clip and align words to it. What it can do is apply a timing correction that you have already diagnosed, which is often the fastest fix for a file that was authored against a different copy of the same video."
       ]
     },

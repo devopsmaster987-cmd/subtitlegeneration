@@ -38,7 +38,7 @@ export const guide: GuideContent = {
     {
       heading: "Why timing is a range, not a universal rule",
       paragraphs: [
-        "A timing rule that works on one service can fail on another. Broadcasters, streaming platforms, film festivals and classroom players publish different limits, and some accept a file that another rejects. Language matters too: a line that is comfortable in German may be dense in Japanese, and character-based scripts change how much text fits in a glance. Treat any single number as a starting point, then check the delivery specification for the destination.",
+        "Subtitle timing guidelines differ between broadcasters, streaming platforms, film festivals and classroom players, because a rule that works on one service can fail on another. Broadcasters, streaming platforms, film festivals and classroom players publish different limits, and some accept a file that another rejects. Language matters too: a line that is comfortable in German may be dense in Japanese, and character-based scripts change how much text fits in a glance. Treat any single number as a starting point, then check the delivery specification for the destination.",
         "The useful approach is a working range plus a reading test. Many editors keep cues somewhere between one and seven seconds, avoid cues that flash by too quickly to register, and avoid leaving text on screen after the thought has ended. Those habits are sensible, but they are conventions rather than a global standard. When a platform publishes its own limits, that document wins. When it does not, use the range, check reading speed, and review the result in the target player."
       ]
     },

@@ -44,7 +44,7 @@ export const guide: GuideContent = {
     {
       heading: "The captioning process, step by step",
       paragraphs: [
-        "A dependable process separates editorial decisions from mechanical checks. Decide who the captions serve and where they will play first; then work through the recording in a fixed order so a late change does not force the whole file to be rebuilt. The order below is a working default, not a rigid rule. The important part is that review happens before timing, and player testing happens before delivery.",
+        "A dependable captioning workflow separates editorial decisions from mechanical checks. Decide who the captions serve and where they will play first; then work through the recording in a fixed order so a late change does not force the whole file to be rebuilt. The order below is a working default, not a rigid rule. The important part is that review happens before timing, and player testing happens before delivery.",
         "The steps assume a pre-recorded file. Live captioning adds a real-time operator and different tools, but the review and delivery questions remain similar."
       ],
       steps: [

@@ -26,7 +26,7 @@ export const guide: GuideContent = {
     {
       heading: "The VTT file format compared with SRT",
       paragraphs: [
-        "Both SRT and VTT hold timed subtitle text, but they make different promises. An SRT file is a loose convention. A VTT file is built to a published specification, so a browser knows exactly what each line means. That formality is why VTT appears in HTML5 video, in web accessibility audits and in players that need to position captions rather than merely display them.",
+        "What is a VTT file, in one line? It holds timed subtitle text like an SRT file, but the two make different promises. An SRT file is a loose convention. A VTT file is built to a published specification, so a browser knows exactly what each line means. That formality is why VTT appears in HTML5 video, in web accessibility audits and in players that need to position captions rather than merely display them.",
         "On the surface the two files look similar. Both list cues in time order, both store a start time, an end time and text, and both are readable in a text editor. The difference appears in the details: the header line, the millisecond separator, the role of identifiers and the presence of cue settings. A file that ignores those details may play in a forgiving desktop editor and fail in a browser."
       ],
       bullets: [

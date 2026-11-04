@@ -32,7 +32,7 @@ export const guide: GuideContent = {
     {
       heading: "Start with what you want to see",
       paragraphs: [
-        "The right way to open a subtitle file depends on the outcome you need. If you want to read the words or correct a typo, a text editor is enough. If you want to see the captions over the picture, a video player needs both the video and the subtitle file. If you want to edit, translate or publish the captions, open them in the editor or platform that will receive the final file.",
+        "How to open an SRT file depends on the outcome you need. If you want to read the words or correct a typo, a text editor is enough. If you want to see the captions over the picture, a video player needs both the video and the subtitle file. If you want to edit, translate or publish the captions, open them in the editor or platform that will receive the final file.",
         "Decide before you double-click. Opening an .srt file by association can send it to a media player that shows the syntax as text, or to a text editor that shows timestamps without the video. Neither is broken; each is the wrong tool for the other job.",
         "The file itself is plain text, so nothing is encrypted and nothing requires a special license. That is why almost any device can display it once you choose the right app."
       ]

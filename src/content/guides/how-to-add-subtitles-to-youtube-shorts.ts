@@ -32,7 +32,7 @@ export const guide: GuideContent = {
     {
       heading: "Start with the caption track, not the on-screen text",
       paragraphs: [
-        "On a Short, text can live in two different places. It can be a caption track attached to the video record, which a viewer can switch on or off, or it can be pixels burned into the picture. The first is a subtitle in the technical sense. The second is open text: it survives every player, but it cannot be disabled, translated or corrected without a new export. Knowing which one you are making prevents most of the confusion that follows.",
+        "How to add subtitles to YouTube Shorts depends first on where the text lives. On a Short, it can be a caption track attached to the video record, which a viewer can switch on or off, or it can be pixels burned into the picture. The first is a subtitle in the technical sense. The second is open text: it survives every player, but it cannot be disabled, translated or corrected without a new export. Knowing which one you are making prevents most of the confusion that follows.",
         "Captions also differ from the hook text that many creators place near the top of the frame. A hook is part of the creative treatment. A caption track carries the dialogue and meaningful sounds, follows the audio, and is the version that helps viewers watching without sound."
       ]
     },

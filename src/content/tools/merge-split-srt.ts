@@ -26,7 +26,7 @@ export const tool: ToolPageContent = {
     {
       heading: "How merging adjacent cues works",
       paragraphs: [
-        "Merge next joins the selected cue with the row below it. The result starts at the earlier of the two start times, ends at the later of the two end times, and its text is the two blocks separated by a space. The merge function does not care which row you clicked first; it compares start times, so the earlier cue becomes the first half of the new text.",
+        "Use this page to merge SRT lines online: Merge next joins the selected cue with the row below it. The result starts at the earlier of the two start times, ends at the later of the two end times, and its text is the two blocks separated by a space. The merge function does not care which row you clicked first; it compares start times, so the earlier cue becomes the first half of the new text.",
         "That behaviour is useful when a sentence was split across two cues and the second half begins with a lower-case word. It is less useful when the two cues belong to different speakers, because the tool has no speaker field and will simply run the lines together. Line breaks inside each cue are kept, so a merged cue can end up with more than two display lines. Check the row and shorten it after merging if necessary."
       ]
     },

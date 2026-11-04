@@ -36,7 +36,7 @@ export const guide: GuideContent = {
     {
       heading: "What burn-in changes, and what it does not",
       paragraphs: [
-        "Burn-in renders each subtitle cue into the video frames during an encode, so the letters become pixels rather than a text track. The words then survive on a projector, a hotel television, a social player with no caption menu and a phone with subtitles disabled.",
+        "How to burn subtitles into video, in one sentence: burn-in renders each subtitle cue into the video frames during an encode, so the letters become pixels rather than a text track. The words then survive on a projector, a hotel television, a social player with no caption menu and a phone with subtitles disabled.",
         "The trade is control. You cannot toggle the text, switch languages, restyle it for a viewer who needs a larger font, or copy a line into a search box. The original audio is normally kept, but the subtitle information is no longer separable from the image."
       ]
     },

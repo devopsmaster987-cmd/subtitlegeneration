@@ -26,7 +26,7 @@ export const tool: ToolPageContent = {
     {
       heading: "Reading the WebVTT preview",
       paragraphs: [
-        "The conversion preview shows the current cue list written as WebVTT. It begins with the WEBVTT signature, leaves a blank line, then writes each cue as a start time, an arrow, an end time and the text. Times use a dot before the milliseconds and no sequence numbers appear above the cues. The preview updates as you edit text or timestamps.",
+        "Use this page to convert SRT to VTT inside the browser; the preview shows the current cue list written as WebVTT. It begins with the WEBVTT signature, leaves a blank line, then writes each cue as a start time, an arrow, an end time and the text. Times use a dot before the milliseconds and no sequence numbers appear above the cues. The preview updates as you edit text or timestamps.",
         "This preview is the quickest way to confirm that the file is structurally valid before download. Look at the header, the separator between milliseconds and the blank line between cues. If the preview shows text where a timestamp should be, the source cue was not parsed as a cue. The preview is generated from the table, not from the original file, so it also reflects any deletions or merges made in the editor."
       ]
     },

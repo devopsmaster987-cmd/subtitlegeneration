@@ -4,7 +4,7 @@ export const guide: GuideContent = {
   kind: "guide",
   path: "/guides/rtl-and-non-latin-subtitles",
   h1: "Right to left subtitles and non-Latin scripts: a practical guide",
-  title: "Right to left subtitles and non-Latin scripts: a practical guide",
+  title: "Right to left subtitles: RTL and non-Latin scripts",
   metaDescription:
     "Right to left subtitles need UTF-8, bidirectional text, correct punctuation, suitable fonts and player testing. A practical guide to RTL SRT and WebVTT.",
   primaryKeyword: "right to left subtitles",
@@ -43,7 +43,7 @@ export const guide: GuideContent = {
     {
       heading: "RTL subtitle support starts with Unicode, not alignment",
       paragraphs: [
-        "A right-to-left subtitle is not stored backwards. The characters are saved in logical order, the same order in which they are read, and the player applies the Unicode bidirectional algorithm to display them from right to left. If you reverse the text by hand, the player will reverse it again and the line will look wrong in a different way.",
+        "People producing right to left subtitles are often surprised that the text is not stored backwards. The characters are saved in logical order, the same order in which they are read, and the player applies the Unicode bidirectional algorithm to display them from right to left. If you reverse the text by hand, the player will reverse it again and the line will look wrong in a different way.",
         "That is why encoding is the first requirement. Save the file as UTF-8. A legacy Windows code page can turn Arabic, Urdu, Hebrew or Persian into question marks before the player sees the script. The [VoiceToTextFree](/) exporter writes UTF-8, but an old editor or spreadsheet export may not. Open the exported file and confirm the letters.",
         "Alignment is separate from direction. Centred captions work for many mixed-script videos because text grows from the centre either way. If you align to an edge, use start and end rather than left and right so the anchor follows the script. A left-aligned Urdu cue is not automatically wrong, but it often looks disconnected from the reading flow."
       ]

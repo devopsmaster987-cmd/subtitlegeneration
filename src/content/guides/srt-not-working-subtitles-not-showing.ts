@@ -29,7 +29,7 @@ export const guide: GuideContent = {
     {
       heading: "Start with the symptom: subtitles not showing",
       paragraphs: [
-        "Before you edit a single cue, decide which failure you are looking at. People describe three different symptoms the same way: no subtitle track appears at all, the track appears in a menu but stays empty, or subtitles appear for a few seconds and then stop. Each points at a different part of the chain. A missing track usually means the file was rejected at load time. An empty track means the parser found the container but no usable cues. A track that stops early usually contains a malformed cue later in the file.",
+        "The phrase SRT not working hides three different failures, so name yours before editing a single cue. No subtitle track appears at all, the track appears in a menu but stays empty, or subtitles appear for a few seconds and then stop — each points at a different part of the chain. A missing track usually means the file was rejected at load time. An empty track means the parser found the container but no usable cues. A track that stops early usually contains a malformed cue later in the file.",
         "Write down what you see on the exact device that fails. A phone, a smart TV, a browser and a desktop editor all use different subtitle engines, and a file that survives one may fail another. Then work through the checks below in order; they are arranged from the cheapest test to the most invasive."
       ],
       bullets: [
