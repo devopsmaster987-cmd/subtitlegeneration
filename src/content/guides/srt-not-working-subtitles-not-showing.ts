@@ -4,7 +4,7 @@ export const guide: GuideContent = {
   kind: "guide",
   path: "/guides/srt-not-working-subtitles-not-showing",
   h1: "SRT not working? Why your subtitles are not showing",
-  title: "SRT not working? Why your subtitles are not showing",
+  title: "SRT not working? Why subtitles are not showing",
   metaDescription:
     "SRT not working? A step-by-step diagnosis for subtitles not showing: file type, filename match, encoding, timestamps, overlaps, player limits and cache.",
   primaryKeyword: "srt not working",

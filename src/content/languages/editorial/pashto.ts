@@ -7,18 +7,18 @@ export const languagePage: LanguagePageContent = {
   nativeName: "پښتو",
   path: "/subtitle-generator/pashto",
   h1: "Pashto subtitle generator",
-  title: "Pashto subtitle generator — private, browser-based",
+  title: "Pashto subtitle generator: free, private",
   metaDescription:
     "Use the Pashto subtitle generator to transcribe پښتو audio locally in your browser, review the right-to-left cues and export UTF-8 SRT, VTT or TXT.",
   primaryKeyword: "pashto subtitle generator",
   capsule:
     "The Pashto subtitle generator transcribes پښتو speech with Whisper running inside your browser, so the recording does not need an upload. It returns Arabic-script text in right-to-left order for you to review, correct and export as UTF-8 SRT, VTT or TXT.",
   published: "2026-02-01",
-  updated: "2026-10-28",
+  updated: "2026-11-08",
   author: "Abdul Samad",
   accuracyNote:
-    "No reviewed Pashto sample is recorded in the verification log yet, so this page is excluded from search and no tested-accuracy claim is made. The Pashto subtitle generator still works: select Pashto, run a local transcription, review the Arabic-script cues and export SRT or VTT.",
-  noindex: true,
+    "No reviewed Pashto sample is recorded in the verification log yet, so no tested-accuracy claim is made. The Pashto subtitle generator still works: select Pashto, run a local transcription, review the Arabic-script cues and export SRT or VTT.",
+  noindex: false,
   keyFacts: [
     { label: "Language code", value: "ps" },
     { label: "Native name", value: "پښتو" },

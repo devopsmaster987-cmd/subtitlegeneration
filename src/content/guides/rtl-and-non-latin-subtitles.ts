@@ -4,7 +4,7 @@ export const guide: GuideContent = {
   kind: "guide",
   path: "/guides/rtl-and-non-latin-subtitles",
   h1: "Right to left subtitles and non-Latin scripts: a practical guide",
-  title: "Right to left subtitles: RTL and non-Latin scripts",
+  title: "Right to left subtitles: RTL and non-Latin",
   metaDescription:
     "Right to left subtitles need UTF-8, bidirectional text, correct punctuation, suitable fonts and player testing. A practical guide to RTL SRT and WebVTT.",
   primaryKeyword: "right to left subtitles",

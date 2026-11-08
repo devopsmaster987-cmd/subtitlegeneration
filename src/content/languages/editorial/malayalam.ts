@@ -7,18 +7,18 @@ export const languagePage: LanguagePageContent = {
   nativeName: "മലയാളം",
   path: "/subtitle-generator/malayalam",
   h1: "Malayalam subtitle generator",
-  title: "Malayalam subtitle generator — private, browser-based Whisper",
+  title: "Malayalam subtitle generator: free and private",
   metaDescription:
     "Use the Malayalam subtitle generator to transcribe മലയാളം audio locally, review chillu letters, conjuncts, names and numerals, then export SRT, VTT or TXT.",
   primaryKeyword: "malayalam subtitle generator",
   capsule:
-    "Use this Malayalam subtitle generator to transcribe മലയാളം audio locally in your browser, then review the Malayalam script, chillu letters, names and numerals before exporting SRT, VTT or TXT. No upload or account is required. No reviewed Malayalam sample has been recorded, so no tested accuracy is claimed and this page is excluded from search.",
+    "Use this Malayalam subtitle generator to transcribe മലയാളം audio locally in your browser, then review the Malayalam script, chillu letters, names and numerals before exporting SRT, VTT or TXT. No upload or account is required. No reviewed Malayalam sample has been recorded, so no tested accuracy is claimed.",
   published: "2026-02-01",
-  updated: "2026-10-28",
+  updated: "2026-11-08",
   author: "Abdul Samad",
   accuracyNote:
-    "No reviewed Malayalam sample has been recorded for VoiceToTextFree. This page is therefore excluded from search with noindex, and no tested accuracy is claimed. The browser-based tool still works: select Malayalam, transcribe locally and review every cue before export.",
-  noindex: true,
+    "No reviewed Malayalam sample has been recorded for VoiceToTextFree. No tested accuracy is claimed for this page until a reviewed sample is recorded. The browser-based tool still works: select Malayalam, transcribe locally and review every cue before export.",
+  noindex: false,
   keyFacts: [
     { label: "Language code", value: "ml" },
     { label: "Native name", value: "മലയാളം" },
@@ -33,7 +33,7 @@ export const languagePage: LanguagePageContent = {
       heading: "What the Malayalam subtitle generator does",
       paragraphs: [
         "VoiceToTextFree runs a multilingual Whisper model in the browser on your device. Malayalam is present in the model's language tokenizer, so you can select ml and transcribe Malayalam audio without sending the recording to a transcription service. The first run may download model files; after that, the audio and the draft transcript remain on the machine.",
-        "This is a working tool, not a measured accuracy report. No reviewed Malayalam sample has been recorded for VoiceToTextFree, so the page carries noindex and makes no accuracy promise. Select Malayalam, generate a draft, then compare it with the audio and correct the script, spelling, names, numbers and cue breaks before exporting SRT, VTT or TXT."
+        "This is a working tool, not a measured accuracy report. No reviewed Malayalam sample has been recorded for VoiceToTextFree, so the page makes no accuracy promise. Select Malayalam, generate a draft, then compare it with the audio and correct the script, spelling, names, numbers and cue breaks before exporting SRT, VTT or TXT."
       ]
     },
     {
@@ -113,9 +113,9 @@ export const languagePage: LanguagePageContent = {
         "Yes. After transcription and review, download SRT, VTT or TXT. The exporter writes UTF-8; open the file in the target player and check chillu letters, conjuncts and numerals before publishing."
     },
     {
-      question: "Why is this Malayalam page noindex?",
+      question: "Has the accuracy of this $1 page been tested?",
       answer:
-        "No reviewed Malayalam sample has been recorded for VoiceToTextFree, so the site has no honest accuracy result to publish. The page is excluded from search until that review exists. The browser-based tool still works, and this page explains the workflow."
+        "No reviewed Malayalam sample has been recorded for VoiceToTextFree, so the site has no honest accuracy result to publish. No tested accuracy claim is made until a reviewed sample is recorded. The browser-based tool still works, and this page explains the workflow."
     }
   ],
   workedExample: {

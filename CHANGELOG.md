@@ -1,5 +1,14 @@
 # Changelog
 
+## 2026-11-08
+
+- Indexed the 38 editorial Tier 1 and Tier 2 language pages: 16 editorial pages plus 22 generated profiles now emit `index, follow`; the 61 tool-only language pages stay `noindex` while accuracy testing is open.
+- Retargeted SEO to the head query "free subtitle generator": shortened 50 titles to fit the 70-character audit, added exact-match copy to the home H2 and FAQ answer, and refreshed content dates.
+- Added `og-image.png` and `logo.png` Open Graph/Twitter image assets with `summary_large_image` cards, an apple-touch-icon, the Organization `logo` field, and per-route `og:url` on the merged routes.
+- Added CollectionPage and ItemList JSON-LD to the languages and guides hubs; extended the corrections and html-sitemap descriptions into the 120–165 meta range.
+- Added six forced Netlify 301s for the merged routes, a bare host in robots.ts, removed the `/studio` footer link, and made the 404 page `noindex` with no canonical link.
+- Updated the link audit to allow and existence-check the new static assets; the full `check:all` suite passes with 88 indexable sitemap pages and no rendered title over 66 characters.
+
 ## 2026-10-28
 
 - Built the static Next.js VoiceToTextFree site and browser-only Whisper/ffmpeg workflow.

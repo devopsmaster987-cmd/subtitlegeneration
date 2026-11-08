@@ -4,7 +4,7 @@ export const guide: GuideContent = {
   kind: "guide",
   path: "/guides/subtitle-line-length",
   h1: "Subtitle line length",
-  title: "Subtitle line length: the 42-character convention",
+  title: "Subtitle line length: the 42-character rule",
   metaDescription:
     "Subtitle line length explained: the 42-character convention, two-line limits, counting spaces, line balancing and scripts such as CJK, Arabic and Urdu.",
   primaryKeyword: "subtitle line length",

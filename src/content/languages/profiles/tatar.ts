@@ -26,7 +26,7 @@ export const profile: LanguageProfile = {
   useCases:
     "Useful for Tatarstan media, interviews, classroom recordings, mosque and community talks, and family archives. It also helps translators who need a rough Cyrillic draft before a native editor checks suffixes and Russian mixing, and it keeps the recording local during the draft stage.",
   accuracyNote:
-    "No reviewed Tatar sample has been recorded, so this page is excluded from search. Vowel harmony, case suffixes, dialect variation and Russian code-switching are the weakest areas. Tatar is thinly resourced in speech data compared with major languages, and we do not claim tested accuracy; treat the draft as an unreviewed first pass for a native speaker.",
+    "No reviewed Tatar sample has been recorded, so this page makes no tested accuracy claim. Vowel harmony, case suffixes, dialect variation and Russian code-switching are the weakest areas. Tatar is thinly resourced in speech data compared with major languages, and we do not claim tested accuracy; treat the draft as an unreviewed first pass for a native speaker.",
   example: {
     native: "Без иртәгә иртән очрашырбыз. 402 нче бүлмә дүртенче катта.",
     translation: "We will meet tomorrow morning. Room 402 is on the fourth floor.",

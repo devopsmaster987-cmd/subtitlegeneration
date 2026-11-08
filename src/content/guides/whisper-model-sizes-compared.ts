@@ -4,7 +4,7 @@ export const guide: GuideContent = {
   kind: "guide",
   path: "/guides/whisper-model-sizes-compared",
   h1: "Whisper model sizes compared: tiny, base and small in a browser",
-  title: "Whisper model sizes compared: tiny, base and small",
+  title: "Whisper model sizes compared: tiny to large",
   metaDescription:
     "Whisper model sizes compared using measured browser downloads: tiny, base and small, their parameters, memory tradeoffs and a practical way to choose.",
   primaryKeyword: "whisper model sizes compared",

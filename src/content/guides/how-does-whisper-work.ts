@@ -4,7 +4,7 @@ export const guide: GuideContent = {
   kind: "guide",
   path: "/guides/how-does-whisper-work",
   h1: "How does Whisper work? The model behind browser subtitles",
-  title: "How does Whisper work? The model behind browser subtitles",
+  title: "How does Whisper work for subtitles?",
   metaDescription:
     "How does Whisper work? Follow audio through a log-Mel spectrogram, an encoder-decoder Transformer and 30-second windows, then see how it runs on WebGPU or WASM.",
   primaryKeyword: "how does whisper work",

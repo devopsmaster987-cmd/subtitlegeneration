@@ -4,7 +4,7 @@ export const guide: GuideContent = {
   kind: "guide",
   path: "/guides/what-is-a-vtt-file",
   h1: "What is a VTT file? The WebVTT subtitle format explained",
-  title: "What is a VTT file? WebVTT format, cues and browser support",
+  title: "What is a VTT file? The WebVTT format",
   metaDescription:
     "What is a VTT file? Learn how the WEBVTT header, dot timestamps, cue settings and the HTML5 track element work, with valid and invalid examples.",
   primaryKeyword: "what is a vtt file",

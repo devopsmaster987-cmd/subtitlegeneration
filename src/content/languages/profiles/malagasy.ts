@@ -26,7 +26,7 @@ export const profile: LanguageProfile = {
   useCases:
     "Suits NGO and church recordings, radio interviews, family and travel videos, and fieldwork in Madagascar. It also helps translators who want a rough Malagasy draft before a human review, especially when the audio is clear and single-speaker and the reviewer can hear the original recording.",
   accuracyNote:
-    "No reviewed Malagasy sample has been recorded, so this page is excluded from search. Regional vocabulary, long verb morphology and French code-switching are the least certain areas. Malagasy is thinly resourced in speech data compared with major languages, and we do not claim tested accuracy; every draft needs a human pass before it is published.",
+    "No reviewed Malagasy sample has been recorded, so this page makes no tested accuracy claim. Regional vocabulary, long verb morphology and French code-switching are the least certain areas. Malagasy is thinly resourced in speech data compared with major languages, and we do not claim tested accuracy; every draft needs a human pass before it is published.",
   example: {
     native: "Hifanena isika rahampitso maraina. Efitra 402 dia ao amin'ny rihana fahefatra.",
     translation: "We will meet tomorrow morning. Room 402 is on the fourth floor.",

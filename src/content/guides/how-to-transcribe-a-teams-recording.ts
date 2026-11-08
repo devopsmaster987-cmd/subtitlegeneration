@@ -4,7 +4,7 @@ export const guide: GuideContent = {
   kind: "guide",
   path: "/guides/how-to-transcribe-a-teams-recording",
   h1: "How to transcribe a Teams recording: free, offline, no upload",
-  title: "How to transcribe a Teams recording: free and private",
+  title: "Transcribe a Teams recording free",
   metaDescription:
     "How to transcribe a Teams recording: find the OneDrive or SharePoint file, download the MP4, run Whisper locally in your browser and export SRT, VTT or text.",
   primaryKeyword: "transcribe a teams recording",

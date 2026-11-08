@@ -4,7 +4,7 @@ export const guide: GuideContent = {
   kind: "guide",
   path: "/guides/closed-captions-vs-subtitles",
   h1: "Closed captions vs subtitles: what each term means",
-  title: "Closed captions vs subtitles: what each term means",
+  title: "Closed captions vs subtitles explained",
   metaDescription:
     "Closed captions vs subtitles explained: definitions, SDH, translation, open and closed captions, burned-in versus sidecar files and WCAG context.",
   primaryKeyword: "closed captions vs subtitles",

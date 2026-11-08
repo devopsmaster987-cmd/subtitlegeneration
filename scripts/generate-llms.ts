@@ -9,7 +9,7 @@ const lines = [
   "",
   `> ${site.description}`,
   "",
-  "VoiceToTextFree runs Whisper and ffmpeg in the browser. No media is uploaded. Accuracy varies by language, and language pages remain noindex until a reviewed sample is recorded.",
+  "VoiceToTextFree runs Whisper and ffmpeg in the browser. No media is uploaded. Accuracy varies by language: every language page states whether a reviewed sample has been recorded, and no tested accuracy is claimed without one.",
   "",
   "## Tools"
 ];
@@ -18,11 +18,17 @@ for (const page of toolPages)
 lines.push("", "## Guides");
 for (const page of guides) lines.push(`- [${page.h1}](${site.url}${page.path}): ${page.capsule}`);
 lines.push("", "## Languages");
-for (const { language, content } of languagePages) {
+const searchableLanguages = languagePages.filter(({ content }) => !content.noindex);
+for (const { language, content } of searchableLanguages) {
   lines.push(
-    `- [${content.h1}](${site.url}${content.path}): ${language.name} — ${content.noindex ? "noindex until tested" : "accuracy note recorded"}`
+    `- [${content.h1}](${site.url}${content.path}): ${language.name} — editorial page with an honest accuracy note`
   );
 }
+const hiddenLanguages = languagePages.length - searchableLanguages.length;
+if (hiddenLanguages > 0)
+  lines.push(
+    `- ${hiddenLanguages} further tool-only language routes exist but stay out of the search index until a reviewed sample is recorded.`
+  );
 lines.push(
   "",
   "## Policies",
@@ -34,5 +40,5 @@ lines.push(
 );
 writeFileSync("public/llms.txt", lines.join("\n"), "utf8");
 console.log(
-  `Generated public/llms.txt with ${toolPages.length} tools, ${guides.length} guides and ${languagePages.length} language pages.`
+  `Generated public/llms.txt with ${toolPages.length} tools, ${guides.length} guides and ${searchableLanguages.length} searchable language pages.`
 );

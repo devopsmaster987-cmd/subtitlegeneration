@@ -26,7 +26,7 @@ export const profile: LanguageProfile = {
   useCases:
     "Suits Kazakh interviews, news and documentary footage, classroom recordings, community videos and family archives. It also helps translators who need a rough Cyrillic draft before a native editor checks harmony and Russian mixing, and it keeps the recording local while the draft is prepared.",
   accuracyNote:
-    "No reviewed Kazakh sample has been recorded, so this page is excluded from search. Kazakh speech data is limited compared with major languages, and vowel harmony, the extra Cyrillic letters and Russian code-switching are the least certain areas. We do not claim tested accuracy; every draft needs a native review and editing.",
+    "No reviewed Kazakh sample has been recorded, so this page makes no tested accuracy claim. Kazakh speech data is limited compared with major languages, and vowel harmony, the extra Cyrillic letters and Russian code-switching are the least certain areas. We do not claim tested accuracy; every draft needs a native review and editing.",
   example: {
     native: "Біз ертең таңертең кездесеміз. 402-ші бөлме төртінші қабатта.",
     translation: "We will meet tomorrow morning. Room 402 is on the fourth floor.",

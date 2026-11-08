@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { ogImage, twitterImage } from "@/lib/og-image";
 import { site } from "@/config/site";
 
 /**
@@ -37,10 +38,26 @@ export function MergedRoutePage({ route }: { route: MergedRoute }) {
 }
 
 export function mergedRouteMetadata(route: MergedRoute): Metadata {
+  const description = `This page was merged and redirects to ${route.title} on ${site.name}.`;
   return {
     title: route.title,
-    description: `This page was merged and redirects to ${route.title} on ${site.name}.`,
+    description,
     alternates: { canonical: route.to },
-    robots: { index: false, follow: true }
+    robots: { index: false, follow: true },
+    openGraph: {
+      type: "website",
+      siteName: site.name,
+      locale: "en",
+      title: `${route.title} | ${site.name}`,
+      description,
+      url: route.to,
+      images: [ogImage]
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${route.title} | ${site.name}`,
+      description,
+      images: [twitterImage]
+    }
   };
 }

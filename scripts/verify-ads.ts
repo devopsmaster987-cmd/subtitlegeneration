@@ -38,8 +38,11 @@ if (existsSync("out")) {
     const count = (text.match(/aria-label="Advertisement"/g) ?? []).length;
     if (count > 3) problems.push(`${file}: ${count} ad slots`);
     if (file.includes("studio") && count > 0) problems.push(`${file}: ad slot on studio`);
-    if (file.includes("subtitle-generator") && count > 0)
-      problems.push(`${file}: ad slot on a noindex language page`);
+    if (
+      /<meta name="robots" content="[^"]*noindex/i.test(text) &&
+      /aria-label="Advertisement"/.test(text)
+    )
+      problems.push(`${file}: ad slot on a noindex page`);
     if (!site.ads.enabled && /adsbygoogle|pagead2\.googlesyndication/.test(text))
       problems.push(`${file}: ad script present while ads are disabled`);
   }

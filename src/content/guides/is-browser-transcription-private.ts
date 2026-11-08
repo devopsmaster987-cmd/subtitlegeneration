@@ -4,7 +4,7 @@ export const guide: GuideContent = {
   kind: "guide",
   path: "/guides/is-browser-transcription-private",
   h1: "Is browser transcription private? What stays on your device",
-  title: "Is browser transcription private? What stays on your device",
+  title: "Is browser transcription private?",
   metaDescription:
     "Is browser transcription private? See what runs locally, what hosting logs and model downloads still reveal, and how to verify the network behaviour yourself.",
   primaryKeyword: "is browser transcription private",

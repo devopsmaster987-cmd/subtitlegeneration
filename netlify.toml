@@ -2,6 +2,44 @@
   command = "npm run build"
   publish = "out"
 
+# Permanent redirects for merged routes. The built fallback pages carry a meta
+# refresh for hosts without redirect support; force so the files do not win.
+[[redirects]]
+  from = "/video-to-text"
+  to = "/video-to-srt"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/caption-generator"
+  to = "/video-to-srt"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/transcript-generator"
+  to = "/video-to-srt"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/speech-to-text"
+  to = "/audio-to-srt"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/offline-subtitle-generator"
+  to = "/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/private-subtitle-generator"
+  to = "/"
+  status = 301
+  force = true
+
 [build.environment]
   NODE_VERSION = "24"
 

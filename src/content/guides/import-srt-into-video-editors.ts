@@ -4,7 +4,7 @@ export const guide: GuideContent = {
   kind: "guide",
   path: "/guides/import-srt-into-video-editors",
   h1: "SRT for Premiere Pro: import SRT into video editors without drift",
-  title: "SRT for Premiere Pro: import SRT into video editors",
+  title: "SRT for Premiere Pro: import and edit",
   metaDescription:
     "SRT for Premiere Pro: import SRT into video editors with verified steps for Premiere Pro, DaVinci Resolve, Final Cut Pro and CapCut.",
   primaryKeyword: "srt for premiere pro",

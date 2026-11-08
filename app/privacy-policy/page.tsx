@@ -43,8 +43,8 @@ export default function PrivacyPolicyPage() {
         The static site does not require an account and does not create a transcript history. Our
         hosting provider may keep ordinary server logs (IP address, timestamp, requested URL, user
         agent) for security and operations. If analytics is enabled on a deployment, Google
-        Analytics 4 traffic data is collected only after you choose analytics in the consent
-        banner; the tool itself never sends your media or transcripts anywhere.
+        Analytics 4 traffic data is collected only after you choose analytics in the consent banner;
+        the tool itself never sends your media or transcripts anywhere.
       </p>
       <p>
         If you email us, we receive your email address and whatever you include in the message. We

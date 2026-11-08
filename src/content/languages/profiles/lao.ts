@@ -26,7 +26,7 @@ export const profile: LanguageProfile = {
   useCases:
     "Useful for Lao news clips, community and health videos, school material, documentary interviews and YouTube channels that mix Lao with Thai or English. Editors can draft locally, then correct vowels and tone marks before publishing a reviewed Lao caption track. They also serve bilingual community archives.",
   accuracyNote:
-    "No reviewed Lao sample has been recorded, so this page is excluded from search while the editorial content is checked. Vowel placement, tone marks, word boundaries, Thai-like spellings and mixed digits are weak areas, and Lao is low-resource for speech data. We do not claim tested accuracy; results are uneven and need editing, so a fluent Lao reviewer should check every cue.",
+    "No reviewed Lao sample has been recorded, so this page makes no tested accuracy claim. Vowel placement, tone marks, word boundaries, Thai-like spellings and mixed digits are weak areas, and Lao is low-resource for speech data. We do not claim tested accuracy; results are uneven and need editing, so a fluent Lao reviewer should check every cue.",
   example: {
     native: "ສະບາຍດີ. ສົບສະບາຍດີບໍ? ການປະຊຸມຈະເລີ່ມເວລາເກົ້າໂມງ.",
     translation: "Hello. How are you? The meeting will begin at nine o'clock.",
@@ -67,7 +67,7 @@ export const profile: LanguageProfile = {
     {
       question: "How accurate is Lao transcription?",
       answer:
-        "We have not recorded a reviewed Lao sample, so this page does not claim a tested accuracy level. Accent, audio quality, tone and code-switching affect results, and the page remains excluded from search until review is complete."
+        "We have not recorded a reviewed Lao sample, so this page does not claim a tested accuracy level. Accent, audio quality, tone and code-switching affect results, and no tested accuracy is claimed until a review is recorded."
     }
   ],
   sources: [

@@ -26,7 +26,7 @@ export const profile: LanguageProfile = {
   useCases:
     "Useful for Uzbek interviews, vlogs, news clips, classroom recordings and family videos. It also helps translators who need a rough Latin or Cyrillic draft before a native editor checks names, script choice and Russian mixing, and it keeps the recording local during the draft stage.",
   accuracyNote:
-    "No reviewed Uzbek sample has been recorded, so this page is excluded from search. Uzbek speech data is limited compared with major languages, and okina handling, script mixing and Russian code-switching are the weakest areas. We do not claim tested accuracy; treat every draft as a first pass for a human reviewer and editor.",
+    "No reviewed Uzbek sample has been recorded, so this page makes no tested accuracy claim. Uzbek speech data is limited compared with major languages, and okina handling, script mixing and Russian code-switching are the weakest areas. We do not claim tested accuracy; treat every draft as a first pass for a human reviewer and editor.",
   example: {
     native: "Ertaga ertalab uchrashamiz. 402-xona toʻrtinchi qavatda.",
     translation: "We will meet tomorrow morning. Room 402 is on the fourth floor.",

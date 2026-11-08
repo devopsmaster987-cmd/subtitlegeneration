@@ -5,7 +5,7 @@ export const tool: ToolPageContent = {
   path: "/srt-editor",
   preset: "srt-editor",
   h1: "Free SRT editor online: open, fix and export subtitle cues",
-  title: "Free SRT editor online — edit SRT and VTT in your browser",
+  title: "Free SRT editor online for SRT and VTT",
   metaDescription:
     "Use this free SRT editor online to open, correct and export cues in your browser. Edit text and timestamps, split or merge cues, then download SRT or VTT.",
   primaryKeyword: "free srt editor online",

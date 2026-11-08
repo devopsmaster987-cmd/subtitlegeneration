@@ -7,18 +7,18 @@ export const languagePage: LanguagePageContent = {
   nativeName: "తెలుగు",
   path: "/subtitle-generator/telugu",
   h1: "Telugu subtitle generator",
-  title: "Telugu subtitle generator — private, browser-based Whisper",
+  title: "Telugu subtitle generator: free and private",
   metaDescription:
     "Use the Telugu subtitle generator to transcribe తెలుగు audio locally in your browser, review vowel signs, conjuncts, names and numerals, then export SRT, VTT or TXT.",
   primaryKeyword: "telugu subtitle generator",
   capsule:
-    "Use this Telugu subtitle generator to transcribe తెలుగు audio locally in your browser, then check the Telugu script, vowel signs, names and numerals before exporting SRT, VTT or TXT. No upload or account is needed. No reviewed Telugu sample has been recorded, so no tested accuracy is claimed and the page is excluded from search.",
+    "Use this Telugu subtitle generator to transcribe తెలుగు audio locally in your browser, then check the Telugu script, vowel signs, names and numerals before exporting SRT, VTT or TXT. No upload or account is needed. No reviewed Telugu sample has been recorded, so no tested accuracy is claimed on this page.",
   published: "2026-02-01",
-  updated: "2026-10-28",
+  updated: "2026-11-08",
   author: "Abdul Samad",
   accuracyNote:
-    "No reviewed Telugu sample has been recorded for VoiceToTextFree. This page is therefore excluded from search with noindex, and no tested accuracy is claimed. The browser-based tool still works: select Telugu, transcribe locally and check every cue before export.",
-  noindex: true,
+    "No reviewed Telugu sample has been recorded for VoiceToTextFree. No tested accuracy is claimed for this page until a reviewed sample is recorded. The browser-based tool still works: select Telugu, transcribe locally and check every cue before export.",
+  noindex: false,
   keyFacts: [
     { label: "Language code", value: "te" },
     { label: "Native name", value: "తెలుగు" },
@@ -33,7 +33,7 @@ export const languagePage: LanguagePageContent = {
       heading: "What the Telugu subtitle generator does",
       paragraphs: [
         "VoiceToTextFree runs a multilingual Whisper model in the browser on your device. Telugu is present in the model's language tokenizer, so you can select te and transcribe Telugu audio without uploading the recording to a transcription service. The first run may download model files; after that, the audio and the draft transcript stay on the machine.",
-        "This page is a working tool, not a measured accuracy report. No reviewed Telugu sample has been recorded for VoiceToTextFree, so the page is noindex and makes no accuracy claim. Select Telugu, generate a draft, then compare it with the audio and correct the script, spelling, names, numbers and cue breaks before exporting SRT, VTT or TXT."
+        "This page is a working tool, not a measured accuracy report. No reviewed Telugu sample has been recorded for VoiceToTextFree, so the page makes no accuracy claim. Select Telugu, generate a draft, then compare it with the audio and correct the script, spelling, names, numbers and cue breaks before exporting SRT, VTT or TXT."
       ]
     },
     {
@@ -113,9 +113,9 @@ export const languagePage: LanguagePageContent = {
         "Yes. After transcription and review, download SRT, VTT or TXT. The exporter writes UTF-8; open the file in the target player and check the vowel signs, conjuncts and numerals before publishing."
     },
     {
-      question: "Why is this Telugu page noindex?",
+      question: "Has the accuracy of this $1 page been tested?",
       answer:
-        "No reviewed Telugu sample has been recorded for VoiceToTextFree, so the site has no honest accuracy result to publish. The page is excluded from search until that review exists. The browser-based tool still works, and this page explains the workflow."
+        "No reviewed Telugu sample has been recorded for VoiceToTextFree, so the site has no honest accuracy result to publish. No tested accuracy claim is made until a reviewed sample is recorded. The browser-based tool still works, and this page explains the workflow."
     }
   ],
   workedExample: {

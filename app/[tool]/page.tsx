@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getToolPage, toolPages } from "@/content/tools";
 import { ToolPageView } from "@/components/ToolPageView";
+import { ogImage, twitterImage } from "@/lib/og-image";
 import { site } from "@/config/site";
 
 export const dynamicParams = false;
@@ -30,12 +31,14 @@ export async function generateMetadata({
       locale: "en",
       title: `${page.title} | ${site.name}`,
       description: page.metaDescription,
-      url: page.path
+      url: page.path,
+      images: [ogImage]
     },
     twitter: {
-      card: "summary",
+      card: "summary_large_image",
       title: `${page.title} | ${site.name}`,
-      description: page.metaDescription
+      description: page.metaDescription,
+      images: [twitterImage]
     }
   };
 }

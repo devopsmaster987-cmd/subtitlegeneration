@@ -4,7 +4,7 @@ export const guide: GuideContent = {
   kind: "guide",
   path: "/guides/word-aligned-and-styled-captions",
   h1: "Word aligned subtitles and styled captions: what is possible",
-  title: "Word aligned subtitles and styled captions: what is possible",
+  title: "Word aligned subtitles and styled captions",
   metaDescription:
     "Word aligned subtitles need per-word timing, but VoiceToTextFree exports plain timed cues. Learn what word-level timing, styled captions and animation require.",
   primaryKeyword: "word aligned subtitles",

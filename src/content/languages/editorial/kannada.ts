@@ -7,18 +7,18 @@ export const languagePage: LanguagePageContent = {
   nativeName: "ಕನ್ನಡ",
   path: "/subtitle-generator/kannada",
   h1: "Kannada subtitle generator",
-  title: "Kannada subtitle generator — private, browser-based Whisper",
+  title: "Kannada subtitle generator: free and private",
   metaDescription:
     "Use the Kannada subtitle generator to transcribe ಕನ್ನಡ audio locally in your browser, review ottakshara clusters, names and numerals, then export SRT, VTT or TXT.",
   primaryKeyword: "kannada subtitle generator",
   capsule:
-    "Use this Kannada subtitle generator to transcribe ಕನ್ನಡ audio locally in your browser, then review the Kannada script, ottakshara clusters, names and numerals before exporting SRT, VTT or TXT. No upload or account is needed. No reviewed Kannada sample has been recorded, so no tested accuracy is claimed and this page is excluded from search.",
+    "Use this Kannada subtitle generator to transcribe ಕನ್ನಡ audio locally in your browser, then review the Kannada script, ottakshara clusters, names and numerals before exporting SRT, VTT or TXT. No upload or account is needed. No reviewed Kannada sample has been recorded, so no tested accuracy is claimed.",
   published: "2026-02-01",
-  updated: "2026-10-28",
+  updated: "2026-11-08",
   author: "Abdul Samad",
   accuracyNote:
-    "No reviewed Kannada sample has been recorded for VoiceToTextFree. This page is therefore excluded from search with noindex, and no tested accuracy is claimed. The browser-based tool still works: select Kannada, transcribe locally and review every cue before export.",
-  noindex: true,
+    "No reviewed Kannada sample has been recorded for VoiceToTextFree. No tested accuracy is claimed for this page until a reviewed sample is recorded. The browser-based tool still works: select Kannada, transcribe locally and review every cue before export.",
+  noindex: false,
   keyFacts: [
     { label: "Language code", value: "kn" },
     { label: "Native name", value: "ಕನ್ನಡ" },
@@ -33,7 +33,7 @@ export const languagePage: LanguagePageContent = {
       heading: "What the Kannada subtitle generator does",
       paragraphs: [
         "VoiceToTextFree runs a multilingual Whisper model in the browser on your device. Kannada is present in the model's language tokenizer, so you can select kn and transcribe Kannada audio without uploading the recording to a transcription service. The first run may download model files; after that, the audio and the draft transcript stay on the machine.",
-        "This page is a working tool, not a measured accuracy report. No reviewed Kannada sample has been recorded for VoiceToTextFree, so the page carries noindex and makes no accuracy promise. Select Kannada, generate a draft, then compare it with the audio and correct the script, spelling, names, numbers and cue breaks before exporting SRT, VTT or TXT."
+        "This page is a working tool, not a measured accuracy report. No reviewed Kannada sample has been recorded for VoiceToTextFree, so the page makes no accuracy promise. Select Kannada, generate a draft, then compare it with the audio and correct the script, spelling, names, numbers and cue breaks before exporting SRT, VTT or TXT."
       ]
     },
     {
@@ -113,9 +113,9 @@ export const languagePage: LanguagePageContent = {
         "Yes. After transcription and review, download SRT, VTT or TXT. The exporter writes UTF-8; open the file in the target player and check vowel signs, ottakshara stacks and numerals before publishing."
     },
     {
-      question: "Why is this Kannada page noindex?",
+      question: "Has the accuracy of this $1 page been tested?",
       answer:
-        "No reviewed Kannada sample has been recorded for VoiceToTextFree, so the site has no honest accuracy result to publish. The page is excluded from search until that review exists. The browser-based tool still works, and this page explains the workflow."
+        "No reviewed Kannada sample has been recorded for VoiceToTextFree, so the site has no honest accuracy result to publish. No tested accuracy claim is made until a reviewed sample is recorded. The browser-based tool still works, and this page explains the workflow."
     }
   ],
   workedExample: {

@@ -26,7 +26,7 @@ export const profile: LanguageProfile = {
   useCases:
     "Useful for cultural and documentary interviews, monastic teaching, community videos, diaspora YouTube channels and oral-history archives. Editors can draft locally, then correct syllables and punctuation before publishing a reviewed Tibetan caption track or transcript. They also serve bilingual community archives.",
   accuracyNote:
-    "No reviewed Tibetan sample has been recorded, so this page is excluded from search while the editorial content is checked. Dialect variation, spoken-versus-written differences, tsheg and shad punctuation, and limited training data are weak areas, and Tibetan is low-resource for speech data. We do not claim tested accuracy; results are uneven and need editing, so a fluent reviewer should check every cue.",
+    "No reviewed Tibetan sample has been recorded, so this page makes no tested accuracy claim. Dialect variation, spoken-versus-written differences, tsheg and shad punctuation, and limited training data are weak areas, and Tibetan is low-resource for speech data. We do not claim tested accuracy; results are uneven and need editing, so a fluent reviewer should check every cue.",
   example: {
     native: "བཀྲ་ཤིས་བདེ་ལེགས། ཚོགས་འདུ་ཆུ་ཚོད་དགུ་པར་འགོ་འཛུགས་རྒྱུ་རེད།",
     translation: "Tashi delek. The meeting will begin at nine o'clock.",
@@ -67,7 +67,7 @@ export const profile: LanguageProfile = {
     {
       question: "How accurate is Tibetan transcription?",
       answer:
-        "We have not recorded a reviewed Tibetan sample, so this page does not claim a tested accuracy level. Dialect, audio quality and limited training data affect results, and the page remains excluded from search until review is complete."
+        "We have not recorded a reviewed Tibetan sample, so this page does not claim a tested accuracy level. Dialect, audio quality and limited training data affect results, and no tested accuracy is claimed until a review is recorded."
     }
   ],
   sources: [

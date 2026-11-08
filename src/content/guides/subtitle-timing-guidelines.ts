@@ -4,7 +4,7 @@ export const guide: GuideContent = {
   kind: "guide",
   path: "/guides/subtitle-timing-guidelines",
   h1: "Subtitle timing guidelines: duration, gaps and cue length",
-  title: "Subtitle timing guidelines: duration, gaps and cue length",
+  title: "Subtitle timing guidelines: duration and gaps",
   metaDescription:
     "Subtitle timing guidelines for editors: practical duration ranges, cue length, gaps, shot changes, frame-rate rounding, sync and lead-in, with a scenario table.",
   primaryKeyword: "subtitle timing guidelines",

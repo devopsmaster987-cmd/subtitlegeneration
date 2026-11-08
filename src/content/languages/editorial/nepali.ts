@@ -7,18 +7,18 @@ export const languagePage: LanguagePageContent = {
   nativeName: "नेपाली",
   path: "/subtitle-generator/nepali",
   h1: "Nepali subtitle generator",
-  title: "Nepali subtitle generator — private, browser-based",
+  title: "Nepali subtitle generator: free, private",
   metaDescription:
     "The Nepali subtitle generator turns नेपाली audio into timed Devanagari cues in your browser. Review names and numbers, then export SRT, VTT or TXT.",
   primaryKeyword: "nepali subtitle generator",
   capsule:
-    "The Nepali subtitle generator uses Whisper on your device to transcribe नेपाली speech into Devanagari cues. You review timing, spelling, names and numbers, then export SRT, VTT or TXT. No audio is uploaded for transcription. No reviewed sample is recorded yet, so the page is excluded from search and the output needs a fluent check.",
+    "The Nepali subtitle generator uses Whisper on your device to transcribe नेपाली speech into Devanagari cues. You review timing, spelling, names and numbers, then export SRT, VTT or TXT. No audio is uploaded for transcription. No reviewed sample is recorded yet, so the output needs a fluent check.",
   published: "2026-02-01",
-  updated: "2026-10-28",
+  updated: "2026-11-08",
   author: "Abdul Samad",
   accuracyNote:
-    "No reviewed Nepali sample is recorded for this page, so it is excluded from search until that review exists. The Nepali subtitle generator still works and exports subtitles, but no tested-accuracy claim is made; treat the transcript as a draft for a fluent speaker to verify.",
-  noindex: true,
+    "No reviewed Nepali sample is recorded for this page, so no tested-accuracy claim is made. The Nepali subtitle generator still works and exports subtitles, but no tested-accuracy claim is made; treat the transcript as a draft for a fluent speaker to verify.",
+  noindex: false,
   keyFacts: [
     { label: "Language code", value: "ne" },
     { label: "Native name", value: "नेपाली" },
@@ -122,7 +122,7 @@ export const languagePage: LanguagePageContent = {
     {
       question: "Has the Nepali transcription been accuracy tested?",
       answer:
-        "No reviewed Nepali sample is recorded, so the page is excluded from search and no tested-accuracy result is claimed. The tool still produces subtitles, but a fluent reviewer should verify the text before publication."
+        "No reviewed Nepali sample is recorded, so no tested-accuracy result is claimed. The tool still produces subtitles, but a fluent reviewer should verify the text before publication."
     }
   ],
   sources: [

@@ -7,18 +7,18 @@ export const languagePage: LanguagePageContent = {
   nativeName: "தமிழ்",
   path: "/subtitle-generator/tamil",
   h1: "Tamil subtitle generator",
-  title: "Tamil subtitle generator — private, browser-based Whisper",
+  title: "Tamil subtitle generator: free and private",
   metaDescription:
     "Use the Tamil subtitle generator to transcribe தமிழ் audio locally in your browser, review Tamil script, names and numerals, then export SRT, VTT or TXT.",
   primaryKeyword: "tamil subtitle generator",
   capsule:
     "Use this Tamil subtitle generator to transcribe தமிழ் audio locally in your browser, then review the Tamil script, punctuation, names and numerals before exporting SRT, VTT or TXT. No upload or account is required. No reviewed Tamil sample has been recorded yet, so no accuracy is claimed and this page stays out of search.",
   published: "2026-02-01",
-  updated: "2026-10-28",
+  updated: "2026-11-08",
   author: "Abdul Samad",
   accuracyNote:
-    "No reviewed Tamil sample has been recorded for VoiceToTextFree. This page is therefore excluded from search with noindex, and no tested accuracy is claimed. The browser-based tool still works: select Tamil, transcribe locally and review every cue before export.",
-  noindex: true,
+    "No reviewed Tamil sample has been recorded for VoiceToTextFree. No tested accuracy is claimed for this page until a reviewed sample is recorded. The browser-based tool still works: select Tamil, transcribe locally and review every cue before export.",
+  noindex: false,
   keyFacts: [
     { label: "Language code", value: "ta" },
     { label: "Native name", value: "தமிழ்" },
@@ -33,7 +33,7 @@ export const languagePage: LanguagePageContent = {
       heading: "What the Tamil subtitle generator does",
       paragraphs: [
         "VoiceToTextFree runs a multilingual Whisper model on your device in the browser. Tamil is present in the model's language tokenizer, so you can select ta and transcribe Tamil audio without sending the recording to a transcription server. The first run may download model files; after that, the audio and the transcript stay on the machine.",
-        "The page is a working tool, not a claim of measured accuracy. No reviewed Tamil sample has been logged for VoiceToTextFree, so the page carries noindex and makes no accuracy promise. Choose Tamil, generate a draft, then listen again and correct the script, spelling, names, numbers and cue breaks before export. The output is SRT, VTT or TXT."
+        "The page is a working tool, not a claim of measured accuracy. No reviewed Tamil sample has been logged for VoiceToTextFree, so the page makes no accuracy promise. Choose Tamil, generate a draft, then listen again and correct the script, spelling, names, numbers and cue breaks before export. The output is SRT, VTT or TXT."
       ]
     },
     {
@@ -113,9 +113,9 @@ export const languagePage: LanguagePageContent = {
         "Yes. After transcription and review, download SRT, VTT or TXT. The exporter writes UTF-8, but you should still open the file in the target player and check that Tamil vowel signs, pulli marks and Grantha letters render correctly."
     },
     {
-      question: "Why is this Tamil page noindex?",
+      question: "Has the accuracy of this $1 page been tested?",
       answer:
-        "No reviewed Tamil sample has been recorded for VoiceToTextFree, so there is no honest accuracy result to publish. The page is excluded from search until that review exists. The browser-based tool still works, and this page explains how to use it."
+        "No reviewed Tamil sample has been recorded for VoiceToTextFree, so there is no honest accuracy result to publish. No tested accuracy claim is made until a reviewed sample is recorded. The browser-based tool still works, and this page explains how to use it."
     }
   ],
   workedExample: {

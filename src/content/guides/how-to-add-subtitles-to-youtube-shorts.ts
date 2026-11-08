@@ -4,7 +4,7 @@ export const guide: GuideContent = {
   kind: "guide",
   path: "/guides/how-to-add-subtitles-to-youtube-shorts",
   h1: "How to add subtitles to YouTube Shorts without breaking the vertical frame",
-  title: "How to add subtitles to YouTube Shorts (SRT and Studio)",
+  title: "How to add subtitles to YouTube Shorts",
   metaDescription:
     "How to add subtitles to YouTube Shorts with a clean SRT: generate cues, review timing, upload in YouTube Studio, and check safe areas on a phone.",
   primaryKeyword: "how to add subtitles to youtube shorts",

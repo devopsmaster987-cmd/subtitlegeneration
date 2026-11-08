@@ -26,7 +26,7 @@ export const profile: LanguageProfile = {
   useCases:
     "Useful for news and current-affairs clips, NGO and health explainers, tourism videos, classroom material and YouTube interviews with English or Arabic mixing. Editors can draft a local transcript, then review agreement and terminology before publishing a Swahili caption track. They also support bilingual tourism material.",
   accuracyNote:
-    "No reviewed Swahili sample has been recorded, so this page is excluded from search while the editorial content is checked. Dialect mixing, noun-class agreement, English code-switching and loanword spellings are uncertain areas, and Swahili is low-resource in speech data. We do not claim tested accuracy; results need editing, and a fluent reviewer should check every cue.",
+    "No reviewed Swahili sample has been recorded, so this page makes no tested accuracy claim. Dialect mixing, noun-class agreement, English code-switching and loanword spellings are uncertain areas, and Swahili is low-resource in speech data. We do not claim tested accuracy; results need editing, and a fluent reviewer should check every cue.",
   example: {
     native: "Habari za asubuhi, hujambo? Mkutano utaanza saa tatu asubuhi.",
     translation: "Good morning, how are you? The meeting will begin at nine in the morning.",
@@ -67,7 +67,7 @@ Mkutano utaanza saa tatu asubuhi.`
     {
       question: "How accurate is Swahili transcription?",
       answer:
-        "We have not recorded a reviewed Swahili sample, so this page does not claim a tested accuracy level. Accent, dialect, background noise and code-switching affect results, and the page remains excluded from search until review is complete."
+        "We have not recorded a reviewed Swahili sample, so this page does not claim a tested accuracy level. Accent, dialect, background noise and code-switching affect results, and no tested accuracy is claimed until a review is recorded."
     }
   ],
   sources: [

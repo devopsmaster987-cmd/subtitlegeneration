@@ -26,7 +26,7 @@ export const profile: LanguageProfile = {
   useCases:
     "Useful for Cambodian news clips, NGO and health explainers, school lessons, documentary interviews and YouTube channels that mix Khmer with English. Editors can draft locally, then correct word boundaries and names before publishing a reviewed Khmer subtitle track. They also serve bilingual community archives.",
   accuracyNote:
-    "No reviewed Khmer sample has been recorded, so this page is excluded from search while the editorial content is checked. Word segmentation, subscript consonants, vowel signs, names and mixed digits are weak areas, and Khmer is low-resource for speech data. We do not claim tested accuracy; results are uneven and need editing, so a fluent Khmer reviewer should check every cue.",
+    "No reviewed Khmer sample has been recorded, so this page makes no tested accuracy claim. Word segmentation, subscript consonants, vowel signs, names and mixed digits are weak areas, and Khmer is low-resource for speech data. We do not claim tested accuracy; results are uneven and need editing, so a fluent Khmer reviewer should check every cue.",
   example: {
     native: "ជម្រាបសួរ។ សុខសប្បាយទេ? ការប្រជុំនឹងចាប់ផ្តើមនៅម៉ោងប្រាំបួន។",
     translation: "Hello. Are you well? The meeting will begin at nine o'clock.",
@@ -67,7 +67,7 @@ export const profile: LanguageProfile = {
     {
       question: "How accurate is Khmer transcription?",
       answer:
-        "We have not recorded a reviewed Khmer sample, so this page does not claim a tested accuracy level. Accent, audio quality, word segmentation and code-switching affect results, and the page remains excluded from search until review is complete."
+        "We have not recorded a reviewed Khmer sample, so this page does not claim a tested accuracy level. Accent, audio quality, word segmentation and code-switching affect results, and no tested accuracy is claimed until a review is recorded."
     }
   ],
   sources: [

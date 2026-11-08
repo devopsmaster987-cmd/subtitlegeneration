@@ -4,7 +4,7 @@ export const guide: GuideContent = {
   kind: "guide",
   path: "/guides/how-to-improve-whisper-accuracy",
   h1: "How to improve Whisper accuracy for cleaner subtitles",
-  title: "How to improve Whisper accuracy for cleaner subtitles",
+  title: "How to improve Whisper accuracy",
   metaDescription:
     "How to improve Whisper accuracy with better audio capture, explicit language selection, measured model sizes, overlap handling and a human review pass.",
   primaryKeyword: "how to improve whisper accuracy",
@@ -88,7 +88,7 @@ export const guide: GuideContent = {
       heading: "Code-switching, accents and low-resource languages",
       paragraphs: [
         "Whisper's training data is uneven. The model card says performance is lower on low-resource and low-discoverability languages, and the paper shows that the amount of training data for a language predicts zero-shot performance. That is a general finding, not a score for your file. A speaker with an accent, a regional dialect or a mix of two languages may get a useful draft and still need substantial correction.",
-        "Do not trust a percentage copied from a blog, and do not assume that a language with a large population is well served. Test a two-minute sample from the actual speaker before transcribing an hour. Our language pages remain noindex until a native reviewer has checked real output, because a generated page is not evidence of quality. For Urdu, Hindi, Arabic or any other language, judge the sample yourself and keep a human review step.",
+        "Do not trust a percentage copied from a blog, and do not assume that a language with a large population is well served. Test a two-minute sample from the actual speaker before transcribing an hour. Our language pages state their testing status plainly and never claim a reviewed accuracy figure before a native reviewer has checked real output, because a generated page is not evidence of quality. For Urdu, Hindi, Arabic or any other language, judge the sample yourself and keep a human review step.",
         "Roman Urdu, Hinglish and Tanglish are not separate Whisper output modes. When the audio is chiefly Urdu, Hindi or Tamil, the model normally writes the detected language in its own script, while English words and brand names may stay in Latin letters. A request for romanized captions is therefore a transliteration and editing job, not a language setting. This site does not promise romanized output; use the native-script transcript as the source and transliterate deliberately if your audience needs it.",
         "Code-switched speech needs a written convention before you edit. Decide whether an English term stays in Latin script, whether a name follows the speaker's spelling, and how a sentence that changes language should be punctuated. Apply that convention across the whole file. If the mix is heavy or the speakers alternate for long stretches, split the recording by language or speaker and transcribe each part with an explicit language. That is slower than one pass, but it gives you a reviewable transcript instead of a script mixture that changes from cue to cue."
       ]

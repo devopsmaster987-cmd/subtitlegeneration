@@ -4,7 +4,7 @@ export const srtVsVtt: GuideContent = {
   kind: "guide",
   path: "/guides/srt-vs-vtt",
   h1: "SRT vs VTT: which subtitle format should you use?",
-  title: "SRT vs VTT: which subtitle format should you use?",
+  title: "SRT vs VTT: which format should you use?",
   metaDescription:
     "SRT vs VTT explained with real examples: timestamp syntax, compatibility, styling and a simple decision path for video editors, YouTube and the web.",
   primaryKeyword: "srt vs vtt",

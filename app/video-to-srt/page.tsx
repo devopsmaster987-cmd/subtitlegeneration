@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { videoToSrt } from "@/content/tools/video-to-srt";
 import { ToolPageView } from "@/components/ToolPageView";
+import { ogImage, twitterImage } from "@/lib/og-image";
 import { site } from "@/config/site";
 
 export const metadata: Metadata = {
@@ -13,12 +14,14 @@ export const metadata: Metadata = {
     locale: "en",
     title: `${videoToSrt.title} | ${site.name}`,
     description: videoToSrt.metaDescription,
-    url: videoToSrt.path
+    url: videoToSrt.path,
+    images: [ogImage]
   },
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
     title: `${videoToSrt.title} | ${site.name}`,
-    description: videoToSrt.metaDescription
+    description: videoToSrt.metaDescription,
+    images: [twitterImage]
   }
 };
 

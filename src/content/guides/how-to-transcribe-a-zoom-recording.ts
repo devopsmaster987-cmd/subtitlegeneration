@@ -4,7 +4,7 @@ export const guide: GuideContent = {
   kind: "guide",
   path: "/guides/how-to-transcribe-a-zoom-recording",
   h1: "How to transcribe a Zoom recording: free, offline, no upload",
-  title: "How to transcribe a Zoom recording: free and private",
+  title: "Transcribe a Zoom recording free",
   metaDescription:
     "How to transcribe a Zoom recording step by step: find the local or cloud file, pick the audio-only version, run Whisper in your browser and export an SRT.",
   primaryKeyword: "transcribe a zoom recording",

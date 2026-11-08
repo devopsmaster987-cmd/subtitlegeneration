@@ -10,7 +10,7 @@ Ship a static, browser-only subtitle generator that turns video or audio into ed
 - Whisper and ffmpeg run in the browser. Media never leaves the device.
 - The content and the tool must be usable on a normal static host, including Netlify and Vercel.
 - AdSense must be able to crawl the site; do not enable site-wide COOP/COEP.
-- Language pages stay `noindex` until a real sample is transcribed and logged.
+- Tier 3 tool-only language pages stay `noindex` until a real sample is transcribed and logged; Tier 1 and Tier 2 pages are searchable with the missing test stated on the page.
 
 ## File map
 
@@ -43,5 +43,5 @@ public/                    ads.txt, llms.txt, favicon and generated ffmpeg core
 - Use webpack builds because Turbopack cannot resolve the ffmpeg.wasm worker URL used by `@ffmpeg/ffmpeg`.
 - Keep ffmpeg single-threaded by default so the site does not need COOP/COEP. Scoped isolation headers for `/studio` remain optional.
 - Keep ads disabled and all ad slot IDs empty until a publisher account is approved and configured.
-- Keep every language page noindex until a reviewed sample exists. The editorial pages are still built so the content and route are ready.
+- Keep Tier 3 tool-only language pages noindex until a reviewed sample exists. Tier 1 and Tier 2 pages ship with an honest "no tested accuracy claim" note.
 - Use generic English-language labels for the interface; language-specific pages explain script, punctuation and review needs.

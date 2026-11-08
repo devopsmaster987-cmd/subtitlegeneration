@@ -35,7 +35,7 @@ The first transcription downloads ONNX model files from Hugging Face and caches 
 
 ## Languages and honest limits
 
-The picker lists 99 languages from the multilingual Whisper tokenizer. The list is tested against a vendored tokenizer map. Support is not equal accuracy: low-resource languages and heavy code-switching need more editing. Weak areas include Pashto, Sindhi, Assamese, Lingala, Breton and other low-resource languages. All 99 language pages are currently `noindex` because no reviewed accuracy samples have been recorded; see `docs/verification-log.md`. Tier 1 and Tier 2 editorial pages exist, but the index switch stays off until the sample rule is met.
+The picker lists 99 languages from the multilingual Whisper tokenizer. The list is tested against a vendored tokenizer map. Support is not equal accuracy: low-resource languages and heavy code-switching need more editing. Weak areas include Pashto, Sindhi, Assamese, Lingala, Breton and other low-resource languages. No reviewed accuracy samples have been recorded yet; see `docs/verification-log.md`, so no page claims tested accuracy. The 38 Tier 1 and Tier 2 language pages are searchable with that limitation stated on the page, while the 61 Tier 3 tool-only language pages stay `noindex` until a sample is logged.
 
 ## Offline use
 
@@ -70,6 +70,6 @@ The production URL defaults to `https://voicetotextfree.top`; set `NEXT_PUBLIC_S
 
 ## Known maintenance items
 
-- Record at least one reviewed sample per language before removing `noindex`.
+- Record at least one reviewed sample per language before indexing the Tier 3 tool-only pages.
 - Re-check platform subtitle instructions, Whisper language list and model sizes each year.
 - Re-run the content audit after editing any content file.

@@ -4,7 +4,7 @@ export const guide: GuideContent = {
   kind: "guide",
   path: "/guides/how-to-add-subtitles-to-tiktok",
   h1: "How to add subtitles to TikTok: in-app text, auto captions or burn-in",
-  title: "How to add subtitles to TikTok (in-app, SRT and burn-in)",
+  title: "How to add subtitles to TikTok",
   metaDescription:
     "How to add subtitles to TikTok with in-app text, automatic captions where available, or a burned-in SRT. Covers safe areas, short cue timing and phone checks.",
   primaryKeyword: "how to add subtitles to tiktok",

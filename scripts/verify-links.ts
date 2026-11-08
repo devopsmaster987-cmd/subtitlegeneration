@@ -5,6 +5,8 @@ import { canonicalRoutes } from "./lib/audit";
 const routes = canonicalRoutes();
 const allowedAssets = new Set([
   "/favicon.svg",
+  "/logo.png",
+  "/og-image.png",
   "/ads.txt",
   "/llms.txt",
   "/robots.txt",
@@ -53,8 +55,9 @@ if (!existsSync("out")) {
       const path = normalize(href);
       if (!path) continue;
       if (routes.has(path)) inbound.add(path);
-      if (!routes.has(path) && !allowedAssets.has(path))
-        problems.push(`${file}: broken internal link ${href}`);
+      else if (allowedAssets.has(path)) {
+        if (!existsSync(join("out", path))) problems.push(`${file}: missing asset ${path}`);
+      } else problems.push(`${file}: broken internal link ${href}`);
     }
     const route =
       `/${relative("out", file)

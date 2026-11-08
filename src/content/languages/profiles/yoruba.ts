@@ -26,7 +26,7 @@ export const profile: LanguageProfile = {
   useCases:
     "Useful for church and community videos, YouTube interviews, school lessons, oral-history archives and diaspora family recordings that mix Yoruba with English. Editors can draft cues locally, then correct tone marks and names before publishing a Yoruba-only or bilingual track. They also suit family and community archives.",
   accuracyNote:
-    "No reviewed Yoruba sample has been recorded, so this page is excluded from search while the editorial content is checked. Tone marks, subdots, name spellings and English code-switching are the weakest areas, and Yoruba is low-resource in speech data. We do not claim tested accuracy; treat every draft as a first pass that still needs editing by a fluent reviewer.",
+    "No reviewed Yoruba sample has been recorded, so this page makes no tested accuracy claim. Tone marks, subdots, name spellings and English code-switching are the weakest areas, and Yoruba is low-resource in speech data. We do not claim tested accuracy; treat every draft as a first pass that still needs editing by a fluent reviewer.",
   example: {
     native: "Ẹ káàrọ̀, ṣé àlàáfíà ni? Àpéjọ yóò bẹ̀rẹ̀ ní aago mẹ́sàn-án.",
     translation: "Good morning, are you well? The meeting will begin at nine o'clock.",
@@ -67,7 +67,7 @@ export const profile: LanguageProfile = {
     {
       question: "How accurate is Yoruba transcription?",
       answer:
-        "We have not recorded a reviewed Yoruba sample, so this page does not claim a tested accuracy level. Results vary with accent, audio quality, background noise and model size, and the page remains excluded from search until review is complete."
+        "We have not recorded a reviewed Yoruba sample, so this page does not claim a tested accuracy level. Results vary with accent, audio quality, background noise and model size, and no tested accuracy is claimed until a review is recorded."
     }
   ],
   sources: [

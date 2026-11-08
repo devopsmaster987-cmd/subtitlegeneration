@@ -9,6 +9,7 @@ import { AdSlot } from "@/components/AdSlot";
 import { JsonLd } from "@/components/JsonLd";
 import { homeContent } from "@/content/home";
 import { faqSchema, softwareApplicationSchema } from "@/lib/schema";
+import { ogImage, twitterImage } from "@/lib/og-image";
 import { site } from "@/config/site";
 
 export const metadata: Metadata = {
@@ -21,12 +22,14 @@ export const metadata: Metadata = {
     locale: "en",
     title: `${homeContent.h1} | ${site.name}`,
     description: homeContent.metaDescription,
-    url: "/"
+    url: "/",
+    images: [ogImage]
   },
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
     title: `${homeContent.h1} | ${site.name}`,
-    description: homeContent.metaDescription
+    description: homeContent.metaDescription,
+    images: [twitterImage]
   }
 };
 

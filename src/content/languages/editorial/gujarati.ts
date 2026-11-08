@@ -7,18 +7,18 @@ export const languagePage: LanguagePageContent = {
   nativeName: "ગુજરાતી",
   path: "/subtitle-generator/gujarati",
   h1: "Gujarati subtitle generator",
-  title: "Gujarati subtitle generator — private, browser-based",
+  title: "Gujarati subtitle generator: free, private",
   metaDescription:
     "The Gujarati subtitle generator transcribes ગુજરાતી audio to Gujarati script locally. Edit the cues, check names and numbers, then export SRT, VTT or TXT.",
   primaryKeyword: "gujarati subtitle generator",
   capsule:
     "The Gujarati subtitle generator transcribes ગુજરાતી speech locally with Whisper, so the recording stays on your device. It returns Gujarati script rather than a romanized version. Review vowel signs, names, digits and line breaks, then export SRT, VTT or TXT. No reviewed sample is recorded yet, so the text remains unverified.",
   published: "2026-02-01",
-  updated: "2026-10-28",
+  updated: "2026-11-08",
   author: "Abdul Samad",
   accuracyNote:
     "No reviewed Gujarati sample is recorded for this page, so search engines are asked not to index it. The Gujarati subtitle generator is still available and produces editable captions, but no tested-accuracy claim is made and a fluent reviewer should check the text.",
-  noindex: true,
+  noindex: false,
   keyFacts: [
     { label: "Language code", value: "gu" },
     { label: "Native name", value: "ગુજરાતી" },
@@ -122,7 +122,7 @@ export const languagePage: LanguagePageContent = {
     {
       question: "Is the Gujarati transcription accuracy verified?",
       answer:
-        "No reviewed Gujarati sample is recorded, so the page is excluded from search and no tested-accuracy claim is made. The tool works and can produce a useful draft, but a fluent reviewer should verify the text before it is published."
+        "No reviewed Gujarati sample is recorded, so no tested-accuracy claim is made. The tool works and can produce a useful draft, but a fluent reviewer should verify the text before it is published."
     }
   ],
   sources: [

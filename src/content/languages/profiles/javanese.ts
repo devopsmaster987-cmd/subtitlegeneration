@@ -26,7 +26,7 @@ export const profile: LanguageProfile = {
   useCases:
     "Useful for wayang and cultural recordings, village interviews, YouTube vlogs, classroom material and family archives. It also helps teams that need a rough Javanese draft before a native reviewer adjusts register and dialect, and it keeps the recording on the device during that draft stage.",
   accuracyNote:
-    "No reviewed Javanese sample has been recorded, so the page is excluded from search. Register, dialect and Indonesian code-switching are the weakest areas, and the model may choose a neutral form. Javanese is thinly resourced in speech data compared with major languages, and we do not claim tested accuracy; treat the draft as a first pass for a human reviewer.",
+    "No reviewed Javanese sample has been recorded, so this page makes no tested accuracy claim. Register, dialect and Indonesian code-switching are the weakest areas, and the model may choose a neutral form. Javanese is thinly resourced in speech data compared with major languages, and we do not claim tested accuracy; treat the draft as a first pass for a human reviewer.",
   example: {
     native: "Sesuk esuk aku lan kowe ketemu ing kene. Kamar 402 ana ing lantai papat.",
     translation: "Tomorrow morning you and I will meet here. Room 402 is on the fourth floor.",

@@ -71,7 +71,7 @@ export const site = {
   /** Training crawlers are allowed by default; ask the owner before changing. */
   allowTrainingCrawlers: true,
   launchDate: "2026-01-15",
-  contentUpdated: "2026-10-29"
+  contentUpdated: "2026-11-08"
 } as const;
 
 export const buildEnv = env;

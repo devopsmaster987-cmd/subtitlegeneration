@@ -26,7 +26,7 @@ export const profile: LanguageProfile = {
   useCases:
     "Useful for Zimbabwean news clips, community and health videos, school lessons, church teaching and YouTube interviews that mix Shona with English. Editors can draft locally, then correct digraphs and names before publishing a reviewed Shona caption track. They also serve bilingual community archives.",
   accuracyNote:
-    "No reviewed Shona sample has been recorded, so this page is excluded from search while the editorial content is checked. Digraphs, unmarked tone, dialect vocabulary and English code-switching are weak areas, and Shona is low-resource for speech data. We do not claim tested accuracy; results are uneven and need editing, so a fluent Shona reviewer should check every cue.",
+    "No reviewed Shona sample has been recorded, so this page makes no tested accuracy claim. Digraphs, unmarked tone, dialect vocabulary and English code-switching are weak areas, and Shona is low-resource for speech data. We do not claim tested accuracy; results are uneven and need editing, so a fluent Shona reviewer should check every cue.",
   example: {
     native: "Mangwanani, wakadini? Musangano uchatanga na9.",
     translation: "Good morning, how are you? The meeting will start at nine.",
@@ -67,7 +67,7 @@ Musangano uchatanga na9.`
     {
       question: "How accurate is Shona transcription?",
       answer:
-        "We have not recorded a reviewed Shona sample, so this page does not claim a tested accuracy level. Accent, audio quality, dialect and code-switching affect results, and the page remains excluded from search until review is complete."
+        "We have not recorded a reviewed Shona sample, so this page does not claim a tested accuracy level. Accent, audio quality, dialect and code-switching affect results, and no tested accuracy is claimed until a review is recorded."
     }
   ],
   sources: [

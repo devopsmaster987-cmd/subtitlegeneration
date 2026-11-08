@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { guides, getGuide } from "@/content/guides";
 import { GuideView } from "@/components/GuideView";
+import { ogImage, twitterImage } from "@/lib/og-image";
 import { site } from "@/config/site";
 
 export const dynamicParams = false;
@@ -31,9 +32,15 @@ export async function generateMetadata({
       url: guide.path,
       publishedTime: guide.published,
       modifiedTime: guide.updated,
-      authors: [guide.author]
+      authors: [guide.author],
+      images: [ogImage]
     },
-    twitter: { card: "summary", title: guide.title, description: guide.metaDescription }
+    twitter: {
+      card: "summary_large_image",
+      title: guide.title,
+      description: guide.metaDescription,
+      images: [twitterImage]
+    }
   };
 }
 

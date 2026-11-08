@@ -26,7 +26,7 @@ export const profile: LanguageProfile = {
   useCases:
     "Useful for Georgian interviews, documentary footage, church and community recordings, classroom material and family archives. It also helps teams that need a rough Georgian draft before a native speaker corrects verb agreement and names, and it keeps the recording local during the draft stage.",
   accuracyNote:
-    "No reviewed Georgian sample has been recorded, so this page is excluded from search. Verb agreement, consonant clusters and dialect variation are the weakest areas. Georgian is thinly resourced in speech data compared with major languages, and we do not claim tested accuracy; treat every draft as a first pass that needs a Georgian reviewer.",
+    "No reviewed Georgian sample has been recorded, so this page makes no tested accuracy claim. Verb agreement, consonant clusters and dialect variation are the weakest areas. Georgian is thinly resourced in speech data compared with major languages, and we do not claim tested accuracy; treat every draft as a first pass that needs a Georgian reviewer.",
   example: {
     native: "ხვალ დილით შევხვდებით. ოთახი 402 მეოთხე სართულზეა.",
     translation: "We will meet tomorrow morning. Room 402 is on the fourth floor.",

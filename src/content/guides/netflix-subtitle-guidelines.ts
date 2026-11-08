@@ -4,7 +4,7 @@ export const guide: GuideContent = {
   kind: "guide",
   path: "/guides/netflix-subtitle-guidelines",
   h1: "Netflix subtitle guidelines: what the published timed-text guide says",
-  title: "Netflix subtitle guidelines: what the timed-text guide says",
+  title: "Netflix subtitle guidelines explained",
   metaDescription:
     "A neutral walkthrough of Netflix subtitle guidelines: published timing, reading speed, line length, shot changes, speaker IDs, music and SDH, with attribution.",
   primaryKeyword: "netflix subtitle guidelines",

@@ -5,7 +5,7 @@ export const tool: ToolPageContent = {
   path: "/merge-split-srt",
   preset: "merge-split-srt",
   h1: "Merge SRT lines online and split cues in one browser editor",
-  title: "Merge SRT lines online — split and combine subtitle cues",
+  title: "Merge SRT lines online: split and combine",
   metaDescription:
     "Merge SRT lines online or split one cue into two. This browser tool joins adjacent subtitles, distributes split timing and exports SRT, VTT or TXT.",
   primaryKeyword: "merge srt lines online",

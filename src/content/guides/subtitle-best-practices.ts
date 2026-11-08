@@ -4,7 +4,7 @@ export const guide: GuideContent = {
   kind: "guide",
   path: "/guides/subtitle-best-practices",
   h1: "Subtitle best practices: a practical guide to cleaner captions",
-  title: "Subtitle best practices: a guide to cleaner captions",
+  title: "Subtitle best practices for cleaner captions",
   metaDescription:
     "Subtitle best practices for real playback: clause-level segmentation, two-line limits, reading speed, punctuation, speaker IDs, SDH and a clean review pass.",
   primaryKeyword: "subtitle best practices",

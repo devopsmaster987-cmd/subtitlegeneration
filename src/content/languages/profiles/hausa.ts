@@ -26,7 +26,7 @@ export const profile: LanguageProfile = {
   useCases:
     "Useful for radio and television clips, health and agriculture explainers, religious teaching, school materials and YouTube interviews that mix Hausa with English. A local draft helps editors produce a searchable transcript or a reviewed Hausa caption track without uploading private audio. They also suit community radio archives.",
   accuracyNote:
-    "No reviewed Hausa sample has been recorded, so this page is excluded from search while the editorial content is checked. Hooked letters, Ajami sources, loanword spellings and English code-switching are uncertain areas, and Hausa is low-resource in speech data. We do not claim tested accuracy; results need editing, and a fluent Hausa reviewer should check every cue.",
+    "No reviewed Hausa sample has been recorded, so this page makes no tested accuracy claim. Hooked letters, Ajami sources, loanword spellings and English code-switching are uncertain areas, and Hausa is low-resource in speech data. We do not claim tested accuracy; results need editing, and a fluent Hausa reviewer should check every cue.",
   example: {
     native: "Barka da safiya, yaya kake? Taron zai fara da ƙarfe tara.",
     translation: "Good morning, how are you? The meeting will start at nine o'clock.",
@@ -67,7 +67,7 @@ Taron zai fara da ƙarfe tara.`
     {
       question: "How accurate is Hausa transcription?",
       answer:
-        "We have not recorded a reviewed Hausa sample, so this page does not claim a tested accuracy level. Accent, recording quality and code-switching all affect the result, and the page stays excluded from search until a review is recorded."
+        "We have not recorded a reviewed Hausa sample, so this page does not claim a tested accuracy level. Accent, recording quality and code-switching all affect the result, and no tested accuracy is claimed until a review is recorded."
     }
   ],
   sources: [

@@ -26,7 +26,7 @@ export const profile: LanguageProfile = {
   useCases:
     "Useful for Mongolian news clips, mining and business briefings, school lessons, documentary interviews and YouTube channels that mix Mongolian with Russian or English. Editors can draft locally, then correct letters and names before publishing a reviewed caption track. They also serve bilingual business archives.",
   accuracyNote:
-    "No reviewed Mongolian sample has been recorded, so this page is excluded from search while the editorial content is checked. The letters ө and ү, script choice, dialect variation and Russian or English code-switching are weak areas, and Mongolian is low-resource for speech data. We do not claim tested accuracy; results are uneven and need editing, so a fluent reviewer should check every cue.",
+    "No reviewed Mongolian sample has been recorded, so this page makes no tested accuracy claim. The letters ө and ү, script choice, dialect variation and Russian or English code-switching are weak areas, and Mongolian is low-resource for speech data. We do not claim tested accuracy; results are uneven and need editing, so a fluent reviewer should check every cue.",
   example: {
     native: "Өглөөний мэнд. Сайн байна уу? Хурал есөн цагт эхэлнэ.",
     translation: "Good morning. How are you? The meeting will begin at nine o'clock.",
@@ -67,7 +67,7 @@ export const profile: LanguageProfile = {
     {
       question: "How accurate is Mongolian transcription?",
       answer:
-        "We have not recorded a reviewed Mongolian sample, so this page does not claim a tested accuracy level. Accent, dialect, audio quality and code-switching affect results, and the page remains excluded from search until review is complete."
+        "We have not recorded a reviewed Mongolian sample, so this page does not claim a tested accuracy level. Accent, dialect, audio quality and code-switching affect results, and no tested accuracy is claimed until a review is recorded."
     }
   ],
   sources: [

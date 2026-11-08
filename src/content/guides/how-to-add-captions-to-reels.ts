@@ -4,7 +4,7 @@ export const guide: GuideContent = {
   kind: "guide",
   path: "/guides/how-to-add-captions-to-reels",
   h1: "How to add captions to Reels: three routes that actually work",
-  title: "How to add captions to Reels (app, SRT and burn-in)",
+  title: "How to add captions to Reels",
   metaDescription:
     "How to add captions to Reels with the in-app sticker, a burned-in export or an SRT for an editor. Compare the routes, safe zones and caption sizing.",
   primaryKeyword: "how to add captions to reels",

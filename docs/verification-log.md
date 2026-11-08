@@ -50,8 +50,8 @@ Every technical claim in the content should trace to one of these checks. Record
 
 ## Accuracy testing
 
-- Claim: language pages are noindex until a real sample is checked.
-- Method: none yet. No reviewed language sample has been recorded, so `accuracyTested` remains false for all 99 languages and all language pages are noindex.
+- Claim: no page claims tested accuracy until a real sample is checked.
+- Method: none yet. No reviewed language sample has been recorded, so `accuracyTested` remains false for all 99 languages. The 38 Tier 1 and Tier 2 language pages are searchable and state this limitation on the page; the 61 Tier 3 tool-only language pages stay `noindex` until a sample is recorded.
 - Required for future entries: language, device, browser, model, clip length, source/licence of the clip, reference transcript, how the result was judged and the date.
 - Status: open.
 

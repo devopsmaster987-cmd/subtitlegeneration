@@ -7,7 +7,7 @@ import { pageMetadata } from "@/lib/page-metadata";
 export const metadata: Metadata = pageMetadata({
   title: "Corrections and change log",
   description:
-    "Public record of factual corrections, verification work and material changes to VoiceToTextFree content and tooling.",
+    "Public record of factual corrections, verification work and material changes to VoiceToTextFree content, tooling and guides.",
   path: "/corrections"
 });
 

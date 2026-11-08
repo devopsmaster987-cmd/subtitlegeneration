@@ -26,7 +26,7 @@ export const profile: LanguageProfile = {
   useCases:
     "Suits cultural documentation, local radio, vlogs, school recordings and family videos from West Java. It also helps translators who need a rough Sundanese draft before a native speaker checks register and dialect, and it keeps the recording local while the draft is prepared.",
   accuracyNote:
-    "No reviewed Sundanese sample has been recorded, so this page is excluded from search. Register, the eu vowel, dialect variation and Indonesian code-switching are the least certain areas. Sundanese is thinly resourced in speech data compared with major languages, and we do not claim tested accuracy; every draft needs a human pass before publication.",
+    "No reviewed Sundanese sample has been recorded, so this page makes no tested accuracy claim. Register, the eu vowel, dialect variation and Indonesian code-switching are the least certain areas. Sundanese is thinly resourced in speech data compared with major languages, and we do not claim tested accuracy; every draft needs a human pass before publication.",
   example: {
     native: "Isuk-isuk urang papanggih di dieu. Kamar 402 aya di lantai opat.",
     translation: "Tomorrow morning we will meet here. Room 402 is on the fourth floor.",

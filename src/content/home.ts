@@ -15,7 +15,7 @@ export const homeContent: HomeContent = {
   capsule:
     "VoiceToTextFree is a free subtitle generator and voice to text tool that runs OpenAI Whisper inside your browser. Choose a video or audio file, pick one of 99 languages or auto-detect, then edit the timed transcript and export SRT, VTT or TXT. Your media is never uploaded.",
   published: "2026-01-15",
-  updated: "2026-10-29",
+  updated: "2026-11-08",
   author: "Abdul Samad",
   keyFacts: [
     { label: "Price", value: "Free, no account, no credit card" },
@@ -27,7 +27,7 @@ export const homeContent: HomeContent = {
   ],
   sections: [
     {
-      heading: "What VoiceToTextFree does",
+      heading: "What this free subtitle generator does",
       paragraphs: [
         "This free subtitle generator turns a recording into a timed transcript you can edit and publish. Drop in an interview, a lecture, a screen recording or a phone video; the app extracts a mono 16 kHz audio track, slices it into overlapping chunks and sends those chunks to a Whisper model that is running on your device. The output appears as numbered cues with start and end times. You can correct a name, fix a sentence, split a cue that stayed on screen too long, merge two short cues, or shift every timing by a fixed offset before exporting.",
         "The result is a normal subtitle file, not a proprietary project. SRT works in Premiere Pro, DaVinci Resolve, Final Cut Pro, CapCut and most upload forms. WebVTT is the format HTML5 video players expect. Plain TXT is useful when you need a readable transcript for a report, an article or a searchable archive. The tool does not add a watermark, ask for an email address or send your audio to a paid API."
@@ -58,7 +58,7 @@ export const homeContent: HomeContent = {
       heading: "Languages: 99 options, with honest limits",
       paragraphs: [
         "The language picker lists all 99 languages in the multilingual Whisper tokenizer, from English, Spanish, French and Arabic to Urdu, Hindi, Bengali, Tamil, Swahili, Yoruba and Welsh. The list is generated from a verified tokenizer map and checked by a unit test, so it does not quietly drift when the model changes. Popular languages appear first; the full list is alphabetical and searchable by English name, native name or code.",
-        "Support is not the same as equal accuracy. Whisper is strongest on well-resourced languages with clear audio and weak on low-resource languages, heavy code-switching and long stretches of music. The language pages explain the script, punctuation and common pitfalls for each language, and pages without a recorded accuracy test stay out of the search index until a real sample has been checked. That is deliberate: a page that claims good Urdu accuracy without testing it is not useful."
+        "Support is not the same as equal accuracy. Whisper is strongest on well-resourced languages with clear audio and weak on low-resource languages, heavy code-switching and long stretches of music. The language pages explain the script, punctuation and common pitfalls for each language. No language page claims a reviewed accuracy figure before a native reviewer has checked real output, and pages that are only a picker entry stay out of the search index until a real sample has been recorded. That is deliberate: a page that claims good Urdu accuracy without testing it is not useful."
       ]
     },
     {
@@ -111,7 +111,7 @@ export const homeContent: HomeContent = {
     {
       question: "Is it free?",
       answer:
-        "Yes. The tool is free to use, with no account, credit card or per-minute charge. If advertising is enabled, ads appear only outside the tool area and only after the required consent; the tool itself does not depend on ad interaction."
+        "Yes. This free subtitle generator costs nothing: no account, no credit card and no per-minute charge. If advertising is enabled, ads appear only outside the tool area and only after the required consent; the tool itself does not depend on ad interaction."
     },
     {
       question: "Do I need an account?",

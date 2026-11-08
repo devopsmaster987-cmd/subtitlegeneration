@@ -7,18 +7,18 @@ export const languagePage: LanguagePageContent = {
   nativeName: "বাংলা",
   path: "/subtitle-generator/bengali",
   h1: "Bengali subtitle generator: audio to SRT in the browser",
-  title: "Bengali subtitle generator: private audio to SRT and text",
+  title: "Bengali subtitle generator: private SRT export",
   metaDescription:
     "Use this Bengali subtitle generator to turn Bengali video to text and SRT in your browser. Whisper drafts Bengali script locally, then review and export SRT or VTT.",
   primaryKeyword: "bengali subtitle generator",
   capsule:
     "This Bengali subtitle generator runs Whisper locally in your browser, so Bengali audio stays on your device while you build an SRT or VTT file. It drafts Bengali script, not a promised romanized version, and every cue still needs a careful human review before publishing.",
   published: "2026-02-01",
-  updated: "2026-10-29",
+  updated: "2026-11-08",
   author: "Abdul Samad",
   accuracyNote:
-    "No reviewed Bengali sample has been recorded yet, so this page is excluded from search while the editorial content is still being checked. The tool itself still works: you can select Bengali, transcribe locally and export SRT or VTT. We do not claim tested accuracy for Bengali.",
-  noindex: true,
+    "No reviewed Bengali sample has been recorded yet, so this page makes no tested accuracy claim. The tool itself still works: you can select Bengali, transcribe locally and export SRT or VTT. We do not claim tested accuracy for Bengali.",
+  noindex: false,
   keyFacts: [
     { label: "Language code", value: "bn" },
     { label: "Native name", value: "বাংলা" },

@@ -26,7 +26,7 @@ export const profile: LanguageProfile = {
   useCases:
     "Useful for Ethiopian news clips, church and community teaching, school lessons, documentary interviews and diaspora YouTube channels that mix Amharic with English. Editors can draft locally, then correct fidel spelling and punctuation before publishing SRT or VTT. They also serve bilingual community archives.",
   accuracyNote:
-    "No reviewed Amharic sample has been recorded, so this page is excluded from search while the editorial content is checked. Homophone fidel, gemination, punctuation, names and English code-switching are weak areas, and Amharic is low-resource in speech data. We do not claim tested accuracy; results need editing, and a fluent reviewer should check every cue.",
+    "No reviewed Amharic sample has been recorded, so this page makes no tested accuracy claim. Homophone fidel, gemination, punctuation, names and English code-switching are weak areas, and Amharic is low-resource in speech data. We do not claim tested accuracy; results need editing, and a fluent reviewer should check every cue.",
   example: {
     native: "እንደምን አደሩ። ስብሰባው በዘጠኝ ሰዓት ይጀምራል።",
     translation: "Good morning. The meeting begins at nine o'clock.",
@@ -67,7 +67,7 @@ export const profile: LanguageProfile = {
     {
       question: "How accurate is Amharic transcription?",
       answer:
-        "We have not recorded a reviewed Amharic sample, so this page does not claim a tested accuracy level. Accent, audio quality and code-switching affect results, and the page stays excluded from search until a review is recorded."
+        "We have not recorded a reviewed Amharic sample, so this page does not claim a tested accuracy level. Accent, audio quality and code-switching affect results, and no tested accuracy is claimed until a review is recorded."
     }
   ],
   sources: [

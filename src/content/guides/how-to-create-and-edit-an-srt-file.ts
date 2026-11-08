@@ -4,7 +4,7 @@ export const guide: GuideContent = {
   kind: "guide",
   path: "/guides/how-to-create-and-edit-an-srt-file",
   h1: "How to create an SRT file: syntax, timing and safe edits",
-  title: "How to create an SRT file in a text editor or the browser",
+  title: "How to create an SRT file",
   metaDescription:
     "How to create an SRT file with exact cue syntax, timestamp math and safe editing steps, plus fixes for overlaps, wrong separators and encoding problems.",
   primaryKeyword: "how to create an srt file",

@@ -26,7 +26,7 @@ export const profile: LanguageProfile = {
   useCases:
     "Useful for Azerbaijani interviews, news clips, vlogs, classroom recordings and family videos. It also helps translators who need a rough Latin-script draft before a native editor checks vowel harmony, names and Russian mixing, and it keeps the recording local during the draft stage.",
   accuracyNote:
-    "No reviewed Azerbaijani sample has been recorded, so this page is excluded from search. The schwa, vowel harmony, regional variation and Russian code-switching are the weakest areas. Azerbaijani is thinly resourced in speech data compared with major languages, and we do not claim tested accuracy; treat the draft as a first pass for a native reviewer.",
+    "No reviewed Azerbaijani sample has been recorded, so this page makes no tested accuracy claim. The schwa, vowel harmony, regional variation and Russian code-switching are the weakest areas. Azerbaijani is thinly resourced in speech data compared with major languages, and we do not claim tested accuracy; treat the draft as a first pass for a native reviewer.",
   example: {
     native: "Sabah səhər görüşəcəyik. 402 nömrəli otaq dördüncü mərtəbədədir.",
     translation: "We will meet tomorrow morning. Room 402 is on the fourth floor.",

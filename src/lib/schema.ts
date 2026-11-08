@@ -67,3 +67,32 @@ export function softwareApplicationSchema() {
     isPartOf: websiteEntity
   };
 }
+
+export function collectionPageSchema(options: {
+  path: string;
+  name: string;
+  description: string;
+  listName: string;
+  items: { name: string; path: string }[];
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name: options.name,
+    description: options.description,
+    url: `${site.url}${options.path}`,
+    inLanguage: "en",
+    isPartOf: { "@id": `${site.url}/#website` },
+    mainEntity: {
+      "@type": "ItemList",
+      name: options.listName,
+      numberOfItems: options.items.length,
+      itemListElement: options.items.map((item, index) => ({
+        "@type": "ListItem",
+        position: index + 1,
+        name: item.name,
+        url: `${site.url}${item.path}`
+      }))
+    }
+  };
+}

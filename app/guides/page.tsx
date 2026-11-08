@@ -3,10 +3,13 @@ import Link from "next/link";
 import { guides } from "@/content/guides";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { AdSlot } from "@/components/AdSlot";
+import { JsonLd } from "@/components/JsonLd";
+import { collectionPageSchema } from "@/lib/schema";
+import { ogImage, twitterImage } from "@/lib/og-image";
 import { site } from "@/config/site";
 
 export const metadata: Metadata = {
-  title: "Subtitle guides: formats, timing, accessibility and workflow",
+  title: "Subtitle guides: formats, timing and workflow",
   description:
     "Original, practical guides to subtitle formats, timing, accuracy, platform uploads and accessibility, written for people who actually make subtitles.",
   alternates: { canonical: "/guides" },
@@ -17,13 +20,15 @@ export const metadata: Metadata = {
     title: `Subtitle guides | ${site.name}`,
     description:
       "Practical guides to SRT, VTT, timing, Whisper accuracy, platform captions and accessibility.",
-    url: "/guides"
+    url: "/guides",
+    images: [ogImage]
   },
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
     title: `Subtitle guides | ${site.name}`,
     description:
-      "Practical guides to SRT, VTT, timing, Whisper accuracy, platform captions and accessibility."
+      "Practical guides to SRT, VTT, timing, Whisper accuracy, platform captions and accessibility.",
+    images: [twitterImage]
   }
 };
 
@@ -67,6 +72,18 @@ export default function GuidesIndexPage() {
       </div>
 
       <AdSlot placement="article-end" />
+      <JsonLd
+        data={[
+          collectionPageSchema({
+            path: "/guides",
+            name: "Subtitle guides",
+            description:
+              "Practical guides to SRT, VTT, timing, Whisper accuracy, platform captions and accessibility.",
+            listName: "VoiceToTextFree subtitle guides",
+            items: guides.map((guide) => ({ name: guide.h1, path: guide.path }))
+          })
+        ]}
+      />
     </div>
   );
 }

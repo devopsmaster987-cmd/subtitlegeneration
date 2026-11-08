@@ -4,7 +4,7 @@ export const guide: GuideContent = {
   kind: "guide",
   path: "/guides/how-to-open-an-srt-file",
   h1: "How to open an SRT file on a computer, phone or video player",
-  title: "How to open an SRT file: editors, players and browser tools",
+  title: "How to open an SRT file",
   metaDescription:
     "How to open an SRT file in a text editor, VLC, a browser, YouTube Studio, Premiere, DaVinci Resolve, Final Cut Pro or CapCut, and fix common errors.",
   primaryKeyword: "how to open an srt file",

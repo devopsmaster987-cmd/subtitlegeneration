@@ -47,9 +47,11 @@ export function Analytics() {
       document.head.appendChild(script);
     }
     window.dataLayer = window.dataLayer || [];
-    const gtag = window.gtag ?? function gtag(...args: unknown[]) {
-      (window.dataLayer as unknown[][]).push(args);
-    };
+    const gtag =
+      window.gtag ??
+      function gtag(...args: unknown[]) {
+        (window.dataLayer as unknown[][]).push(args);
+      };
     window.gtag = gtag;
     gtag("js", new Date());
     gtag("config", site.analytics.ga4Id);

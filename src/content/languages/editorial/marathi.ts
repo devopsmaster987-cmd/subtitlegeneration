@@ -7,18 +7,18 @@ export const languagePage: LanguagePageContent = {
   nativeName: "मराठी",
   path: "/subtitle-generator/marathi",
   h1: "Marathi subtitle generator",
-  title: "Marathi subtitle generator — private, browser-based",
+  title: "Marathi subtitle generator: free, private",
   metaDescription:
     "Use the Marathi subtitle generator to transcribe Marathi audio in Devanagari, review the cues, and export SRT, VTT or TXT locally without an upload.",
   primaryKeyword: "marathi subtitle generator",
   capsule:
     "The Marathi subtitle generator runs Whisper inside your browser, so मराठी audio is transcribed locally and stays on your device. Choose Marathi, review the Devanagari cues for names, numbers and punctuation, then export SRT, VTT or TXT. No reviewed sample is recorded yet, so treat the text as unverified until a speaker checks it.",
   published: "2026-02-01",
-  updated: "2026-10-28",
+  updated: "2026-11-08",
   author: "Abdul Samad",
   accuracyNote:
-    "No reviewed Marathi sample is recorded for this page, so it is excluded from search until that testing is done. The Marathi subtitle generator still works in the browser: you can transcribe, edit and export SRT or VTT, but treat the text as unverified rather than tested.",
-  noindex: true,
+    "No reviewed Marathi sample is recorded for this page, so no tested accuracy claim is made. The Marathi subtitle generator still works in the browser: you can transcribe, edit and export SRT or VTT, but treat the text as unverified rather than tested.",
+  noindex: false,
   keyFacts: [
     { label: "Language code", value: "mr" },
     { label: "Native name", value: "मराठी" },
@@ -122,7 +122,7 @@ export const languagePage: LanguagePageContent = {
     {
       question: "Has the Marathi output been accuracy tested?",
       answer:
-        "No reviewed Marathi sample is recorded, so this page is excluded from search and no tested-accuracy claim is made. The tool still works and you can produce subtitles, but the text should be treated as unverified until a fluent reviewer checks it."
+        "No reviewed Marathi sample is recorded, so no tested-accuracy claim is made. The tool still works and you can produce subtitles, but the text should be treated as unverified until a fluent reviewer checks it."
     }
   ],
   sources: [

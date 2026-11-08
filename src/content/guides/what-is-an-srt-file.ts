@@ -4,7 +4,7 @@ export const guide: GuideContent = {
   kind: "guide",
   path: "/guides/what-is-an-srt-file",
   h1: "What is an SRT file? Inside the plain-text subtitle format",
-  title: "What is an SRT file? A plain-text subtitle format explained",
+  title: "What is an SRT file? The format explained",
   metaDescription:
     "What is an SRT file? Learn how numbered cues, comma timestamps and UTF-8 text work, how to inspect an SRT, and how to create or export one.",
   primaryKeyword: "what is an srt file",

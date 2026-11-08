@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { ogImage, twitterImage } from "@/lib/og-image";
 import { site } from "@/config/site";
 
 type PageMetadataInput = {
@@ -27,9 +28,15 @@ export function pageMetadata({
       locale: "en",
       title: socialTitle,
       description,
-      url: path
+      url: path,
+      images: [ogImage]
     },
-    twitter: { card: "summary", title: socialTitle, description },
+    twitter: {
+      card: "summary_large_image",
+      title: socialTitle,
+      description,
+      images: [twitterImage]
+    },
     ...(noindex ? { robots: { index: false, follow: true } } : {})
   };
 }

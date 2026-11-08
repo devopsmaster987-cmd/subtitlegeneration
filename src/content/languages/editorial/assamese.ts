@@ -7,18 +7,18 @@ export const languagePage: LanguagePageContent = {
   nativeName: "অসমীয়া",
   path: "/subtitle-generator/assamese",
   h1: "Assamese subtitle generator",
-  title: "Assamese subtitle generator — private, browser-based",
+  title: "Assamese subtitle generator: free, private",
   metaDescription:
     "Use the Assamese subtitle generator to transcribe অসমীয়া audio locally in your browser, review the left-to-right cues and export UTF-8 SRT, VTT or TXT.",
   primaryKeyword: "assamese subtitle generator",
   capsule:
     "The Assamese subtitle generator transcribes অসমীয়া speech with Whisper running inside your browser, so the recording does not need an upload. It returns Assamese script in left-to-right order for you to review, correct and export as UTF-8 SRT, VTT or TXT.",
   published: "2026-02-01",
-  updated: "2026-10-28",
+  updated: "2026-11-08",
   author: "Abdul Samad",
   accuracyNote:
-    "No reviewed Assamese sample is recorded in the verification log yet, so this page is excluded from search and no tested-accuracy claim is made. The Assamese subtitle generator still works: select Assamese, run a local transcription, review the Assamese-script cues and export SRT or VTT.",
-  noindex: true,
+    "No reviewed Assamese sample is recorded in the verification log yet, so no tested-accuracy claim is made. The Assamese subtitle generator still works: select Assamese, run a local transcription, review the Assamese-script cues and export SRT or VTT.",
+  noindex: false,
   keyFacts: [
     { label: "Language code", value: "as" },
     { label: "Native name", value: "অসমীয়া" },

@@ -26,7 +26,7 @@ export const profile: LanguageProfile = {
   useCases:
     "Suits Bashkortostan radio, community and mosque recordings, classroom material, interviews and family videos. It also helps translators who need a rough Cyrillic draft before a native editor checks vowel harmony and Russian mixing, and it keeps the recording local while the draft is prepared.",
   accuracyNote:
-    "No reviewed Bashkir sample has been recorded, so this page is excluded from search. Vowel harmony, the extra Cyrillic letters, dialect variation and Russian code-switching are the least certain areas. Bashkir is thinly resourced in speech data compared with major languages, and we do not claim tested accuracy; every draft needs a native review.",
+    "No reviewed Bashkir sample has been recorded, so this page makes no tested accuracy claim. Vowel harmony, the extra Cyrillic letters, dialect variation and Russian code-switching are the least certain areas. Bashkir is thinly resourced in speech data compared with major languages, and we do not claim tested accuracy; every draft needs a native review.",
   example: {
     native: "Беҙ иртәгә иртән осрашырбыҙ. 402-се бүлмә дүртенсе ҡатта.",
     translation: "We will meet tomorrow morning. Room 402 is on the fourth floor.",

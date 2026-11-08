@@ -5,7 +5,7 @@ export const tool: ToolPageContent = {
   path: "/subtitle-timing-editor",
   preset: "subtitle-timing-editor",
   h1: "Subtitle timing editor online: shift and stretch every subtitle cue",
-  title: "Subtitle timing editor online — shift and stretch SRT cues",
+  title: "Subtitle timing editor online: shift SRT cues",
   metaDescription:
     "Use this subtitle timing editor online to shift every cue by seconds or stretch timestamps for drift. Edit SRT or VTT locally and export a retimed file.",
   primaryKeyword: "subtitle timing editor online",

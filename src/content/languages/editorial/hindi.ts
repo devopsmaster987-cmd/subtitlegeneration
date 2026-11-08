@@ -7,18 +7,18 @@ export const languagePage: LanguagePageContent = {
   nativeName: "हिन्दी",
   path: "/subtitle-generator/hindi",
   h1: "Hindi subtitle generator: video to text and SRT in the browser",
-  title: "Hindi subtitle generator: private video to text and SRT",
+  title: "Hindi subtitle generator: private video to text",
   metaDescription:
     "Use this Hindi subtitle generator to turn Hindi video to text and SRT in your browser. Whisper drafts Devanagari locally, then you review and export SRT or VTT.",
   primaryKeyword: "hindi subtitle generator",
   capsule:
     "This Hindi subtitle generator runs Whisper locally in your browser, so Hindi audio stays on your device and you can export SRT, VTT or text. The draft is written in Devanagari, not a promised Roman transliteration, so every cue still needs a careful review before publishing.",
   published: "2026-02-01",
-  updated: "2026-10-28",
+  updated: "2026-11-08",
   author: "Abdul Samad",
   accuracyNote:
-    "No reviewed Hindi sample has been recorded yet, so this page is excluded from search while the editorial content is still being checked. The tool itself still works: you can select Hindi, transcribe locally and export SRT or VTT. We do not claim tested accuracy for Hindi.",
-  noindex: true,
+    "No reviewed Hindi sample has been recorded yet, so this page makes no tested accuracy claim. The tool itself still works: you can select Hindi, transcribe locally and export SRT or VTT. We do not claim tested accuracy for Hindi.",
+  noindex: false,
   keyFacts: [
     { label: "Language code", value: "hi" },
     { label: "Native name", value: "हिन्दी" },

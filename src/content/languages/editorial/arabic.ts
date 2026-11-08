@@ -7,18 +7,18 @@ export const languagePage: LanguagePageContent = {
   nativeName: "العربية",
   path: "/subtitle-generator/arabic",
   h1: "Arabic subtitle generator: audio to SRT with local Whisper",
-  title: "Arabic subtitle generator: private audio to SRT in the browser",
+  title: "Arabic subtitle generator: private audio to SRT",
   metaDescription:
     "Use this Arabic subtitle generator to turn Arabic audio to SRT in your browser. Whisper drafts Arabic script locally, then you review the cues and export SRT or VTT.",
   primaryKeyword: "arabic subtitle generator",
   capsule:
     "This Arabic subtitle generator runs Whisper locally in your browser, so Arabic audio stays on your device while you build an SRT or VTT file. It drafts Arabic script, not a promised romanized version, and every right-to-left cue still needs a human review before publishing.",
   published: "2026-02-01",
-  updated: "2026-10-28",
+  updated: "2026-11-08",
   author: "Abdul Samad",
   accuracyNote:
-    "No reviewed Arabic sample has been recorded yet, so this page is excluded from search while the editorial content is still being checked. The tool itself still works: you can select Arabic, transcribe locally and export SRT or VTT. We do not claim tested accuracy for Arabic.",
-  noindex: true,
+    "No reviewed Arabic sample has been recorded yet, so this page makes no tested accuracy claim. The tool itself still works: you can select Arabic, transcribe locally and export SRT or VTT. We do not claim tested accuracy for Arabic.",
+  noindex: false,
   keyFacts: [
     { label: "Language code", value: "ar" },
     { label: "Native name", value: "العربية" },

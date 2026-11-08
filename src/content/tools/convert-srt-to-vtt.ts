@@ -5,7 +5,7 @@ export const tool: ToolPageContent = {
   path: "/convert-srt-to-vtt",
   preset: "convert-srt-to-vtt",
   h1: "Convert SRT to VTT and back in your browser",
-  title: "Convert SRT to VTT — WebVTT converter with SRT export",
+  title: "Convert SRT to VTT online for free",
   metaDescription:
     "Convert SRT to VTT in the browser, preview the WebVTT output, and download SRT, VTT or plain text. Import a VTT file when you need to convert VTT to SRT.",
   primaryKeyword: "convert srt to vtt",

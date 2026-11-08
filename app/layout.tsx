@@ -7,6 +7,7 @@ import { Analytics } from "@/components/Analytics";
 import { ServiceWorkerRegistration } from "@/components/ServiceWorker";
 import { JsonLd } from "@/components/JsonLd";
 import { organizationEntity, websiteEntity } from "@/data/entities";
+import { ogImage, twitterImage } from "@/lib/og-image";
 import { site } from "@/config/site";
 
 export const metadata: Metadata = {
@@ -26,12 +27,14 @@ export const metadata: Metadata = {
     locale: "en",
     url: site.url,
     title: `${site.name} — free voice to text and subtitle generator`,
-    description: site.description
+    description: site.description,
+    images: [ogImage]
   },
   twitter: {
     card: "summary_large_image",
     title: `${site.name} — free voice to text and subtitle generator`,
-    description: site.description
+    description: site.description,
+    images: [twitterImage]
   },
   robots: { index: true, follow: true },
   alternates: { canonical: "/" },
@@ -58,6 +61,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         {consentScript ? <script dangerouslySetInnerHTML={{ __html: consentScript }} /> : null}
         <meta name="theme-color" content="#4f46e5" />
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+        <link rel="apple-touch-icon" href="/logo.png" />
         <link rel="preconnect" href="https://huggingface.co" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://cdn-lfs.huggingface.co" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://cdn.jsdelivr.net" crossOrigin="anonymous" />

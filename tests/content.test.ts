@@ -30,9 +30,12 @@ describe("content registry", () => {
 });
 
 describe("sitemap", () => {
-  it("excludes noindex language pages and uses canonical trailing slashes", () => {
+  it("lists exactly the indexable language pages with trailing slashes", () => {
     const entries = sitemap();
-    expect(entries.some((entry) => entry.url.includes("/subtitle-generator/"))).toBe(false);
+    for (const { content } of languagePages) {
+      const inSitemap = entries.some((entry) => entry.url.includes(`${content.path}/`));
+      expect(inSitemap).toBe(!content.noindex);
+    }
     expect(entries.every((entry) => entry.url.endsWith("/"))).toBe(true);
   });
 });

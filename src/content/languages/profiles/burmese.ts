@@ -26,7 +26,7 @@ export const profile: LanguageProfile = {
   useCases:
     "Useful for Burmese news clips, community and health videos, school lessons, documentary interviews and diaspora YouTube channels that mix Burmese with English. Editors can draft locally, then correct word boundaries and stacked consonants before publishing a reviewed caption track. They also serve bilingual community archives.",
   accuracyNote:
-    "No reviewed Burmese sample has been recorded, so this page is excluded from search while the editorial content is checked. Word segmentation, stacked consonants, Zawgyi versus Unicode, names and code-switching are weak areas, and Burmese is low-resource for speech data. We do not claim tested accuracy; results are uneven and need editing, so a fluent Burmese reviewer should check every cue.",
+    "No reviewed Burmese sample has been recorded, so this page makes no tested accuracy claim. Word segmentation, stacked consonants, Zawgyi versus Unicode, names and code-switching are weak areas, and Burmese is low-resource for speech data. We do not claim tested accuracy; results are uneven and need editing, so a fluent Burmese reviewer should check every cue.",
   example: {
     native: "မင်္ဂလာပါ။ နေကောင်းလား။ အစည်းအဝေးက ကိုးနာရီမှာ စမယ်။",
     translation: "Hello. Are you well? The meeting will start at nine o'clock.",
@@ -67,7 +67,7 @@ export const profile: LanguageProfile = {
     {
       question: "How accurate is Burmese transcription?",
       answer:
-        "We have not recorded a reviewed Burmese sample, so this page does not claim a tested accuracy level. Accent, audio quality, word segmentation and code-switching affect results, and the page remains excluded from search until review is complete."
+        "We have not recorded a reviewed Burmese sample, so this page does not claim a tested accuracy level. Accent, audio quality, word segmentation and code-switching affect results, and no tested accuracy is claimed until a review is recorded."
     }
   ],
   sources: [

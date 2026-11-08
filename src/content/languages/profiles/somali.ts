@@ -26,7 +26,7 @@ export const profile: LanguageProfile = {
   useCases:
     "Useful for diaspora news videos, humanitarian and health briefings, religious teaching, school material and YouTube interviews that mix Somali with English or Arabic. Editors can draft locally, then correct vowel length and names before publishing a reviewed caption track. They also suit diaspora community archives.",
   accuracyNote:
-    "No reviewed Somali sample has been recorded, so this page is excluded from search while the editorial content is checked. The letters c, q and x, vowel length, dialect vocabulary and code-switching are weak areas, and Somali is low-resource in speech data. We do not claim tested accuracy; results need editing, and a fluent reviewer should check every cue.",
+    "No reviewed Somali sample has been recorded, so this page makes no tested accuracy claim. The letters c, q and x, vowel length, dialect vocabulary and code-switching are weak areas, and Somali is low-resource in speech data. We do not claim tested accuracy; results need editing, and a fluent reviewer should check every cue.",
   example: {
     native: "Subax wanaagsan, sidee tahay? Shirku wuxuu bilaabanayaa saacadda sagaal.",
     translation: "Good morning, how are you? The meeting will begin at nine o'clock.",
@@ -67,7 +67,7 @@ Shirku wuxuu bilaabanayaa saacadda sagaal.`
     {
       question: "How accurate is Somali transcription?",
       answer:
-        "We have not recorded a reviewed Somali sample, so this page does not claim a tested accuracy level. Accent, dialect, audio quality and code-switching affect results, and the page remains excluded from search until review is complete."
+        "We have not recorded a reviewed Somali sample, so this page does not claim a tested accuracy level. Accent, dialect, audio quality and code-switching affect results, and no tested accuracy is claimed until a review is recorded."
     }
   ],
   sources: [

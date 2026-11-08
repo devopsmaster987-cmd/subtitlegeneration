@@ -7,18 +7,18 @@ export const languagePage: LanguagePageContent = {
   nativeName: "اردو",
   path: "/subtitle-generator/urdu",
   h1: "Urdu subtitle generator: audio to SRT with local Whisper",
-  title: "Urdu subtitle generator: private audio to SRT in the browser",
+  title: "Urdu subtitle generator: private audio to SRT",
   metaDescription:
     "Use this Urdu subtitle generator to turn Urdu audio to SRT in your browser. Whisper drafts Perso-Arabic text locally, then you review the cues and export SRT or VTT.",
   primaryKeyword: "urdu subtitle generator",
   capsule:
     "This Urdu subtitle generator runs Whisper locally in your browser, so Urdu audio stays on your device while you create an SRT or VTT file. You get Perso-Arabic script, not a promised romanized version, and every cue needs a human review pass before publishing.",
   published: "2026-02-01",
-  updated: "2026-10-28",
+  updated: "2026-11-08",
   author: "Abdul Samad",
   accuracyNote:
-    "No reviewed Urdu sample has been recorded yet, so this page is excluded from search while the editorial content is still being checked. The tool itself still works: you can select Urdu, transcribe locally and export SRT or VTT. We do not claim tested accuracy for Urdu.",
-  noindex: true,
+    "No reviewed Urdu sample has been recorded yet, so this page makes no tested accuracy claim. The tool itself still works: you can select Urdu, transcribe locally and export SRT or VTT. We do not claim tested accuracy for Urdu.",
+  noindex: false,
   keyFacts: [
     { label: "Language code", value: "ur" },
     { label: "Native name", value: "اردو" },

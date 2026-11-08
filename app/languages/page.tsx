@@ -1,13 +1,16 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { languages, popularLanguages } from "@/config/languages";
-import { languagePageBySlug } from "@/content/languages";
+import { languagePageBySlug, languagePages } from "@/content/languages";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { AdSlot } from "@/components/AdSlot";
+import { JsonLd } from "@/components/JsonLd";
+import { collectionPageSchema } from "@/lib/schema";
+import { ogImage, twitterImage } from "@/lib/og-image";
 import { site } from "@/config/site";
 
 export const metadata: Metadata = {
-  title: "Subtitle generator languages: all 99 Whisper languages",
+  title: "All 99 subtitle generator languages",
   description:
     "Browse every language supported by the multilingual Whisper tokenizer, see which ones have editorial notes, and open a language-specific subtitle generator page.",
   alternates: { canonical: "/languages" },
@@ -18,18 +21,22 @@ export const metadata: Metadata = {
     title: `All 99 Whisper subtitle languages | ${site.name}`,
     description:
       "Every language in the multilingual Whisper tokenizer, with script, region and tool links.",
-    url: "/languages"
+    url: "/languages",
+    images: [ogImage]
   },
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
     title: `All 99 Whisper subtitle languages | ${site.name}`,
     description:
-      "Every language in the multilingual Whisper tokenizer, with script, region and tool links."
+      "Every language in the multilingual Whisper tokenizer, with script, region and tool links.",
+    images: [twitterImage]
   }
 };
 
 export default function LanguagesPage() {
   const tested = languages.filter((language) => language.accuracyTested);
+  const searchablePages = languagePages.filter(({ content }) => !content.noindex);
+  const searchable = searchablePages.length;
   const byRegion = new Map<string, typeof languages>();
   for (const language of [...languages].sort((a, b) => a.name.localeCompare(b.name))) {
     const list = byRegion.get(language.region) ?? [];
@@ -48,8 +55,10 @@ export default function LanguagesPage() {
         pitfalls and an honest accuracy statement.
       </p>
       <p className="mt-2 text-sm text-[var(--muted)]">
-        {tested.length} language{tested.length === 1 ? " has" : "s have"} a recorded accuracy test
-        and can be indexed. Pages without a test stay noindex while remaining fully usable.
+        {searchable} language pages with editorial notes are open to search; the remaining{" "}
+        {languages.length - searchable} tool-only pages stay out of the index until a reviewed
+        accuracy sample is recorded. {tested.length} language
+        {tested.length === 1 ? " has" : "s have"} a recorded accuracy test so far.
       </p>
 
       <section className="mt-8">
@@ -101,6 +110,21 @@ export default function LanguagesPage() {
       </section>
 
       <AdSlot placement="article-end" />
+      <JsonLd
+        data={[
+          collectionPageSchema({
+            path: "/languages",
+            name: "Subtitle generator languages",
+            description:
+              "Every language in the multilingual Whisper tokenizer, with editorial subtitle generator pages for the languages that have full notes.",
+            listName: "Searchable language subtitle generator pages",
+            items: searchablePages.map(({ content }) => ({
+              name: content.h1,
+              path: content.path
+            }))
+          })
+        ]}
+      />
     </div>
   );
 }

@@ -20,9 +20,11 @@ describe("Whisper language catalogue", () => {
     }
   });
 
-  it("keeps untested languages noindex", () => {
+  it("indexes editorial pages and keeps untested tool-only pages noindex", () => {
     for (const { language, content } of languagePages) {
-      if (!language.accuracyTested) expect(content.noindex).toBe(true);
+      const editorial = content.sections.length > 1;
+      if (editorial) expect(content.noindex).toBe(false);
+      else expect(content.noindex).toBe(!language.accuracyTested);
     }
   });
 

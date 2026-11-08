@@ -8,8 +8,9 @@
  *
  * tier 1 = full editorial page, tier 2 = enriched page, tier 3 = tool-only/noindex.
  * wave = planned shipping order. accuracyTested stays false until a real clip in
- * that language has been transcribed and logged in docs/verification-log.md; the
- * page is noindex until then (see section 9A of the build spec).
+ * that language has been transcribed and logged in docs/verification-log.md. Tier 1
+ * and Tier 2 pages are searchable with that limitation stated on the page; Tier 3
+ * tool-only pages stay noindex until a sample is recorded.
  */
 
 export type LanguageTier = 1 | 2 | 3;

@@ -5,8 +5,9 @@ import type { LanguageProfile } from "./profile-types";
 
 /**
  * Editorial files and enriched profiles are registered here. Tier 1 files live
- * in ./editorial and Tier 2 profiles in ./profiles. Pages without either remain
- * tool-only and noindex.
+ * in ./editorial and Tier 2 profiles in ./profiles; both are searchable with an
+ * honest "no tested accuracy claim" note. Pages without either remain tool-only
+ * and noindex until a reviewed sample is recorded.
  */
 import { editorialByCode } from "./editorial";
 import { profileByCode } from "./profiles";
@@ -21,15 +22,15 @@ function generateTierTwo(language: Language, profile: LanguageProfile): Language
     nativeName: language.nativeName,
     path: `/subtitle-generator/${language.slug}`,
     h1: `${language.name} subtitle generator`,
-    title: `${language.name} subtitle generator — private, browser-based`,
+    title: `${language.name} subtitle generator: free, private`,
     metaDescription: `Use this ${language.name} subtitle generator to transcribe ${language.nativeName} audio locally in your browser, review the cues, then export SRT, VTT or TXT.`,
     primaryKeyword: title,
     capsule: `Use this ${language.name} subtitle generator to transcribe ${language.nativeName} audio locally in your browser, review the ${language.script} cues and wording, then export SRT, VTT or TXT. The draft needs a fluent human review, and no account, upload or paid API is required.`,
     published: "2026-02-01",
-    updated: "2026-10-28",
+    updated: "2026-11-08",
     author: "Abdul Samad",
     accuracyNote: profile.accuracyNote,
-    noindex: !language.accuracyTested,
+    noindex: false,
     keyFacts: [
       { label: "Language code", value: language.code },
       { label: "Native name", value: language.nativeName },
@@ -166,7 +167,7 @@ function generateToolOnly(language: Language): LanguagePageContent {
 export function languageContent(language: Language): LanguagePageContent {
   const editorial = editorialByCode.get(language.code);
   if (editorial) {
-    return { ...editorial, noindex: !language.accuracyTested || editorial.noindex === true };
+    return { ...editorial, noindex: editorial.noindex === true };
   }
   const profile = profileByCode.get(language.code);
   if (profile) return generateTierTwo(language, profile);

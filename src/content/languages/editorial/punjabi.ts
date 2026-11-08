@@ -7,18 +7,18 @@ export const languagePage: LanguagePageContent = {
   nativeName: "ਪੰਜਾਬੀ",
   path: "/subtitle-generator/punjabi",
   h1: "Punjabi subtitle generator",
-  title: "Punjabi subtitle generator — private, browser-based",
+  title: "Punjabi subtitle generator: free, private",
   metaDescription:
     "Generate ਪੰਜਾਬੀ subtitles in the browser with Whisper. The Punjabi subtitle generator returns Gurmukhi text, lets you repair cues and exports SRT or VTT.",
   primaryKeyword: "punjabi subtitle generator",
   capsule:
-    "The Punjabi subtitle generator runs Whisper locally and returns ਪੰਜਾਬੀ speech in Gurmukhi script. You edit the timed cues, check names, numbers and line breaks, then export SRT, VTT or TXT. No audio is uploaded for transcription. No reviewed sample is recorded yet, so the page is excluded from search and the text needs a fluent review.",
+    "The Punjabi subtitle generator runs Whisper locally and returns ਪੰਜਾਬੀ speech in Gurmukhi script. You edit the timed cues, check names, numbers and line breaks, then export SRT, VTT or TXT. No audio is uploaded for transcription. No reviewed sample is recorded yet, so the text needs a fluent review.",
   published: "2026-02-01",
-  updated: "2026-10-28",
+  updated: "2026-11-08",
   author: "Abdul Samad",
   accuracyNote:
     "No reviewed Punjabi sample is recorded for this page, so it is kept out of search results. The Punjabi subtitle generator still works in the browser and exports editable files, but no tested-accuracy claim is made and a fluent Gurmukhi reader should review the output.",
-  noindex: true,
+  noindex: false,
   keyFacts: [
     { label: "Language code", value: "pa" },
     { label: "Native name", value: "ਪੰਜਾਬੀ" },
@@ -122,7 +122,7 @@ export const languagePage: LanguagePageContent = {
     {
       question: "Is Punjabi transcription accuracy tested here?",
       answer:
-        "No reviewed Punjabi sample is recorded, so the page is excluded from search and no tested-accuracy claim is made. The tool is available for producing drafts, but the output should be treated as unverified until a fluent Gurmukhi reader checks it."
+        "No reviewed Punjabi sample is recorded, so no tested-accuracy claim is made. The tool is available for producing drafts, but the output should be treated as unverified until a fluent Gurmukhi reader checks it."
     }
   ],
   sources: [

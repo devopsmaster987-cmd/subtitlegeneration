@@ -15,7 +15,7 @@ VoiceToTextFree is designed to be quoted and cited accurately, not to game chatb
 - Server-rendered/static HTML contains the full article, not a client-only shell.
 - `Article`, `FAQPage`, `WebApplication` and `SoftwareApplication` JSON-LD are emitted from the same content data as the visible page.
 - `robots.ts` allows normal search, `Mediapartners-Google` and citation-oriented AI crawlers. Training crawlers are allowed by default; change `allowTrainingCrawlers` only after an explicit decision.
-- `public/llms.txt` lists canonical pages and explains the language noindex policy.
+- `public/llms.txt` lists canonical pages and explains which language pages are searchable.
 - Sitemap excludes noindex pages and includes only indexable URLs.
 
 ## What not to do

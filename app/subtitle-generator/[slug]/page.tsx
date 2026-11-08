@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { languages, languagePagePath } from "@/config/languages";
 import { languagePages, languagePageBySlug } from "@/content/languages";
 import { LanguageView } from "@/components/LanguageView";
+import { ogImage, twitterImage } from "@/lib/og-image";
 import { site } from "@/config/site";
 
 export const dynamicParams = false;
@@ -31,12 +32,14 @@ export async function generateMetadata({
       locale: "en",
       title: `${content.title} | ${site.name}`,
       description: content.metaDescription,
-      url: content.path
+      url: content.path,
+      images: [ogImage]
     },
     twitter: {
-      card: "summary",
+      card: "summary_large_image",
       title: `${content.title} | ${site.name}`,
-      description: content.metaDescription
+      description: content.metaDescription,
+      images: [twitterImage]
     }
   };
 }

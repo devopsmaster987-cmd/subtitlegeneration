@@ -26,7 +26,7 @@ export const profile: LanguageProfile = {
   useCases:
     "Useful for community radio, church and NGO recordings, interviews with Kinshasa or Brazzaville speakers, family videos and language documentation. It also suits teams that need a rough Lingala draft before a human translator or reviewer checks the file, and it keeps the audio local during that first pass.",
   accuracyNote:
-    "No reviewed Lingala sample has been recorded for this page, so it is excluded from search. Tone, regional spelling, dialect variation and Franco-Lingala switching are the weakest areas, and loanwords may appear in French spelling. Lingala is thinly resourced in speech data compared with major languages, and we do not claim tested accuracy; treat every draft as an unreviewed first pass.",
+    "No reviewed Lingala sample has been recorded for this page, so it makes no tested accuracy claim. Tone, regional spelling, dialect variation and Franco-Lingala switching are the weakest areas, and loanwords may appear in French spelling. Lingala is thinly resourced in speech data compared with major languages, and we do not claim tested accuracy; treat every draft as an unreviewed first pass.",
   example: {
     native: "Tokomonana lobi na ntongo. Chambre 402 ezali na etage ya minei.",
     translation: "We will meet tomorrow morning. Room 402 is on the fourth floor.",

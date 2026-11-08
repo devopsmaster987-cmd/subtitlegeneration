@@ -102,10 +102,10 @@ export default function CookiePolicyPage() {
       <h2>Analytics</h2>
       <p>
         The site can load Google Analytics 4 (GA4) for traffic statistics, but only under two
-        conditions at once: the maintainer has configured a GA4 measurement ID, and you have
-        granted analytics consent in this banner (or allowed all storage). If either condition is
-        missing, no analytics script is loaded and no measurement request is made. Turning the
-        analytics choice off later stops the script from loading on your next visit.
+        conditions at once: the maintainer has configured a GA4 measurement ID, and you have granted
+        analytics consent in this banner (or allowed all storage). If either condition is missing,
+        no analytics script is loaded and no measurement request is made. Turning the analytics
+        choice off later stops the script from loading on your next visit.
       </p>
 
       <h2>How to change your choice</h2>

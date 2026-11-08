@@ -26,7 +26,7 @@ export const profile: LanguageProfile = {
   useCases:
     "Suits Armenian interviews, diaspora family videos, church recordings, documentary footage and classroom material. It also helps translators who need a rough Armenian draft before a native reviewer chooses Eastern or Western conventions, and it keeps the recording local while the draft is prepared.",
   accuracyNote:
-    "No reviewed Armenian sample has been recorded, so this page is excluded from search. Eastern versus Western variation, dialect differences, punctuation and loanword spelling are the least certain areas. Armenian is thinly resourced in speech data compared with major languages, and we do not claim tested accuracy; every draft needs a human pass.",
+    "No reviewed Armenian sample has been recorded, so this page makes no tested accuracy claim. Eastern versus Western variation, dialect differences, punctuation and loanword spelling are the least certain areas. Armenian is thinly resourced in speech data compared with major languages, and we do not claim tested accuracy; every draft needs a human pass.",
   example: {
     native: "Վաղը առավոտյան կհանդիպենք։ 402 սենյակը չորրորդ հարկում է։",
     translation: "We will meet tomorrow morning. Room 402 is on the fourth floor.",

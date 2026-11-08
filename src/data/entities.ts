@@ -6,6 +6,7 @@ export const organizationEntity = {
   "@id": `${site.url}/#organization`,
   name: site.name,
   url: site.url,
+  logo: `${site.url}/logo.png`,
   description: site.description,
   email: site.contactEmail,
   founder: { "@id": `${site.url}/about#author` }

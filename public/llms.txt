@@ -2,7 +2,7 @@
 
 > VoiceToTextFree turns video and audio into editable SRT, VTT and TXT subtitles or transcripts using Whisper entirely in your browser. No uploads, no account, no paid API.
 
-VoiceToTextFree runs Whisper and ffmpeg in the browser. No media is uploaded. Accuracy varies by language, and language pages remain noindex until a reviewed sample is recorded.
+VoiceToTextFree runs Whisper and ffmpeg in the browser. No media is uploaded. Accuracy varies by language: every language page states whether a reviewed sample has been recorded, and no tested accuracy is claimed without one.
 
 ## Tools
 - [Audio to SRT: turn a sound file into timed subtitles](https://voicetotextfree.top/audio-to-srt): Audio to SRT means turning a recording that has no picture into a subtitle file with numbered, timed cues. VoiceToTextFree decodes the sound locally, runs Whisper in the browser, and lets you correct wording and timing before downloading a standard SRT.
@@ -48,105 +48,45 @@ VoiceToTextFree runs Whisper and ffmpeg in the browser. No media is uploaded. Ac
 - [Word aligned subtitles and styled captions: what is possible](https://voicetotextfree.top/guides/word-aligned-and-styled-captions): Word aligned subtitles give every word its own start and end time, which enables karaoke highlights, word-by-word reveals and precise caption animation. This browser tool exports segment-level cues, not word timings. This guide explains the difference, how styled and animated caption layers work in editors and web players, and when to use an external workflow.
 
 ## Languages
-- [English subtitle generator](https://voicetotextfree.top/subtitle-generator/english): English — noindex until tested
-- [Chinese subtitle generator](https://voicetotextfree.top/subtitle-generator/chinese): Chinese — noindex until tested
-- [German subtitle generator](https://voicetotextfree.top/subtitle-generator/german): German — noindex until tested
-- [Spanish subtitle generator](https://voicetotextfree.top/subtitle-generator/spanish): Spanish — noindex until tested
-- [Russian subtitle generator](https://voicetotextfree.top/subtitle-generator/russian): Russian — noindex until tested
-- [Korean subtitle generator](https://voicetotextfree.top/subtitle-generator/korean): Korean — noindex until tested
-- [French subtitle generator](https://voicetotextfree.top/subtitle-generator/french): French — noindex until tested
-- [Japanese subtitle generator](https://voicetotextfree.top/subtitle-generator/japanese): Japanese — noindex until tested
-- [Portuguese subtitle generator](https://voicetotextfree.top/subtitle-generator/portuguese): Portuguese — noindex until tested
-- [Turkish subtitle generator](https://voicetotextfree.top/subtitle-generator/turkish): Turkish — noindex until tested
-- [Polish subtitle generator](https://voicetotextfree.top/subtitle-generator/polish): Polish — noindex until tested
-- [Catalan subtitle generator](https://voicetotextfree.top/subtitle-generator/catalan): Catalan — noindex until tested
-- [Dutch subtitle generator](https://voicetotextfree.top/subtitle-generator/dutch): Dutch — noindex until tested
-- [Arabic subtitle generator: audio to SRT with local Whisper](https://voicetotextfree.top/subtitle-generator/arabic): Arabic — noindex until tested
-- [Swedish subtitle generator](https://voicetotextfree.top/subtitle-generator/swedish): Swedish — noindex until tested
-- [Italian subtitle generator](https://voicetotextfree.top/subtitle-generator/italian): Italian — noindex until tested
-- [Indonesian subtitle generator](https://voicetotextfree.top/subtitle-generator/indonesian): Indonesian — noindex until tested
-- [Hindi subtitle generator: video to text and SRT in the browser](https://voicetotextfree.top/subtitle-generator/hindi): Hindi — noindex until tested
-- [Finnish subtitle generator](https://voicetotextfree.top/subtitle-generator/finnish): Finnish — noindex until tested
-- [Vietnamese subtitle generator](https://voicetotextfree.top/subtitle-generator/vietnamese): Vietnamese — noindex until tested
-- [Hebrew subtitle generator](https://voicetotextfree.top/subtitle-generator/hebrew): Hebrew — noindex until tested
-- [Ukrainian subtitle generator](https://voicetotextfree.top/subtitle-generator/ukrainian): Ukrainian — noindex until tested
-- [Greek subtitle generator](https://voicetotextfree.top/subtitle-generator/greek): Greek — noindex until tested
-- [Malay subtitle generator](https://voicetotextfree.top/subtitle-generator/malay): Malay — noindex until tested
-- [Czech subtitle generator](https://voicetotextfree.top/subtitle-generator/czech): Czech — noindex until tested
-- [Romanian subtitle generator](https://voicetotextfree.top/subtitle-generator/romanian): Romanian — noindex until tested
-- [Danish subtitle generator](https://voicetotextfree.top/subtitle-generator/danish): Danish — noindex until tested
-- [Hungarian subtitle generator](https://voicetotextfree.top/subtitle-generator/hungarian): Hungarian — noindex until tested
-- [Tamil subtitle generator](https://voicetotextfree.top/subtitle-generator/tamil): Tamil — noindex until tested
-- [Norwegian subtitle generator](https://voicetotextfree.top/subtitle-generator/norwegian): Norwegian — noindex until tested
-- [Thai subtitle generator](https://voicetotextfree.top/subtitle-generator/thai): Thai — noindex until tested
-- [Urdu subtitle generator: audio to SRT with local Whisper](https://voicetotextfree.top/subtitle-generator/urdu): Urdu — noindex until tested
-- [Croatian subtitle generator](https://voicetotextfree.top/subtitle-generator/croatian): Croatian — noindex until tested
-- [Bulgarian subtitle generator](https://voicetotextfree.top/subtitle-generator/bulgarian): Bulgarian — noindex until tested
-- [Lithuanian subtitle generator](https://voicetotextfree.top/subtitle-generator/lithuanian): Lithuanian — noindex until tested
-- [Latin subtitle generator](https://voicetotextfree.top/subtitle-generator/latin): Latin — noindex until tested
-- [Maori subtitle generator](https://voicetotextfree.top/subtitle-generator/maori): Maori — noindex until tested
-- [Malayalam subtitle generator](https://voicetotextfree.top/subtitle-generator/malayalam): Malayalam — noindex until tested
-- [Welsh subtitle generator](https://voicetotextfree.top/subtitle-generator/welsh): Welsh — noindex until tested
-- [Slovak subtitle generator](https://voicetotextfree.top/subtitle-generator/slovak): Slovak — noindex until tested
-- [Telugu subtitle generator](https://voicetotextfree.top/subtitle-generator/telugu): Telugu — noindex until tested
-- [Persian subtitle generator](https://voicetotextfree.top/subtitle-generator/persian): Persian — noindex until tested
-- [Latvian subtitle generator](https://voicetotextfree.top/subtitle-generator/latvian): Latvian — noindex until tested
-- [Bengali subtitle generator: audio to SRT in the browser](https://voicetotextfree.top/subtitle-generator/bengali): Bengali — noindex until tested
-- [Serbian subtitle generator](https://voicetotextfree.top/subtitle-generator/serbian): Serbian — noindex until tested
-- [Azerbaijani subtitle generator](https://voicetotextfree.top/subtitle-generator/azerbaijani): Azerbaijani — noindex until tested
-- [Slovenian subtitle generator](https://voicetotextfree.top/subtitle-generator/slovenian): Slovenian — noindex until tested
-- [Kannada subtitle generator](https://voicetotextfree.top/subtitle-generator/kannada): Kannada — noindex until tested
-- [Estonian subtitle generator](https://voicetotextfree.top/subtitle-generator/estonian): Estonian — noindex until tested
-- [Macedonian subtitle generator](https://voicetotextfree.top/subtitle-generator/macedonian): Macedonian — noindex until tested
-- [Breton subtitle generator](https://voicetotextfree.top/subtitle-generator/breton): Breton — noindex until tested
-- [Basque subtitle generator](https://voicetotextfree.top/subtitle-generator/basque): Basque — noindex until tested
-- [Icelandic subtitle generator](https://voicetotextfree.top/subtitle-generator/icelandic): Icelandic — noindex until tested
-- [Armenian subtitle generator](https://voicetotextfree.top/subtitle-generator/armenian): Armenian — noindex until tested
-- [Nepali subtitle generator](https://voicetotextfree.top/subtitle-generator/nepali): Nepali — noindex until tested
-- [Mongolian subtitle generator](https://voicetotextfree.top/subtitle-generator/mongolian): Mongolian — noindex until tested
-- [Bosnian subtitle generator](https://voicetotextfree.top/subtitle-generator/bosnian): Bosnian — noindex until tested
-- [Kazakh subtitle generator](https://voicetotextfree.top/subtitle-generator/kazakh): Kazakh — noindex until tested
-- [Albanian subtitle generator](https://voicetotextfree.top/subtitle-generator/albanian): Albanian — noindex until tested
-- [Swahili subtitle generator](https://voicetotextfree.top/subtitle-generator/swahili): Swahili — noindex until tested
-- [Galician subtitle generator](https://voicetotextfree.top/subtitle-generator/galician): Galician — noindex until tested
-- [Marathi subtitle generator](https://voicetotextfree.top/subtitle-generator/marathi): Marathi — noindex until tested
-- [Punjabi subtitle generator](https://voicetotextfree.top/subtitle-generator/punjabi): Punjabi — noindex until tested
-- [Sinhala subtitle generator](https://voicetotextfree.top/subtitle-generator/sinhala): Sinhala — noindex until tested
-- [Khmer subtitle generator](https://voicetotextfree.top/subtitle-generator/khmer): Khmer — noindex until tested
-- [Shona subtitle generator](https://voicetotextfree.top/subtitle-generator/shona): Shona — noindex until tested
-- [Yoruba subtitle generator](https://voicetotextfree.top/subtitle-generator/yoruba): Yoruba — noindex until tested
-- [Somali subtitle generator](https://voicetotextfree.top/subtitle-generator/somali): Somali — noindex until tested
-- [Afrikaans subtitle generator](https://voicetotextfree.top/subtitle-generator/afrikaans): Afrikaans — noindex until tested
-- [Occitan subtitle generator](https://voicetotextfree.top/subtitle-generator/occitan): Occitan — noindex until tested
-- [Georgian subtitle generator](https://voicetotextfree.top/subtitle-generator/georgian): Georgian — noindex until tested
-- [Belarusian subtitle generator](https://voicetotextfree.top/subtitle-generator/belarusian): Belarusian — noindex until tested
-- [Tajik subtitle generator](https://voicetotextfree.top/subtitle-generator/tajik): Tajik — noindex until tested
-- [Sindhi subtitle generator](https://voicetotextfree.top/subtitle-generator/sindhi): Sindhi — noindex until tested
-- [Gujarati subtitle generator](https://voicetotextfree.top/subtitle-generator/gujarati): Gujarati — noindex until tested
-- [Amharic subtitle generator](https://voicetotextfree.top/subtitle-generator/amharic): Amharic — noindex until tested
-- [Yiddish subtitle generator](https://voicetotextfree.top/subtitle-generator/yiddish): Yiddish — noindex until tested
-- [Lao subtitle generator](https://voicetotextfree.top/subtitle-generator/lao): Lao — noindex until tested
-- [Uzbek subtitle generator](https://voicetotextfree.top/subtitle-generator/uzbek): Uzbek — noindex until tested
-- [Faroese subtitle generator](https://voicetotextfree.top/subtitle-generator/faroese): Faroese — noindex until tested
-- [Haitian Creole subtitle generator](https://voicetotextfree.top/subtitle-generator/haitian-creole): Haitian Creole — noindex until tested
-- [Pashto subtitle generator](https://voicetotextfree.top/subtitle-generator/pashto): Pashto — noindex until tested
-- [Turkmen subtitle generator](https://voicetotextfree.top/subtitle-generator/turkmen): Turkmen — noindex until tested
-- [Norwegian Nynorsk subtitle generator](https://voicetotextfree.top/subtitle-generator/norwegian-nynorsk): Norwegian Nynorsk — noindex until tested
-- [Maltese subtitle generator](https://voicetotextfree.top/subtitle-generator/maltese): Maltese — noindex until tested
-- [Sanskrit subtitle generator](https://voicetotextfree.top/subtitle-generator/sanskrit): Sanskrit — noindex until tested
-- [Luxembourgish subtitle generator](https://voicetotextfree.top/subtitle-generator/luxembourgish): Luxembourgish — noindex until tested
-- [Burmese subtitle generator](https://voicetotextfree.top/subtitle-generator/burmese): Burmese — noindex until tested
-- [Tibetan subtitle generator](https://voicetotextfree.top/subtitle-generator/tibetan): Tibetan — noindex until tested
-- [Tagalog subtitle generator](https://voicetotextfree.top/subtitle-generator/tagalog): Tagalog — noindex until tested
-- [Malagasy subtitle generator](https://voicetotextfree.top/subtitle-generator/malagasy): Malagasy — noindex until tested
-- [Assamese subtitle generator](https://voicetotextfree.top/subtitle-generator/assamese): Assamese — noindex until tested
-- [Tatar subtitle generator](https://voicetotextfree.top/subtitle-generator/tatar): Tatar — noindex until tested
-- [Hawaiian subtitle generator](https://voicetotextfree.top/subtitle-generator/hawaiian): Hawaiian — noindex until tested
-- [Lingala subtitle generator](https://voicetotextfree.top/subtitle-generator/lingala): Lingala — noindex until tested
-- [Hausa subtitle generator](https://voicetotextfree.top/subtitle-generator/hausa): Hausa — noindex until tested
-- [Bashkir subtitle generator](https://voicetotextfree.top/subtitle-generator/bashkir): Bashkir — noindex until tested
-- [Javanese subtitle generator](https://voicetotextfree.top/subtitle-generator/javanese): Javanese — noindex until tested
-- [Sundanese subtitle generator](https://voicetotextfree.top/subtitle-generator/sundanese): Sundanese — noindex until tested
+- [Arabic subtitle generator: audio to SRT with local Whisper](https://voicetotextfree.top/subtitle-generator/arabic): Arabic — editorial page with an honest accuracy note
+- [Hindi subtitle generator: video to text and SRT in the browser](https://voicetotextfree.top/subtitle-generator/hindi): Hindi — editorial page with an honest accuracy note
+- [Tamil subtitle generator](https://voicetotextfree.top/subtitle-generator/tamil): Tamil — editorial page with an honest accuracy note
+- [Urdu subtitle generator: audio to SRT with local Whisper](https://voicetotextfree.top/subtitle-generator/urdu): Urdu — editorial page with an honest accuracy note
+- [Malayalam subtitle generator](https://voicetotextfree.top/subtitle-generator/malayalam): Malayalam — editorial page with an honest accuracy note
+- [Telugu subtitle generator](https://voicetotextfree.top/subtitle-generator/telugu): Telugu — editorial page with an honest accuracy note
+- [Bengali subtitle generator: audio to SRT in the browser](https://voicetotextfree.top/subtitle-generator/bengali): Bengali — editorial page with an honest accuracy note
+- [Azerbaijani subtitle generator](https://voicetotextfree.top/subtitle-generator/azerbaijani): Azerbaijani — editorial page with an honest accuracy note
+- [Kannada subtitle generator](https://voicetotextfree.top/subtitle-generator/kannada): Kannada — editorial page with an honest accuracy note
+- [Armenian subtitle generator](https://voicetotextfree.top/subtitle-generator/armenian): Armenian — editorial page with an honest accuracy note
+- [Nepali subtitle generator](https://voicetotextfree.top/subtitle-generator/nepali): Nepali — editorial page with an honest accuracy note
+- [Mongolian subtitle generator](https://voicetotextfree.top/subtitle-generator/mongolian): Mongolian — editorial page with an honest accuracy note
+- [Kazakh subtitle generator](https://voicetotextfree.top/subtitle-generator/kazakh): Kazakh — editorial page with an honest accuracy note
+- [Swahili subtitle generator](https://voicetotextfree.top/subtitle-generator/swahili): Swahili — editorial page with an honest accuracy note
+- [Marathi subtitle generator](https://voicetotextfree.top/subtitle-generator/marathi): Marathi — editorial page with an honest accuracy note
+- [Punjabi subtitle generator](https://voicetotextfree.top/subtitle-generator/punjabi): Punjabi — editorial page with an honest accuracy note
+- [Sinhala subtitle generator](https://voicetotextfree.top/subtitle-generator/sinhala): Sinhala — editorial page with an honest accuracy note
+- [Khmer subtitle generator](https://voicetotextfree.top/subtitle-generator/khmer): Khmer — editorial page with an honest accuracy note
+- [Shona subtitle generator](https://voicetotextfree.top/subtitle-generator/shona): Shona — editorial page with an honest accuracy note
+- [Yoruba subtitle generator](https://voicetotextfree.top/subtitle-generator/yoruba): Yoruba — editorial page with an honest accuracy note
+- [Somali subtitle generator](https://voicetotextfree.top/subtitle-generator/somali): Somali — editorial page with an honest accuracy note
+- [Georgian subtitle generator](https://voicetotextfree.top/subtitle-generator/georgian): Georgian — editorial page with an honest accuracy note
+- [Sindhi subtitle generator](https://voicetotextfree.top/subtitle-generator/sindhi): Sindhi — editorial page with an honest accuracy note
+- [Gujarati subtitle generator](https://voicetotextfree.top/subtitle-generator/gujarati): Gujarati — editorial page with an honest accuracy note
+- [Amharic subtitle generator](https://voicetotextfree.top/subtitle-generator/amharic): Amharic — editorial page with an honest accuracy note
+- [Lao subtitle generator](https://voicetotextfree.top/subtitle-generator/lao): Lao — editorial page with an honest accuracy note
+- [Uzbek subtitle generator](https://voicetotextfree.top/subtitle-generator/uzbek): Uzbek — editorial page with an honest accuracy note
+- [Pashto subtitle generator](https://voicetotextfree.top/subtitle-generator/pashto): Pashto — editorial page with an honest accuracy note
+- [Burmese subtitle generator](https://voicetotextfree.top/subtitle-generator/burmese): Burmese — editorial page with an honest accuracy note
+- [Tibetan subtitle generator](https://voicetotextfree.top/subtitle-generator/tibetan): Tibetan — editorial page with an honest accuracy note
+- [Malagasy subtitle generator](https://voicetotextfree.top/subtitle-generator/malagasy): Malagasy — editorial page with an honest accuracy note
+- [Assamese subtitle generator](https://voicetotextfree.top/subtitle-generator/assamese): Assamese — editorial page with an honest accuracy note
+- [Tatar subtitle generator](https://voicetotextfree.top/subtitle-generator/tatar): Tatar — editorial page with an honest accuracy note
+- [Lingala subtitle generator](https://voicetotextfree.top/subtitle-generator/lingala): Lingala — editorial page with an honest accuracy note
+- [Hausa subtitle generator](https://voicetotextfree.top/subtitle-generator/hausa): Hausa — editorial page with an honest accuracy note
+- [Bashkir subtitle generator](https://voicetotextfree.top/subtitle-generator/bashkir): Bashkir — editorial page with an honest accuracy note
+- [Javanese subtitle generator](https://voicetotextfree.top/subtitle-generator/javanese): Javanese — editorial page with an honest accuracy note
+- [Sundanese subtitle generator](https://voicetotextfree.top/subtitle-generator/sundanese): Sundanese — editorial page with an honest accuracy note
+- 61 further tool-only language routes exist but stay out of the search index until a reviewed sample is recorded.
 
 ## Policies
 - [About](https://voicetotextfree.top/about)

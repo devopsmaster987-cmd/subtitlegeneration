@@ -59,7 +59,8 @@ test("tool page loads the editor workbench", async ({ page }) => {
 test("language page stays honest about testing", async ({ page }) => {
   await page.goto("/subtitle-generator/urdu/");
   await expect(page.getByText(/Accuracy note:/)).toBeVisible();
-  await expect(page.getByText(/not in the search index/i)).toBeVisible();
+  await expect(page.getByText(/no tested accuracy claim/i)).toBeVisible();
+  await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", /index, follow/);
   await expect(page.locator(".adsbygoogle")).toHaveCount(0);
 });
 

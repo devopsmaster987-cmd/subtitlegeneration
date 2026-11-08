@@ -42,7 +42,7 @@ Body words exclude navigation, tables, code samples and FAQs. Do not pad.
 - Use the language name, native name, script and direction accurately.
 - Do not promise romanized output.
 - Explain punctuation, diacritics, line breaking, numerals, code-switching and review limits.
-- Keep the page noindex until a real sample is recorded in `docs/verification-log.md`.
+- Never claim tested accuracy. Keep Tier 3 tool-only pages noindex until a real sample is recorded in `docs/verification-log.md`; Tier 1 and Tier 2 pages must state that no sample has been recorded.
 - Low-resource languages must say that results can be weak.
 
 ## Review checklist

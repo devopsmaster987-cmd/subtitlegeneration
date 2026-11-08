@@ -5,7 +5,7 @@ export const tool: ToolPageContent = {
   path: "/subtitle-reading-speed-checker",
   preset: "subtitle-reading-speed-checker",
   h1: "Subtitle reading speed checker: find cues that are too fast",
-  title: "Subtitle reading speed checker — CPS and line length limits",
+  title: "Subtitle reading speed checker: CPS limits",
   metaDescription:
     "Use this subtitle reading speed checker to find cues above your CPS or line-length limit. Set limits, review warnings, edit the cue, then export SRT or VTT.",
   primaryKeyword: "subtitle reading speed checker",

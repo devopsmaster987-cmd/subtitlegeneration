@@ -5,7 +5,7 @@ export const tool: ToolPageContent = {
   path: "/subtitle-validator",
   preset: "subtitle-validator",
   h1: "Subtitle validator: check an SRT or VTT file for errors",
-  title: "Subtitle validator — find SRT and VTT errors before playback",
+  title: "Subtitle validator: find SRT and VTT errors",
   metaDescription:
     "Run a subtitle validator on SRT or VTT to find overlaps, bad timestamps, empty cues and over-long lines. Apply safe fixes locally, then download a clean file.",
   primaryKeyword: "subtitle validator",

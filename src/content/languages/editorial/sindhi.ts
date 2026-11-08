@@ -7,18 +7,18 @@ export const languagePage: LanguagePageContent = {
   nativeName: "سنڌي",
   path: "/subtitle-generator/sindhi",
   h1: "Sindhi subtitle generator",
-  title: "Sindhi subtitle generator — private, browser-based",
+  title: "Sindhi subtitle generator: free, private",
   metaDescription:
     "Use the Sindhi subtitle generator to transcribe سنڌي audio locally in your browser, review the right-to-left cues and export UTF-8 SRT, VTT or TXT.",
   primaryKeyword: "sindhi subtitle generator",
   capsule:
     "The Sindhi subtitle generator transcribes سنڌي speech with Whisper running inside your browser, so the audio does not need an upload. It returns Perso-Arabic script in right-to-left order for you to review, correct and export as UTF-8 SRT, VTT or TXT.",
   published: "2026-02-01",
-  updated: "2026-10-28",
+  updated: "2026-11-08",
   author: "Abdul Samad",
   accuracyNote:
-    "No reviewed Sindhi sample is recorded in the verification log yet, so this page is excluded from search and no tested-accuracy claim is made. The Sindhi subtitle generator still works: select Sindhi, run a local transcription, review the Perso-Arabic cues and export SRT or VTT.",
-  noindex: true,
+    "No reviewed Sindhi sample is recorded in the verification log yet, so no tested-accuracy claim is made. The Sindhi subtitle generator still works: select Sindhi, run a local transcription, review the Perso-Arabic cues and export SRT or VTT.",
+  noindex: false,
   keyFacts: [
     { label: "Language code", value: "sd" },
     { label: "Native name", value: "سنڌي" },

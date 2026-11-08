@@ -4,16 +4,18 @@ import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { guides } from "@/content/guides";
 import { toolPages } from "@/content/tools";
 import { languages } from "@/config/languages";
+import { languagePages } from "@/content/languages";
 import { pageMetadata } from "@/lib/page-metadata";
 
 export const metadata: Metadata = pageMetadata({
   title: "Site map",
-  description: "Every tool, guide and policy page on VoiceToTextFree in one place.",
+  description:
+    "Every page on VoiceToTextFree in one place: the subtitle and transcription tools, the guide library, searchable language pages and all policy pages.",
   path: "/html-sitemap"
 });
 
 export default function HtmlSitemapPage() {
-  const indexableLanguages = languages.filter((language) => language.accuracyTested);
+  const indexableLanguages = languagePages.filter(({ content }) => !content.noindex);
   return (
     <article className="mx-auto max-w-4xl px-4 py-8">
       <Breadcrumbs items={[{ label: "Site map", href: "/html-sitemap" }]} />
@@ -41,11 +43,6 @@ export default function HtmlSitemapPage() {
           <li>
             <Link className="underline" href="/languages">
               All languages
-            </Link>
-          </li>
-          <li>
-            <Link className="underline" href="/studio">
-              Ad-free studio
             </Link>
           </li>
         </ul>

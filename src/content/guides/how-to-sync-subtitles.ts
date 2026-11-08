@@ -4,7 +4,7 @@ export const guide: GuideContent = {
   kind: "guide",
   path: "/guides/how-to-sync-subtitles",
   h1: "How to sync subtitles",
-  title: "How to sync subtitles: offsets, drift and frame rate",
+  title: "How to sync subtitles: offsets and drift",
   metaDescription:
     "How to sync subtitles when every line is late or the gap keeps growing: measure drift, apply an offset or a stretch factor, and handle frame-rate mismatch.",
   primaryKeyword: "how to sync subtitles",

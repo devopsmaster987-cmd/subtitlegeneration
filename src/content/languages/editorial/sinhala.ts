@@ -7,18 +7,18 @@ export const languagePage: LanguagePageContent = {
   nativeName: "සිංහල",
   path: "/subtitle-generator/sinhala",
   h1: "Sinhala subtitle generator",
-  title: "Sinhala subtitle generator — private, browser-based",
+  title: "Sinhala subtitle generator: free, private",
   metaDescription:
     "Use the Sinhala subtitle generator to transcribe සිංහල audio locally in your browser, review the left-to-right cues and export UTF-8 SRT, VTT or TXT.",
   primaryKeyword: "sinhala subtitle generator",
   capsule:
     "The Sinhala subtitle generator transcribes සිංහල speech with Whisper running inside your browser, so the recording does not need an upload. It returns Sinhala script in left-to-right order for you to review, correct and export as UTF-8 SRT, VTT or TXT.",
   published: "2026-02-01",
-  updated: "2026-10-28",
+  updated: "2026-11-08",
   author: "Abdul Samad",
   accuracyNote:
-    "No reviewed Sinhala sample is recorded in the verification log yet, so this page is excluded from search and no tested-accuracy claim is made. The Sinhala subtitle generator still works: select Sinhala, run a local transcription, review the Sinhala-script cues and export SRT or VTT.",
-  noindex: true,
+    "No reviewed Sinhala sample is recorded in the verification log yet, so no tested-accuracy claim is made. The Sinhala subtitle generator still works: select Sinhala, run a local transcription, review the Sinhala-script cues and export SRT or VTT.",
+  noindex: false,
   keyFacts: [
     { label: "Language code", value: "si" },
     { label: "Native name", value: "සිංහල" },

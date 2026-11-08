@@ -5,7 +5,7 @@ export const tool: ToolPageContent = {
   path: "/audio-to-srt",
   preset: "audio-to-srt",
   h1: "Audio to SRT: turn a sound file into timed subtitles",
-  title: "Audio to SRT — timed subtitles from MP3, WAV or M4A",
+  title: "Audio to SRT: MP3, WAV and M4A to subtitles",
   metaDescription:
     "Convert audio to SRT in your browser. An MP3, WAV or M4A file is decoded locally, transcribed with Whisper and exported as timed subtitles, with no upload.",
   primaryKeyword: "audio to srt",

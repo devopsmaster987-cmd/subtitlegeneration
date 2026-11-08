@@ -4,7 +4,7 @@ export const guide: GuideContent = {
   kind: "guide",
   path: "/guides/how-to-burn-subtitles-into-video",
   h1: "How to burn subtitles into video: a practical burn-in guide",
-  title: "How to burn subtitles into video: a practical burn-in guide",
+  title: "How to burn subtitles into video",
   metaDescription:
     "Learn how to burn subtitles into video with ffmpeg.wasm in the browser, check readability, and see when a sidecar file is still the accessible choice.",
   primaryKeyword: "how to burn subtitles into video",
