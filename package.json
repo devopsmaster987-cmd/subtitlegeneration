@@ -5,8 +5,9 @@
   "description": "VoiceToTextFree - free, private, browser-based subtitle and transcript generator powered by Whisper.",
   "scripts": {
     "dev": "next dev --webpack",
-    "prebuild": "node scripts/copy-ffmpeg.mjs && node scripts/copy-onnx.mjs",
-    "build": "npm run check:content && npm run verify:keywords && npm run verify:wordcount && npm run verify:aeo && npm run verify:tokens && next build --webpack && node scripts/flatten-rsc.mjs && node scripts/prune-ort-wasm.mjs && npm run verify:output",
+    "prebuild": "node scripts/clean-output.mjs && node scripts/copy-ffmpeg.mjs && node scripts/copy-onnx.mjs",
+    "build": "npm run check:content && npm run verify:keywords && npm run verify:wordcount && npm run verify:aeo && npm run verify:tokens && next build --webpack && node scripts/flatten-rsc.mjs && node scripts/prune-ort-wasm.mjs && npm run verify:output && node scripts/check-output.mjs",
+    "predeploy": "node scripts/check-output.mjs",
     "deploy": "wrangler deploy",
     "start": "node scripts/serve.mjs",
     "typecheck": "tsc --noEmit",
