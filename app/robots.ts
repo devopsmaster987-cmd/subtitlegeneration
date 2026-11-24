@@ -27,7 +27,7 @@ export default function robots(): MetadataRoute.Robots {
         ...(site.allowTrainingCrawlers ? { allow: "/", disallow: ["/studio"] } : { disallow: "/" })
       }
     ],
-    sitemap: `${site.url}/sitemap.xml`,
+    sitemap: `${site.url}/sitemap-index.xml`,
     host: new URL(site.url).host
   };
 }

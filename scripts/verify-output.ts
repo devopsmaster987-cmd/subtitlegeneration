@@ -3,6 +3,8 @@ import { join } from "node:path";
 
 type Problem = { url: string; message: string };
 
+const ORIGIN = "https://voicetotextfree.top";
+
 function outputFile(url: string): string {
   const pathname = new URL(url).pathname.replace(/^\/+|\/+$/g, "");
   return join("out", pathname, "index.html");
@@ -21,19 +23,23 @@ function metaContent(html: string, attribute: string, key: string): string | nul
   return null;
 }
 
-const sitemap = readFileSync(join("out", "sitemap.xml"), "utf8");
-const urls = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1]!);
-const problems: Problem[] = [];
-
-if (urls.length === 0) {
-  problems.push({ url: "out/sitemap.xml", message: "contains no URLs" });
+function locs(xml: string): string[] {
+  return [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1]!);
 }
 
-for (const url of urls) {
+function validatePageUrl(url: string, source: string, problems: Problem[]) {
+  if (!url.startsWith(`${ORIGIN}/`)) {
+    problems.push({ url, message: `in ${source} is not on the canonical https origin` });
+    return;
+  }
+  if (!url.endsWith("/")) {
+    problems.push({ url, message: `in ${source} is missing a trailing slash` });
+    return;
+  }
   const file = outputFile(url);
   if (!existsSync(file)) {
     problems.push({ url, message: `missing ${file}` });
-    continue;
+    return;
   }
   const html = readFileSync(file, "utf8");
   const canonical = /<link rel="canonical" href="([^"]+)"/.exec(html)?.[1];
@@ -59,11 +65,45 @@ for (const url of urls) {
   }
 }
 
+function validateUrlset(xml: string, source: string, problems: Problem[]) {
+  const urls = locs(xml);
+  if (urls.length === 0) problems.push({ url: source, message: "contains no URLs" });
+  for (const url of urls) validatePageUrl(url, source, problems);
+}
+
+const problems: Problem[] = [];
+
+if (existsSync(join("out", "sitemap-index.xml"))) {
+  const index = readFileSync(join("out", "sitemap-index.xml"), "utf8");
+  const children = locs(index);
+  if (children.length === 0) {
+    problems.push({ url: "out/sitemap-index.xml", message: "contains no child sitemaps" });
+  }
+  for (const child of children) {
+    if (!child.startsWith(`${ORIGIN}/`)) {
+      problems.push({ url: child, message: "child sitemap is not on the canonical origin" });
+      continue;
+    }
+    const file = join("out", new URL(child).pathname.replace(/^\/+/, ""));
+    if (!existsSync(file)) {
+      problems.push({ url: child, message: `missing ${file}` });
+      continue;
+    }
+    validateUrlset(readFileSync(file, "utf8"), child, problems);
+  }
+} else {
+  problems.push({ url: "out/sitemap-index.xml", message: "missing sitemap index" });
+}
+
+if (existsSync(join("out", "sitemap.xml"))) {
+  validateUrlset(readFileSync(join("out", "sitemap.xml"), "utf8"), "out/sitemap.xml", problems);
+}
+
 if (problems.length > 0) {
   for (const problem of problems) console.error(`FAIL ${problem.url}: ${problem.message}`);
   process.exit(1);
 }
 
 console.log(
-  `Output audit passed: ${urls.length} sitemap pages have matching canonical, Open Graph and Twitter metadata.`
+  "Output audit passed: sitemap index, child sitemaps and legacy sitemap have matching canonical, Open Graph and Twitter metadata."
 );
