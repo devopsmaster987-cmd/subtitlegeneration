@@ -16,9 +16,13 @@ const ALLOWED_REPOS = new Set([
 
 const UPSTREAM = "https://huggingface.co";
 
+/** Single canonical origin. No www, no http. */
+const CANONICAL_HOST = "voicetotextfree.top";
+const CANONICAL_ORIGIN = `https://${CANONICAL_HOST}`;
+
 /**
- * 308 redirects for tool pages merged in October 2026. Kept in sync with
- * vercel.json and the static meta-refresh fallback pages in app/.
+ * 301 redirects for tool pages merged in October 2026. Kept in sync with
+ * vercel.json, public/_redirects and the static fallback pages in app/.
  */
 const REDIRECTS: Record<string, string> = {
   "/video-to-text": "/video-to-srt",
@@ -29,6 +33,61 @@ const REDIRECTS: Record<string, string> = {
   "/private-subtitle-generator": "/"
 };
 
+/** Paths that must never receive a trailing-slash redirect. */
+const INTERNAL_PREFIXES = ["/_next", "/models", "/ffmpeg", "/ort", "/.well-known"];
+
+function hasFileExtension(pathname: string): boolean {
+  return /\.[a-z0-9]+$/i.test(pathname);
+}
+
+function canonicalPath(pathname: string): string {
+  return pathname === "/" ? "/" : `${pathname.replace(/\/+$/, "")}/`;
+}
+
+/**
+ * Builds a permanent (301) redirect to the single canonical URL form:
+ * https + apex host + trailing slash for extensionless paths.
+ * Returns null when the request is already canonical.
+ */
+function canonicalRedirect(requestUrl: URL): Response | null {
+  const pathname = requestUrl.pathname;
+
+  // Never rewrite asset, model or metadata requests.
+  if (INTERNAL_PREFIXES.some((prefix) => pathname.startsWith(prefix))) return null;
+  if (hasFileExtension(pathname)) return null;
+
+  // Merged tool routes win over the trailing-slash rule so we redirect once.
+  const bare = pathname.replace(/\/+$/, "") || "/";
+  const merged = REDIRECTS[bare];
+  if (merged) {
+    return Response.redirect(`${CANONICAL_ORIGIN}${canonicalPath(merged)}`, 301);
+  }
+
+  const target = new URL(requestUrl.toString());
+  let changed = false;
+
+  if (requestUrl.protocol === "http:") {
+    target.protocol = "https:";
+    changed = true;
+  }
+  if (requestUrl.hostname !== CANONICAL_HOST) {
+    // Only canonicalize the www variant; leave preview/workers.dev hosts alone.
+    if (requestUrl.hostname === `www.${CANONICAL_HOST}`) {
+      target.hostname = CANONICAL_HOST;
+      changed = true;
+    } else {
+      return null;
+    }
+  }
+  const slashPath = canonicalPath(pathname);
+  if (slashPath !== pathname) {
+    target.pathname = slashPath;
+    changed = true;
+  }
+
+  return changed ? Response.redirect(target.toString(), 301) : null;
+}
+
 interface ExecutionContext {
   waitUntil(promise: Promise<unknown>): void;
 }
@@ -36,6 +95,12 @@ interface ExecutionContext {
 interface EdgeCache {
   match(request: Request): Promise<Response | undefined>;
   put(request: Request, response: Response): Promise<void>;
+}
+
+interface Env {
+  ASSETS: {
+    fetch(request: Request): Promise<Response>;
+  };
 }
 
 const CORS_HEADERS: Record<string, string> = {
@@ -51,20 +116,16 @@ function corsResponse(status: number, body: string): Response {
 }
 
 export default {
-  async fetch(request: Request, _env: unknown, ctx: ExecutionContext): Promise<Response> {
+  async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
     const url = new URL(request.url);
 
-    // Redirect merged tool pages before anything else
-    const redirectPath = url.pathname.replace(/\/$/, "") || "/";
-    const redirectTarget = REDIRECTS[redirectPath];
-    if (redirectTarget) {
-      return Response.redirect(new URL(redirectTarget, request.url), 308);
-    }
+    // Enforce the canonical origin, host and trailing slash with a 301.
+    const redirect = canonicalRedirect(url);
+    if (redirect) return redirect;
 
-    // Only handle /models/* paths
+    // Only handle /models/* paths from here; everything else is a static asset.
     if (!url.pathname.startsWith("/models/")) {
-      // Let Cloudflare's asset serving handle everything else
-      return fetch(request);
+      return env.ASSETS.fetch(request);
     }
 
     // Handle CORS preflight

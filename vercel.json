@@ -68,6 +68,12 @@
   ],
   "redirects": [
     {
+      "source": "/(.*)",
+      "has": [{ "type": "host", "value": "www.voicetotextfree.top" }],
+      "destination": "https://voicetotextfree.top/$1",
+      "permanent": true
+    },
+    {
       "source": "/video-to-text",
       "destination": "/video-to-srt",
       "permanent": true
