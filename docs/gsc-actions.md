@@ -63,6 +63,6 @@ curl -s https://voicetotextfree.top/sitemap-tools.xml | grep -E 'http://|www\.'
 
 ## Rollback
 
-- Redirect layer: revert `worker.ts`, `wrangler.jsonc`, `vercel.json`, `public/_redirects`.
+- Redirect layer: revert `worker.ts`, `wrangler.jsonc`, `vercel.json`. Do not add a Netlify-style `public/_redirects`: Cloudflare Workers static assets parses that file and rejects absolute-URL rules, which fails the deploy. Cloudflare redirects are handled in `worker.ts`.
 - noindex: restore `noindex: !language.accuracyTested` in `src/content/languages/index.ts`.
 - Sitemaps: revert `app/sitemap*.xml/route.ts`, `src/lib/sitemap.ts`, `app/robots.ts`, `scripts/verify-output.ts`.

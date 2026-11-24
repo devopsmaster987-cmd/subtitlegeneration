@@ -1,10 +1,18 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "voicetotextfree",
+  // Workers Builds deploys this worker as "subtitlegeneration", which serves
+  // voicetotextfree.top. Keep the name in sync so manual deploys hit the same
+  // script. Canonical redirects live in worker.ts, not in a _redirects file:
+  // Cloudflare's assets layer parses _redirects with its own syntax and rejects
+  // absolute-URL Netlify rules, which fails the whole deploy.
+  "name": "subtitlegeneration",
   "main": "worker.ts",
   "compatibility_date": "2026-10-29",
   "assets": {
     "directory": "./out",
+    // Required by run_worker_first so the worker can serve assets with
+    // env.ASSETS.fetch().
+    "binding": "ASSETS",
     "not_found_handling": "404-page",
     "run_worker_first": true
   }
