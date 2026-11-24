@@ -13,7 +13,7 @@ export const metadata: Metadata = pageMetadata({
 
 export default function PrivacyPolicyPage() {
   return (
-    <LegalPage title="Privacy policy" updated="2026-10-28">
+    <LegalPage title="Privacy policy" path="/privacy-policy" updated="2026-10-28">
       <p>
         This policy explains what happens to your files and data when you use {site.name} at{" "}
         <strong>{site.url}</strong>. The site is operated by {site.author.name}. The short version:

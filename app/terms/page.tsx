@@ -13,7 +13,7 @@ export const metadata: Metadata = pageMetadata({
 
 export default function TermsPage() {
   return (
-    <LegalPage title="Terms of use" updated="2026-10-28">
+    <LegalPage title="Terms of use" path="/terms" updated="2026-10-28">
       <p>
         By using {site.name}, you agree to these terms. If you do not agree, do not use the site.
         These terms apply to the website and the browser-based tools it provides. The site is

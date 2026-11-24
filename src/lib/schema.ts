@@ -53,6 +53,25 @@ export function webApplicationSchema(page: BasePageContent) {
   };
 }
 
+export function webPageSchema(options: {
+  path: string;
+  name: string;
+  description: string;
+  updated?: string;
+}) {
+  const path = options.path === "/" ? "/" : `${options.path.replace(/\/$/, "")}/`;
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: options.name,
+    description: options.description,
+    url: `${site.url}${path}`,
+    inLanguage: "en",
+    isPartOf: { "@id": `${site.url}/#website` },
+    ...(options.updated ? { dateModified: options.updated } : {})
+  };
+}
+
 export function softwareApplicationSchema() {
   return {
     "@context": "https://schema.org",

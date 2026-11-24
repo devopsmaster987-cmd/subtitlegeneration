@@ -13,7 +13,7 @@ export const metadata: Metadata = pageMetadata({
 
 export default function DisclaimerPage() {
   return (
-    <LegalPage title="Disclaimer" updated="2026-10-28">
+    <LegalPage title="Disclaimer" path="/disclaimer" updated="2026-10-28">
       <p>
         The information and tools on {site.name} are provided for general use. They are not a
         substitute for professional captioning, legal transcription, medical transcription or any

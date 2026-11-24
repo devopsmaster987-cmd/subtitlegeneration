@@ -13,7 +13,7 @@ export const metadata: Metadata = pageMetadata({
 
 export default function CookiePolicyPage() {
   return (
-    <LegalPage title="Cookie policy" updated="2026-10-29">
+    <LegalPage title="Cookie policy" path="/cookie-policy" updated="2026-10-29">
       <p>
         This policy describes the storage used by {site.name}, operated by {site.author.name}. It
         matches the choices in the consent banner: strictly necessary storage is always on, while
