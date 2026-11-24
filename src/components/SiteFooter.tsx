@@ -29,6 +29,9 @@ const columns = [
       { href: "/guides/srt-vs-vtt", label: "SRT vs VTT" },
       { href: "/guides/how-to-sync-subtitles", label: "Sync subtitles" },
       { href: "/guides/subtitle-best-practices", label: "Best practices" },
+      { href: "/guides/subtitle-timing-guidelines", label: "Timing guidelines" },
+      { href: "/guides/how-to-improve-whisper-accuracy", label: "Improve accuracy" },
+      { href: "/guides/how-to-add-captions-to-reels", label: "Captions for Reels" },
       { href: "/guides/subtitle-glossary", label: "Subtitle glossary" },
       { href: "/languages", label: "All languages" },
       { href: "/html-sitemap", label: "Site map" }
