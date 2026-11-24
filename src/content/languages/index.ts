@@ -114,9 +114,8 @@ function generateToolOnly(language: Language): LanguagePageContent {
     published: "2026-02-01",
     updated: "2026-10-28",
     author: "Abdul Samad",
-    accuracyNote:
-      "This is a tool-only page. We have not published an editorial accuracy note or a recorded sample test for this language, so the page is excluded from search until that work is done.",
-    noindex: !language.accuracyTested,
+    accuracyNote: `This language uses the multilingual Whisper tokenizer, but we have not published an editorial accuracy note or a recorded sample test for ${language.name} yet. Treat the transcript as a draft and review names, numbers and punctuation before publishing.`,
+    noindex: false,
     keyFacts: [
       { label: "Language code", value: language.code },
       { label: "Native name", value: language.nativeName },

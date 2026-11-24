@@ -21,8 +21,8 @@ export default function HtmlSitemapPage() {
       <Breadcrumbs items={[{ label: "Site map", href: "/html-sitemap" }]} />
       <h1 className="text-3xl font-extrabold sm:text-4xl">Site map</h1>
       <p className="mt-2 text-sm text-[var(--muted)]">
-        {indexableLanguages.length} language pages are currently indexable; the full picker has{" "}
-        {languages.length} languages.
+        All {indexableLanguages.length} of the {languages.length} languages in the picker have a
+        subtitle generator page.
       </p>
 
       <section className="mt-8">

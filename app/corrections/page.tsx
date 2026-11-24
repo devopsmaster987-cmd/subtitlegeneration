@@ -13,6 +13,12 @@ export const metadata: Metadata = pageMetadata({
 
 const entries = [
   {
+    date: "2026-11-24",
+    title: "All language pages opened to search",
+    detail:
+      "Every /subtitle-generator/<language>/ page now emits index,follow and a self-referencing canonical instead of noindex. Tool-only pages keep an honest note that no accuracy test has been recorded for that language, so the transcript should still be reviewed before publishing. Canonical host and trailing-slash redirects were also tightened to a single https, non-www origin."
+  },
+  {
     date: "2026-10-29",
     title: "Duplicate tool pages merged",
     detail:
@@ -40,7 +46,7 @@ const entries = [
     date: "2026-10-28",
     title: "Language pages excluded until accuracy is tested",
     detail:
-      "Language pages carry noindex until a real clip in that language has been transcribed and recorded in the verification log. The visible accuracy note explains this; the tool remains usable."
+      "At the time, language pages carried noindex until a real clip in that language had been transcribed and recorded in the verification log. The visible accuracy note explained this; the tool remained usable. This policy was superseded on 2026-11-24."
   },
   {
     date: "2026-01-15",

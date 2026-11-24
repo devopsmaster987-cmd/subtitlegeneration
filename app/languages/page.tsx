@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { languages, popularLanguages } from "@/config/languages";
-import { languagePageBySlug, languagePages } from "@/content/languages";
+import { languagePages } from "@/content/languages";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { AdSlot } from "@/components/AdSlot";
 import { JsonLd } from "@/components/JsonLd";
@@ -55,32 +55,30 @@ export default function LanguagesPage() {
         pitfalls and an honest accuracy statement.
       </p>
       <p className="mt-2 text-sm text-[var(--muted)]">
-        {searchable} language pages with editorial notes are open to search; the remaining{" "}
-        {languages.length - searchable} tool-only pages stay out of the index until a reviewed
-        accuracy sample is recorded. {tested.length} language
-        {tested.length === 1 ? " has" : "s have"} a recorded accuracy test so far.
+        All {searchable} language pages are open to search. Editorial depth varies by tier: some
+        pages carry full script and accuracy notes, others are tool-only pages with a short guide.
+        Accuracy is still being verified — {tested.length} language
+        {tested.length === 1 ? " has" : "s have"} a recorded accuracy test so far, so treat any
+        transcript as a draft and review it before publishing.
       </p>
 
       <section className="mt-8">
         <h2 className="text-xl font-bold">Popular languages</h2>
         <ul className="mt-3 grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
-          {popularLanguages.map((language) => {
-            const entry = languagePageBySlug.get(language.slug);
-            return (
-              <li key={language.code} className="rounded-lg border border-[var(--line)] p-3">
-                <Link
-                  href={`/subtitle-generator/${language.slug}`}
-                  className="font-semibold underline"
-                >
-                  {language.name} subtitle generator
-                </Link>
-                <p className="text-sm text-[var(--muted)]" dir={language.rtl ? "rtl" : "ltr"}>
-                  {language.nativeName} · {language.script}
-                  {entry?.content.noindex ? " · accuracy not yet logged" : ""}
-                </p>
-              </li>
-            );
-          })}
+          {popularLanguages.map((language) => (
+            <li key={language.code} className="rounded-lg border border-[var(--line)] p-3">
+              <Link
+                href={`/subtitle-generator/${language.slug}`}
+                className="font-semibold underline"
+              >
+                {language.name} subtitle generator
+              </Link>
+              <p className="text-sm text-[var(--muted)]" dir={language.rtl ? "rtl" : "ltr"}>
+                {language.nativeName} · {language.script}
+                {language.accuracyTested ? "" : " · accuracy not yet logged"}
+              </p>
+            </li>
+          ))}
         </ul>
       </section>
 
