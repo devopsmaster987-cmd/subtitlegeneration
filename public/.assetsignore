@@ -3,3 +3,10 @@
 # public/ffmpeg and public/ort instead, which fit the limit and work on every host.
 ffmpeg/ffmpeg-core.wasm
 _next/static/media/ort-wasm-simd-threaded.asyncify.*.wasm
+
+# Redirects are applied in worker.ts. Never upload a _redirects file: Cloudflare
+# auto-parses it, and a stale Netlify-style copy (absolute URLs, "301!") aborts
+# the whole Wrangler deploy. This also covers cached build directories that
+# Next.js does not clean.
+_redirects
+_headers
